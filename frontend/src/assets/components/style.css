@@ -1,0 +1,12 @@
+:root{
+    --font:  "Inter", serif;
+    --font1: "Playfair Display", serif;
+    --font2:  "DM Sans", serif;
+    --font3:  "Poppins", serif;
+    --Gradient: rgba(0, 0, 0, 0.555),rgba(0, 0, 0, 0.555);
+    --Gradient-white: rgba(255, 255, 255, 0.500),rgba(255, 255, 255, 0.500);
+    --bg-image:linear-gradient(black,black),url('../../../public/images/backg.png');
+}
+/* .container{
+    background-image: linear-gradient(rgba(255, 255, 255, 0.471),rgba(255, 255, 255, 0.482)),url('/public/images/backg.png');
+} */
