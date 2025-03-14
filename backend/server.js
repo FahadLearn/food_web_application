@@ -29,7 +29,7 @@ app.use(
 app.use("/api", UserRouter);
 
 // ✅ Root route
-app.get("/", (req, res) => res.send("🍽️ Restaurant API is running..."));
+app.get("/", (req, res) => res.send("Food web application APIs are running"));
 
 // ✅ Start the server
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
