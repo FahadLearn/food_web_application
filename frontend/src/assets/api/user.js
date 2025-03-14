@@ -63,3 +63,20 @@ export const Admin_login = async (formData) => {
     return { error: error.message || "Something went wrong!" };
   }
 };
+export const logout = async () => {
+  try {
+    const response = await fetch("http://localhost:3000/api/logout", {
+      method: "POST",
+      credentials: "include", // ✅ Required for cookies
+    });
+    const data = await response.json();
+
+    if (!response.ok) {
+      return { success: false, error: data.message || "Login failed" };
+    }
+
+    return { success: true, message: data.message };
+  } catch (error) {
+    console.error("Logout error:", error.message);
+  }
+};

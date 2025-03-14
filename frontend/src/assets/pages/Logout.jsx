@@ -1,24 +1,12 @@
 import { useNavigate } from "react-router-dom";
+import { logout } from "../api/user";
 
 export function LogOut() {
   const navigate = useNavigate();
-  const handleLogout = async () => {
-    try {
-      const response = await fetch("http://localhost:3000/api/logout", {
-        method: "POST",
-        credentials: "include", // ✅ Required for cookies
-      });
-
-      if (!response.ok) {
-        throw new Error("Logout failed");
-      }
-
-      const data = await response.json();
-      console.log("Logout successful:", data);
-    } catch (error) {
-      console.error("Logout error:", error.message);
-    }
-    navigate("/Sign_IN"); // ✅ Redirect
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    logout();
+    navigate("/Sign_In");
   };
 
   return (
