@@ -1,3 +1,0 @@
-import Math from "Math";
-const userId = "USR" + Math.floor(1000 + Math.random() * 9000);
-console.log(userId);
