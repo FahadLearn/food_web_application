@@ -49,7 +49,7 @@ function FoodDeliveryDashboard() {
             className="w-[20px] h-[20px] ml-auto relative right-[5px] top-[5px] block sm:hidden"
             onClick={() => setIsSidebarOpen(false)}
           >
-            <img src="/public/images/whitecorss.png" />
+            <img src="/images/whitecorss.png" />
           </div>
           <div className="text-white relative   text-center font-semibold sm:text-[20px] top-[60px] md:text-[25px]  lg:text-[35px]">
             Food Delivery
@@ -144,36 +144,36 @@ function FoodDeliveryDashboard() {
           <div className="relative top-[50px] flex flex-col gap-[10px] sm:flex-row justify-center  w-[100%] sm:gap-[10px]  ">
             <div className=" flex justify-center sm:justify-end gap-[10px]  w-[100%] sm:w-[50%]">
               <div className=" w-[30%] sm:w-[45%]  pt-[25px] pb-[25px] rounded [box-shadow:0px_3px_8px_rgba(0,0,0,0.24)] ">
-                <h3 class="sm:text-[14px] md:text-[18px] lg:text-[22px]  text-center font-semibold">
+                <h3 className="sm:text-[14px] md:text-[18px] lg:text-[22px]  text-center font-semibold">
                   Total Orders
                 </h3>
-                <p class="lg:text-[20px] text-center font-bold text-amber-500">
+                <p className="lg:text-[20px] text-center font-bold text-amber-500">
                   {stats.totalOrders}
                 </p>
               </div>
               <div className=" w-[30%] sm:w-[45%]  pt-[25px] pb-[25px] rounded [box-shadow:0px_3px_8px_rgba(0,0,0,0.24)]">
-                <h3 class="sm:text-[14px] md:text-[18px] lg:text-[22px] text-center font-semibold">
+                <h3 className="sm:text-[14px] md:text-[18px] lg:text-[22px] text-center font-semibold">
                   Total Delivered
                 </h3>
-                <p class="lg:text-[20px] text-center font-bold text-green-700">
+                <p className="lg:text-[20px] text-center font-bold text-green-700">
                   {stats.totalDelivered}
                 </p>
               </div>
             </div>
             <div className=" flex justify-center sm:justify-start gap-[10px]  w-[100%] sm:w-[50%]">
               <div className=" w-[30%]  sm:w-[45%]  pt-[25px] pb-[25px] rounded [box-shadow:0px_3px_8px_rgba(0,0,0,0.24)]">
-                <h3 class="sm:text-[14px] md:text-[18px] lg:text-[22px] text-center font-semibold">
+                <h3 className="sm:text-[14px] md:text-[18px] lg:text-[22px] text-center font-semibold">
                   Total Canceled
                 </h3>
-                <p class="lg:text-[20px] text-center  font-bold text-red-500">
+                <p className="lg:text-[20px] text-center  font-bold text-red-500">
                   {stats.totalCanceled}
                 </p>
               </div>
               <div className=" w-[30%]  sm:w-[45%]  pt-[25px] pb-[25px] rounded [box-shadow:0px_3px_8px_rgba(0,0,0,0.24)]">
-                <h3 class="sm:text-[14px] md:text-[18px]   lg:text-[22px] text-center font-semibold">
+                <h3 className="sm:text-[14px] md:text-[18px]   lg:text-[22px] text-center font-semibold">
                   Total Revenue
                 </h3>
-                <p class="lg:text-[20px] text-center  font-bold text-blue-800">
+                <p className="lg:text-[20px] text-center  font-bold text-blue-800">
                   ${stats.totalRevenue}
                 </p>
               </div>

@@ -7,7 +7,7 @@ import Sign from "./assets/pages/sign-page";
 import SignIn from "./assets/pages/signInpage";
 import RiderSignup from "./assets/pages/rider-signuppage";
 import SignUp from "./assets/pages/signup-page";
-import AdminSignup from "./assets/pages/admin loginpage";
+
 import { LogOut } from "./assets/pages/Logout";
 import { Admin_Dashoard } from "./assets/pages/adminDahboad";
 import UploadImage from "./assets/pages/image_upload";
@@ -19,6 +19,11 @@ import Cart from "./assets/pages/cart";
 import Checkout from "./assets/pages/checkout page";
 import Menu from "./assets/components/menu";
 import UserProfile from "./assets/pages/userProfile";
+import AdminSignup from "./assets/pages/Admin signup page-1";
+import AdminSignup2 from "./assets/pages/Admin signup page-2";
+import AdminSignup3 from "./assets/pages/Admin signup page-3";
+import AdminSignup4 from "./assets/pages/Admin signup page-4";
+import AdminSignup5 from "./assets/pages/Admin signup page-5";
 
 function App() {
   return (
@@ -33,7 +38,7 @@ function App() {
           <Route path="/Sign_IN" element={<SignIn />} />
           <Route path="/Sign_UP" element={<SignUp />} />
           <Route path="/Rider_Sign_up" element={<RiderSignup />} />
-          <Route path="/admin_login" element={<AdminSignup />} />
+
           <Route path="/logout" element={<LogOut />} />
           <Route
             path="/restaurantDashboard"
@@ -49,6 +54,11 @@ function App() {
           <Route path="/checkoutpage" element={<Checkout />} />
           <Route path="/menu_page" element={<Menu />} />
           <Route path="/user_profile" element={<UserProfile />} />
+          <Route path="/admin_signup_page_1" element={<AdminSignup />} />
+          <Route path="/admin_signup_page_2" element={<AdminSignup2 />} />
+          <Route path="/admin_signup_page_3" element={<AdminSignup3 />} />
+          <Route path="/admin_signup_page_4" element={<AdminSignup4 />} />
+          <Route path="/admin_signup_page_5" element={<AdminSignup5 />} />
         </Routes>
       </Router>
     </>

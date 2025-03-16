@@ -44,7 +44,7 @@ function Sidebar() {
           </div>
           <div className="pt-[1px] pb-[1px] items-center border-y-1 border-gray-200 flex relative top-[19px] hover:bg-gray-100   transform duration-300 linear">
             <a href="#" className=" h-[20px] w-[20px] relative left-[1.5px]">
-              <img src="/public/images/icon1.png" className="size-full" />
+              <img src="/images/icon1.png" className="size-full" />
             </a>
             <a href="#" className="text-[10px] ">
               Login

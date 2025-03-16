@@ -36,31 +36,3 @@ function Cart() {
   );
 }
 export default Cart;
-
-// {/* <div className="h-screen flex flex-col items-center justify-center bg-gray-100">
-//   {/* Cart Button */}
-//   <button
-//     onClick={() => setCartOpen(true)}
-//     className="bg-blue-600 text-white px-4 py-2 rounded-md"
-//   >
-//     Open Cart
-//   </button>
-
-//   {/* Cart Popup */}
-//   {cartOpen && (
-//     <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
-//       <div className="w-80 h-96 bg-white p-4 rounded-lg shadow-lg relative">
-//         {/* Close Button */}
-//         <button
-//           onClick={() => setCartOpen(false)}
-//           className="absolute top-2 right-2 text-red-500 text-2xl font-bold"
-//         >
-//           ✕
-//         </button>
-
-//         <h2 className="text-xl font-semibold mb-4">Your Cart</h2>
-//         <p>No items in the cart.</p>
-//       </div>
-//     </div>
-//   )}
-// </div>; */}
