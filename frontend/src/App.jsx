@@ -10,7 +10,7 @@ import SignUp from "./assets/pages/signup-page";
 import AdminSignup from "./assets/pages/admin loginpage";
 import { LogOut } from "./assets/pages/Logout";
 import { Admin_Dashoard } from "./assets/pages/adminDahboad";
-import UploadImage from "./assets/pages/image_upload";
+// import UploadImage from "./assets/pages/image_upload";
 function App() {
   return (
     <>
