@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function AdminSignup() {
   const [formData, SetformData] = useState({
@@ -140,11 +141,13 @@ function AdminSignup() {
               </div>
               <div className="w-[100%] ">
                 <div className="flex justify-center items-center  ">
-                  <input
-                    type="submit"
-                    className=" bg-amber-500 outline-none text-white font-semibold rounded-[30px] bg-[#ECECEC] text-[20px] w-[300px] sm:w-[490px] md:w-[560px] lg:w-[610px] pt-[15px] pb-[15px] pr-[20px] pl-[20px]  cursor-pointer"
-                    value="Create Account"
-                  />
+                  <Link to="/restaurantDashboard">
+                    <input
+                      type="submit"
+                      className=" bg-amber-500 outline-none text-white font-semibold rounded-[30px] bg-[#ECECEC] text-[20px] w-[300px] sm:w-[490px] md:w-[560px] lg:w-[610px] pt-[15px] pb-[15px] pr-[20px] pl-[20px]  cursor-pointer"
+                      value="Create Account"
+                    />
+                  </Link>
                 </div>
               </div>
             </div>

@@ -10,7 +10,16 @@ import SignUp from "./assets/pages/signup-page";
 import AdminSignup from "./assets/pages/admin loginpage";
 import { LogOut } from "./assets/pages/Logout";
 import { Admin_Dashoard } from "./assets/pages/adminDahboad";
-// import UploadImage from "./assets/pages/image_upload";
+import UploadImage from "./assets/pages/image_upload";
+import FoodDeliveryDashboard from "./assets/pages/Restaurant Dashboard";
+import MenuManagement from "./assets/pages/menu managment";
+import AddItem from "./assets/pages/add item";
+import Subscription_Signup from "./assets/pages/subscription signup";
+import Cart from "./assets/pages/cart";
+import Checkout from "./assets/pages/checkout page";
+import Menu from "./assets/components/menu";
+import UserProfile from "./assets/pages/userProfile";
+
 function App() {
   return (
     <>
@@ -26,8 +35,20 @@ function App() {
           <Route path="/Rider_Sign_up" element={<RiderSignup />} />
           <Route path="/admin_login" element={<AdminSignup />} />
           <Route path="/logout" element={<LogOut />} />
-          <Route path="/Admin_dashboard" element={<Admin_Dashoard />} />
-          <Route path="/IMG_upload" element={<UploadImage />} />
+          <Route
+            path="/restaurantDashboard"
+            element={<FoodDeliveryDashboard />}
+          />
+          <Route path="/menu_management" element={<MenuManagement />} />
+          <Route path="/add_item" element={<AddItem />} />
+          <Route
+            path="/subscription_signup"
+            element={<Subscription_Signup />}
+          />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkoutpage" element={<Checkout />} />
+          <Route path="/menu_page" element={<Menu />} />
+          <Route path="/user_profile" element={<UserProfile />} />
         </Routes>
       </Router>
     </>
