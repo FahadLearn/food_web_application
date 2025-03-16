@@ -9,7 +9,7 @@ import RiderSignup from "./assets/pages/rider-signuppage";
 import SignUp from "./assets/pages/signup-page";
 import AdminSignup from "./assets/pages/admin loginpage";
 import { LogOut } from "./assets/pages/Logout";
-import { Admin_Dashoard } from "./assets/pages/adminDahboad";
+// import { Admin_Dashoard } from "./assets/pages/adminDahboad";
 function App() {
   return (
     <>
