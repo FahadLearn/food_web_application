@@ -1,11 +1,13 @@
 import Header from "../components/Header";
 import Footer from "../components/footer";
 import Button from "../components/button";
+import { Link } from "react-router-dom";
 
 function Subscription() {
   return (
     <>
       <Header />
+
       <div className=" w-[100%] h-[40vh] sm:h-[60vh] bg-amber-500 flex flex-col justify-center items-center ">
         <div className="flex flex-col gap-[5px]">
           <h1 className="text-center font-bold text-white text-[20px] sm:text-[30px] md:text-[35px] lg:text-[40px]">
@@ -43,11 +45,13 @@ function Subscription() {
             </p>
             <p className="text-gray-700  sm:text-[12px] "> </p>
             <div className="flex justify-center relative sm:top-[17px] ">
-              <Button
-                text="Subscribe"
-                bgColor="bg-amber-500"
-                border="border-amber-500"
-              />
+              <Link to="/subscription_signup">
+                <Button
+                  text="Subscribe"
+                  bgColor="bg-amber-500"
+                  border="border-amber-500"
+                />
+              </Link>
             </div>
           </div>
 
@@ -68,11 +72,13 @@ function Subscription() {
               ✔ Exclusive offers
             </p>
             <div className=" flex justify-center relative sm:top-[15px] ">
-              <Button
-                text="Subscribe"
-                bgColor="bg-amber-500"
-                border="border-amber-500"
-              />
+              <Link to="/subscription_signup">
+                <Button
+                  text="Subscribe"
+                  bgColor="bg-amber-500"
+                  border="border-amber-500"
+                />
+              </Link>
             </div>
           </div>
           <div className="flex flex-col justify-center gap-[7px] md:gap-[9px]  w-[55%] sm:w-[32%]  lg:w-[27%] h-[100%] rounded-[10px] [box-shadow:0px_3px_8px_rgba(0,0,0,0.24)]">
@@ -92,11 +98,13 @@ function Subscription() {
               ✔ Exclusive offers
             </p>
             <div className="flex justify-center relative sm:top-[15px] ">
-              <Button
-                text="Subscribe"
-                bgColor="bg-amber-500"
-                border="border-amber-500"
-              />
+              <Link to="/subscription_signup">
+                <Button
+                  text="Subscribe"
+                  bgColor="bg-amber-500"
+                  border="border-amber-500"
+                />
+              </Link>
             </div>
           </div>
         </div>
@@ -118,71 +126,39 @@ function Subscription() {
         </div>
       </div>
 
-      <section id="faq" className="py-12 text-center">
-        <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
-        <div className="max-w-3xl mx-auto text-left">
-          <div className="mb-4">
-            <h3 className="font-semibold">Can I cancel anytime?</h3>
-            <p className="text-gray-600">
-              Yes, you can cancel your subscription anytime.
-            </p>
-
-            <div className="mt-2 flex gap-2">
-              <button className="bg-green-500 text-white px-3 py-1 rounded text-sm">
-                👍 Helpful
-              </button>
-              <button className="bg-red-500 text-white px-3 py-1 rounded text-sm">
-                👎 Not Helpful
-              </button>
-            </div>
-          </div>
-
-          <div className="mb-4">
-            <h3 className="font-semibold">Do you offer refunds?</h3>
-            <p className="text-gray-600">
-              We have a 7-day refund policy for new subscribers.
-            </p>
-
-            <div className="mt-2 flex gap-2">
-              <button className="bg-green-500 text-white px-3 py-1 rounded text-sm">
-                👍 Helpful
-              </button>
-              <button className="bg-red-500 text-white px-3 py-1 rounded text-sm">
-                👎 Not Helpful
-              </button>
-            </div>
-          </div>
-
-          <div className="mt-6 bg-gray-100 p-4 rounded-lg">
-            <h3 className="text-xl font-semibold">Did not find your answer?</h3>
-            <p className="text-gray-600">
-              Ask us your question, and we will get back to you.
-            </p>
-            <input
-              type="text"
-              className="w-full p-2 mt-2 border rounded"
-              placeholder="Type your question here..."
-            />
-            <button className="bg-blue-500 text-white px-4 py-2 mt-2 rounded">
-              Submit
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <div className="relative top-[40px] flex justify-center items-center h-[40vh] bg-amber-500">
+      <div className="mt-[15px] flex justify-center items-center h-[40vh] bg-amber-500">
         <div className="flex flex-col gap-[15px]">
-          <h2 className="font-bold text-white text-[30px] sm:text-[35px]  md:text-[35px] lg:text-[40px]">
+          <h2 class="font-bold text-white text-[30px] sm:text-[35px]  md:text-[35px] lg:text-[40px]">
             Ready to Get Started?
           </h2>
           <div className="flex justify-center">
-            <a
-              href="#"
+            <Link
+              to="/subscription_signup"
               className=" bg-white text-amber-500 font-semibold  pt-[15px] pb-[15px] pl-[40px] pr-[40px] rounded-[30px]"
             >
               Subscribe Now
-            </a>
+            </Link>
           </div>
+        </div>
+      </div>
+      <div className="mt-[50px] flex flex-col gap-[15px]">
+        <div className=" text-center  font-bold text-[30px] sm:text-[35px] md:text-[35px] lg:text-[40px]">
+          Your Feedback Matters
+        </div>
+        <div className=" flex justify-center items-center">
+          <input
+            type="text"
+            className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] sm:w-[490px] md:w-[570px] lg:w-[610px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+            placeholder="Write your feedback here..."
+          />
+        </div>
+        <div className="flex justify-center">
+          <a
+            href="#"
+            className=" bg-amber-500 text-[20px] text-white font-semibold  pt-[15px] pb-[15px] pl-[40px] pr-[40px] rounded-[30px]"
+          >
+            Submit
+          </a>
         </div>
       </div>
       <Footer />
