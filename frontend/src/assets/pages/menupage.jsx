@@ -1,7 +1,7 @@
 import Header from "../components/Header";
-import food from "../../food_items.json";
-import Food_items from "../components/fooditems";
-import React, { useRef, useEffect } from "react";
+// import food from "../../food_items.json";
+// import Food_items from "../components/fooditems";
+import { useRef, useEffect } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import Footer from "../components/footer";
 
@@ -40,9 +40,9 @@ function MenuPage() {
           Top Restaurant
         </div>
         <div className="mt-[20px] grid grid-col-1 sm:grid-cols-3 gap-[20px]">
-          {food.map((item) => (
+          {/* {food.map((item) => (
             <Food_items key={item.Item_ID} data={item} />
-          ))}
+          ))} */}
         </div>
         <div className="mt-[40px] font-semibold text-[30px] sm:text-[30px] md:text-[40px] lg:text-[40px] pt-[12px] pb-[12px]  text-center">
           Cuisines

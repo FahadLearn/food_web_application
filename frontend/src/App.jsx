@@ -9,8 +9,8 @@ import RiderSignup from "./assets/pages/rider-signuppage";
 import SignUp from "./assets/pages/signup-page";
 import AdminSignup from "./assets/pages/admin loginpage";
 import { LogOut } from "./assets/pages/Logout";
-import { Admin_Dashoard } from "./assets/pages/adminDahboad";
-import UploadImage from "./assets/pages/image_upload";
+// import { Admin_Dashoard } from "./assets/pages/adminDahboad";
+// import UploadImage from "./assets/pages/image_upload";
 import FoodDeliveryDashboard from "./assets/pages/Restaurant Dashboard";
 import MenuManagement from "./assets/pages/menu managment";
 import AddItem from "./assets/pages/add item";
@@ -19,6 +19,7 @@ import Cart from "./assets/pages/cart";
 import Checkout from "./assets/pages/checkout page";
 import Menu from "./assets/components/menu";
 import UserProfile from "./assets/pages/userProfile";
+import MenuPage from "./assets/pages/menupage";
 
 function App() {
   return (
@@ -47,7 +48,7 @@ function App() {
           />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkoutpage" element={<Checkout />} />
-          <Route path="/menu_page" element={<Menu />} />
+          <Route path="/menu_page" element={<MenuPage />} />
           <Route path="/user_profile" element={<UserProfile />} />
         </Routes>
       </Router>
