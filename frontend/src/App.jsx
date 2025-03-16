@@ -10,6 +10,7 @@ import SignUp from "./assets/pages/signup-page";
 import AdminSignup from "./assets/pages/admin loginpage";
 import { LogOut } from "./assets/pages/Logout";
 import { Admin_Dashoard } from "./assets/pages/adminDahboad";
+import UploadImage from "./assets/pages/image_upload";
 function App() {
   return (
     <>
@@ -26,6 +27,7 @@ function App() {
           <Route path="/admin_login" element={<AdminSignup />} />
           <Route path="/logout" element={<LogOut />} />
           <Route path="/Admin_dashboard" element={<Admin_Dashoard />} />
+          <Route path="/IMG_upload" element={<UploadImage />} />
         </Routes>
       </Router>
     </>

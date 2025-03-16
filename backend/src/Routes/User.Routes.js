@@ -5,7 +5,6 @@ import {
   logout,
   adminLogin,
 } from "../Controllers/User.Controller.js";
-import { authMiddleware } from "../middlewares/auth.middlewares.js";
 
 const UserRouter = express.Router();
 

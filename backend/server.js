@@ -24,7 +24,6 @@ app.use(
     credentials: true, // Cookies send karne ke liye
   })
 );
-
 // ✅ Routes
 app.use("/api", UserRouter);
 
