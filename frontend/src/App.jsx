@@ -9,8 +9,8 @@ import RiderSignup from "./assets/pages/rider-signuppage";
 import SignUp from "./assets/pages/signup-page";
 
 import { LogOut } from "./assets/pages/Logout";
-import { Admin_Dashoard } from "./assets/pages/adminDahboad";
-import UploadImage from "./assets/pages/image_upload";
+// import { Admin_Dashoard } from "./assets/pages/adminDahboad";
+// import UploadImage from "./assets/pages/image_upload";
 import FoodDeliveryDashboard from "./assets/pages/Restaurant Dashboard";
 import MenuManagement from "./assets/pages/menu managment";
 import AddItem from "./assets/pages/add item";
@@ -19,11 +19,15 @@ import Cart from "./assets/pages/cart";
 import Checkout from "./assets/pages/checkout page";
 import Menu from "./assets/components/menu";
 import UserProfile from "./assets/pages/userProfile";
+
 import AdminSignup from "./assets/pages/Admin signup page-1";
 import AdminSignup2 from "./assets/pages/Admin signup page-2";
 import AdminSignup3 from "./assets/pages/Admin signup page-3";
 import AdminSignup4 from "./assets/pages/Admin signup page-4";
 import AdminSignup5 from "./assets/pages/Admin signup page-5";
+
+import MenuPage from "./assets/pages/menupage";
+
 
 function App() {
   return (
@@ -52,7 +56,7 @@ function App() {
           />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkoutpage" element={<Checkout />} />
-          <Route path="/menu_page" element={<Menu />} />
+          <Route path="/menu_page" element={<MenuPage />} />
           <Route path="/user_profile" element={<UserProfile />} />
           <Route path="/admin_signup_page_1" element={<AdminSignup />} />
           <Route path="/admin_signup_page_2" element={<AdminSignup2 />} />
