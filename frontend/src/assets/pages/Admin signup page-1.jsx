@@ -14,18 +14,18 @@ function AdminSignup() {
   const handleState = (event) => {
     SetformData({ ...formData, [event.target.name]: event.target.value });
   };
-  const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent page reload
-    fetch("http://localhost:3000/api/restaurant", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error("Fetch error:", error));
-    console.log(formData);
-  };
+  // const handleSubmit = (event) => {
+  //   event.preventDefault(); // Prevent page reload
+  //   fetch("http://localhost:3000/api/restaurant", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(formData),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => console.log(data))
+  //     .catch((error) => console.error("Fetch error:", error));
+  //   console.log(formData);
+  // };
 
   return (
     <>
