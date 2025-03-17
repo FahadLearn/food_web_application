@@ -56,7 +56,7 @@ function MenuPage() {
           </button>
           <div
             ref={scrollRef}
-            className=" flex gap-[10px] overflow-x-scroll scroll-smooth p-2 w-[85%] mx-auto "
+            className=" flex gap-[10px]  overflow-x-scroll scrollbar-hide p-2 w-[85%] mx-auto "
           >
             <div className="  flex justify-center gap-[10px]">
               <div className=" flex flex-col gap-[5px]">

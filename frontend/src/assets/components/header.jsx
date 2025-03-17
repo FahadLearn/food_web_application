@@ -20,7 +20,7 @@ function Header() {
         <div className="sm:h-16  sm:flex sm:flex-col sm:items-center md:h-20 lg:h-24 ">
           {/* center */}
           <div className="hidden sm:block  sm:w-12 sm:h-10 md:w-16 md:h-16 lg:h-20  lg:w-20 lg:h-16 ">
-            <img src="/public/images/pic1.png" className="w-full h-full" />
+            <img src="/images/pic1.png" className="w-full h-full" />
           </div>
           <div className="md:relative md:bottom-1 lg:relative lg:bottom-1.5 ">
             <a
@@ -36,7 +36,7 @@ function Header() {
 
           <div className=" w-7 h-7 sm:opacity-0  ">
             <a href="#" className="">
-              <img src="/public/images/Bag.png" className="w-full h-full" />
+              <img src="/images/Bag.png" className="w-full h-full" />
             </a>
           </div>
         </div>
@@ -68,7 +68,7 @@ function Header() {
         <div className="sm:gap-1 sm:w-[135px]  hidden sm:block sm:flex sm:items-center sm:justify-center md:block md:gap-1  md:w-[145px] md:flex md:items-center md:justify-center lg:block lg:flex  lg:items-center lg:justify-center lg:w-[175px] lg:gap-1 ">
           <div className=" sm:h-[30px] sm:w-[30px] sm:relative sm:left-[4px] md:h-[35px] md:w-[35px] md:relative md:left-[4px]  lg:h-[40px] lg:w-[40px] lg:relative lg:left-[4px] ">
             <img
-              src="/public/images/icon1.png"
+              src="/images/icon1.png"
               className="sm:size-full md:size-full lg:size-full"
             />
           </div>

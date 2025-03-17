@@ -128,7 +128,7 @@ function Subscription() {
 
       <div className="mt-[15px] flex justify-center items-center h-[40vh] bg-amber-500">
         <div className="flex flex-col gap-[15px]">
-          <h2 class="font-bold text-white text-[30px] sm:text-[35px]  md:text-[35px] lg:text-[40px]">
+          <h2 className="font-bold text-white text-[30px] sm:text-[35px]  md:text-[35px] lg:text-[40px]">
             Ready to Get Started?
           </h2>
           <div className="flex justify-center">

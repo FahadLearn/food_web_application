@@ -12,17 +12,17 @@ function Section() {
         </div>
         <div className=" flex justify-center gap-[10px] w-[100%] h-[40vh] sm:mt-[25px] sm:h-[40vh]  sm:w-[100%] sm:gap-[15px] sm:flex sm:justify-center  md:mt-[35px] md:h-[50vh] md:w-[100%] md:gap-[20px]  lg:w-[100%] lg:h-[55vh] lg:gap-[20px]">
           <Boxes
-            src="/public/images/image111.png"
+            src="/images/image111.png"
             heading="Easy to order"
             para="You only need a few steps in ordering food"
           />
           <Boxes
-            src="/public/images/image22.png"
+            src="/images/image22.png"
             heading="Fastest delivery"
             para="Delivery that is always ontime even faster"
           />
           <Boxes
-            src="/public/images/image3.png"
+            src="/images/image3.png"
             heading="Best quality"
             para="Not only fast for us quality is also number one"
           />
