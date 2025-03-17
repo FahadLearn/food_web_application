@@ -42,6 +42,7 @@ function AdminSignup5() {
                 name="bank_account_owner_title"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Bank Account Owner/Title"
+                onChange={handleState}
                 required
               />
               <input
@@ -49,6 +50,7 @@ function AdminSignup5() {
                 name="bank_name"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Bank Name"
+                onChange={handleState}
                 required
               />
             </div>
@@ -77,12 +79,14 @@ function AdminSignup5() {
                 type="file"
                 accept="image/*"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                onChange={handleState}
                 required
               />
               <input
                 type="file"
                 accept="image/*"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                onChange={handleState}
                 required
               />
             </div>
@@ -95,6 +99,7 @@ function AdminSignup5() {
               <input
                 type="Submit"
                 value="Submit"
+                onChange={handleSubmit}
                 className="text-white  outline-none rounded-[30px] bg-amber-500 text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
               />
             </Link>

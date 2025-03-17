@@ -15,18 +15,18 @@ function AdminSignup3() {
   const handleState = (event) => {
     SetformData({ ...formData, [event.target.name]: event.target.value });
   };
-  const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent page reload
-    fetch("http://localhost:3000/api/restaurant", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error("Fetch error:", error));
-    console.log(formData);
-  };
+  // const handleSubmit = (event) => {
+  //   event.preventDefault(); // Prevent page reload
+  //   fetch("http://localhost:3000/api/restaurant", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(formData),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => console.log(data))
+  //     .catch((error) => console.error("Fetch error:", error));
+  //   console.log(formData);
+  // };
 
   return (
     <>
@@ -46,6 +46,7 @@ function AdminSignup3() {
                 name="city"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Your City"
+                onChange={handleState}
                 required
               />
               <input
@@ -53,6 +54,7 @@ function AdminSignup3() {
                 name="province"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Your province"
+                onChange={handleState}
                 required
               />
             </div>
@@ -62,6 +64,7 @@ function AdminSignup3() {
                 name="area"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Enter Your Area"
+                onChange={handleState}
                 required
               />
               <input
@@ -69,6 +72,7 @@ function AdminSignup3() {
                 name="postal_code"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Postal Code"
+                onChange={handleState}
                 required
               />
             </div>
