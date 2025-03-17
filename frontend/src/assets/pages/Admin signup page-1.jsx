@@ -41,6 +41,7 @@ function AdminSignup() {
                 name="first_name"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="First Name"
+                onChange={handleState}
                 required
               />
               <input
@@ -48,6 +49,7 @@ function AdminSignup() {
                 name="last_name"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Last Name"
+                onChange={handleState}
                 required
               />
             </div>
@@ -57,6 +59,7 @@ function AdminSignup() {
                 name="business_name"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Enter Business Name"
+                onChange={handleState}
                 required
               />
               <input
@@ -64,6 +67,7 @@ function AdminSignup() {
                 name="email"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Enter Business Email"
+                onChange={handleState}
                 required
               />
             </div>
@@ -71,6 +75,7 @@ function AdminSignup() {
               <select
                 name="business_type"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none"
+                onChange={handleState}
               >
                 <option value="" disabled selected>
                   Business Type
@@ -83,6 +88,7 @@ function AdminSignup() {
                 name="number"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Enter Mobile Number"
+                onChange={handleState}
                 required
               />
             </div>
