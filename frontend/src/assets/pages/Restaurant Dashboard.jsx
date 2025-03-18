@@ -67,7 +67,10 @@ function FoodDeliveryDashboard() {
             >
               Menu
             </Link>
-            <Link className="text-center text-white lg:text-[20px] pt-[8px] pb-[8px] border-t-1 border-gray-200 hover:bg-neutral-400 duration-400">
+            <Link
+              to="/ordersManagement"
+              className="text-center text-white lg:text-[20px] pt-[8px] pb-[8px] border-t-1 border-gray-200 hover:bg-neutral-400 duration-400"
+            >
               Orders
             </Link>
             <Link className="text-center text-white lg:text-[20px] pt-[8px] pb-[8px] border-t-1 border-gray-200 hover:bg-neutral-400 duration-400">

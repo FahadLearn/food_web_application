@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SidebarLinks from "./sidebar-links";
+import { Link } from "react-router-dom";
 
 function Sidebar() {
   const [isopen, SetIsOpen] = useState(false);
@@ -36,19 +37,36 @@ function Sidebar() {
             <img src="/public/images/cross.png" className="size-full" />
           </div>
           <div className=" flex  flex-col relative top-[20px]">
-            <SidebarLinks text="Home" hover="hover:bg-gray-100" />
-            <SidebarLinks text="Menu" hover="hover:bg-gray-100" />
-            <SidebarLinks text="Subscription" hover="hover:bg-gray-100" />
-            <SidebarLinks text="Contact" hover="hover:bg-gray-100" />
-            <SidebarLinks text="About" bg="bg-amber-500" color="text-white" />
+            <SidebarLinks text="Home" hover="hover:bg-gray-100" to="/" />
+            <SidebarLinks
+              text="Menu"
+              hover="hover:bg-gray-100"
+              to="/menu_page"
+            />
+            <SidebarLinks
+              text="Subscription"
+              hover="hover:bg-gray-100"
+              to="/subscription"
+            />
+            <SidebarLinks
+              text="Contact"
+              hover="hover:bg-gray-100"
+              to="/contact"
+            />
+            <SidebarLinks
+              text="About"
+              bg="bg-amber-500"
+              color="text-white"
+              to="/about"
+            />
           </div>
           <div className="pt-[1px] pb-[1px] items-center border-y-1 border-gray-200 flex relative top-[19px] hover:bg-gray-100   transform duration-300 linear">
             <a href="#" className=" h-[20px] w-[20px] relative left-[1.5px]">
               <img src="/images/icon1.png" className="size-full" />
             </a>
-            <a href="#" className="text-[10px] ">
+            <Link to="/Sign" className="text-[10px] ">
               Login
-            </a>
+            </Link>
           </div>
         </div>
       </div>

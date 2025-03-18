@@ -1,204 +1,180 @@
 import { useState } from "react";
+import Button from "../components/button";
+import { Link } from "react-router-dom";
 
 function Checkout() {
-  const [selectedPayment, setSelectedPayment] = useState("");
+  const [showCreditSection, setShowCreditSection] = useState(false);
+  const [showJazzCashSection, setShowJazzCashSection] = useState(false);
+
+  const handlePaymentChange = (e) => {
+    const selected = e.target.value;
+    setShowCreditSection(selected === "Credit/Debit");
+    setShowJazzCashSection(selected === "Jazz Cash");
+  };
   return (
     <>
-      <div className="border-2 w-[100%]  border-red-400">
-        <div className="border-2 border-amber-500 pl-[20px] lg:pl-[40px] font-semibold text-[30px] sm:text-[30px] md:text-[40px] lg:text-[40px] pt-[12px] pb-[12px] bg-amber-500 text-white">
+      <div className=" ">
+        <div className=" border-amber-500 text-center font-semibold text-[30px] sm:text-[30px] md:text-[40px] lg:text-[40px] pt-[12px] pb-[12px] bg-amber-500 text-white">
           Checkout
         </div>
-        <div className="border-2 border-orange-500  ">
-          <div className=" flex flex-col h-[25vh] justify-center  gap-[20px]  pl-[20px] lg:pl-[40px]">
-            <label className="text-amber-600 font-semibold text-[25px] sm:text-[25px] md:text-[30px] lg:text-[30px] pl-[10px]">
-              Delivery address
-            </label>
-
+        <div className="mt-[50px] sm:mt-[100px] justify-center flex flex-col gap-[10px] w-[85%] sm:w-[80%] md:w-[70%] lg:w-[60%] mx-auto">
+          <div className="flex justify-center">
             <input
               type="text"
-              className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[360px] sm:w-[570px] md:w-[620px] lg:w-[650px] pt-[15px] pb-[15px] pr-[20px] pl-[20px]"
-              placeholder="Enter your Address"
+              name=" address"
+              className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] sm:w-[605px] md:w-[605px] lg:w-[610px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+              placeholder="Enter Your Address"
               required
             />
           </div>
-          <div className=" flex flex-col h-[60vh] sm:h-[40vh] justify-center gap-[20px] pl-[20px] lg:pl-[40px]">
-            <label className="text-amber-600  font-semibold text-[25px] sm:text-[25px] md:text-[30px] lg:text-[30px] pl-[10px]">
-              Personal details
-            </label>
-            <div className=" flex flex-col sm:flex-row gap-[20px]">
-              <input
-                type="text"
-                name="first_name"
-                className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[360px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                placeholder="First Name"
-                required
-              />
-              <input
-                type="text"
-                name="last_name"
-                className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[360px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                placeholder="Last Name"
-                required
-              />
-            </div>
-            <div className="  flex flex-col sm:flex-row gap-[20px]">
-              <input
-                type="tel"
-                name="Phone_no"
-                className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[360px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                placeholder="Phone_no"
-                required
-              />
-              <input
-                type="text"
-                name="email"
-                className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[360px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                placeholder="Enter Email"
-                required
-              />
-            </div>
+          <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
+            <input
+              type="text"
+              name="first_name"
+              className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+              placeholder="First Name"
+              required
+            />
+            <input
+              type="text"
+              name="last_name"
+              className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+              placeholder="Last Name"
+              required
+            />
           </div>
-          <div className=" flex flex-col h-[110vh] sm:h-[100vh] border-2  gap-[20px] pl-[20px] lg:pl-[40px] ">
-            <label className="text-amber-600  font-semibold text-[25px] sm:text-[25px] md:text-[30px] lg:text-[30px] pl-[10px]">
-              Payment
-            </label>
-            <div className=" flex gap-[5px] text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[360px] pt-[15px] pb-[15px] pr-[20px] pl-[20px]">
-              <input
-                type="radio"
-                name="payment"
-                value="mastercard"
-                className="h-[15px] w-[20px] relative top-[6px]"
-                onChange={(e) => setSelectedPayment(e.target.value)}
-                required
-              />
-              <span className="text-lg">Mastercard</span>
-            </div>
-            <div className="flex gap-[5px] text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[360px] pt-[15px] pb-[15px] pr-[20px] pl-[20px]">
-              <input
-                type="radio"
-                name="payment"
-                value="jazzcash"
-                className="h-[15px] w-[20px] relative top-[6px]"
-                onChange={(e) => setSelectedPayment(e.target.value)}
-                required
-              />
-              <span className="text-lg">JazzCash</span>
-            </div>
-            <div className=" flex gap-[5px] text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[360px] pt-[15px] pb-[15px] pr-[20px] pl-[20px]">
-              <input
-                type="radio"
-                name="payment"
-                value="cod"
-                className="h-[15px] w-[20px] relative top-[6px]"
-                onChange={(e) => setSelectedPayment(e.target.value)}
-                required
-              />
-              <span className="text-lg">Cash on Delivery</span>
-            </div>
+          <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
+            <input
+              type="text"
+              name="mobile_number"
+              className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+              placeholder="Mobile Number"
+              required
+            />
+            <input
+              type="text"
+              name="postal_code"
+              className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+              placeholder="Postal Code"
+              required
+            />
+          </div>
+          <div className="flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
+            <select
+              name="payment"
+              className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none"
+              onChange={handlePaymentChange}
+              defaultValue=""
+            >
+              <option value="" disabled selected>
+                Select Payment Method
+              </option>
+              <option value="Credit/Debit">Credit/Debit</option>
+              <option value="Jazz Cash">Jazz Cash</option>
+              <option value="Cash On Delivery">Cash On Delivery</option>
+            </select>
+            <select
+              name="Tip"
+              className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none"
+            >
+              <option value="" disabled selected>
+                Tip Your Rider
+              </option>
+              <option value="Not Now">Not Now</option>
+              <option value="Rs.50.00">Rs.50.00</option>
+              <option value="Rs.100.00">Rs.100.00</option>
+              <option value="Rs.200.00">Rs.200.00</option>
+              <option value="Rs.300.00">Rs.300.00</option>
+            </select>
+          </div>
+        </div>
 
-            {selectedPayment === "mastercard" && (
-              <div className=" h-[50vh] flex flex-col gap-[15px] ">
-                <div className=" flex flex-col  justify-center  gap-[5px]  ">
-                  <label className="text-amber-600 font-semibold text-[16px] sm:text-[18px] md:text-[20px] lg:text-[20px] pl-[10px]">
-                    Card Number
-                  </label>
-
+        {/* Credit/Debit Payment Section */}
+        <div
+          className={`  mt-[10px] h-[60vh] sm:h-[35vh] flex flex-col items-center justify-center overflow-hidden transition-all duration-500  w-[85%] sm:w-[80%] md:w-[70%] lg:w-[60%] mx-auto  ${
+            showCreditSection
+              ? "max-h-[300px] opacity-100"
+              : "max-h-0 opacity-0"
+          }`}
+        >
+          {showCreditSection && (
+            <div className="  mx-auto ">
+              <div className=" flex flex-col gap-[10px]">
+                <h2 className="text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] text-amber-600 font-semibold text-center">
+                  Enter Card Details
+                </h2>
+                <div className=" flex justify-center ">
                   <input
                     type="text"
-                    className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[360px] sm:w-[610px] md:w-[620px] lg:w-[650px] pt-[15px] pb-[15px] pr-[20px] pl-[20px]"
-                    placeholder="Enter card no"
+                    name="card_number"
+                    className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] sm:w-[605px] md:w-[605px] lg:w-[610px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                    placeholder="Enter Card Number"
                     required
                   />
                 </div>
-                <div className=" flex flex-col justify-center  gap-[5px]  ">
-                  <label className="text-amber-600 font-semibold text-[16px] sm:text-[18px] md:text-[20px] lg:text-[20px] pl-[10px]">
-                    Name of the card holder
-                  </label>
-
+                <div className="flex  flex-col sm:flex-row items-center justify-center gap-[10px] ">
                   <input
                     type="text"
-                    className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[360px] sm:w-[610px] md:w-[620px] lg:w-[650px] pt-[15px] pb-[15px] pr-[20px] pl-[20px]"
-                    placeholder="Enter Name"
+                    name="expiry_date"
+                    className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                    placeholder="Expiry Date MM/YY"
+                    required
+                  />
+                  <input
+                    type="text"
+                    name="cvc"
+                    className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                    placeholder="CVC"
                     required
                   />
                 </div>
-                <div className="flex flex-col sm:flex-row gap-[10px]">
-                  <div className=" flex flex-col justify-center  gap-[5px]  ">
-                    <label className="text-amber-600 font-semibold text-[16px] sm:text-[18px] md:text-[20px] lg:text-[20px] pl-[10px]">
-                      Expiry date
-                    </label>
+              </div>
+            </div>
+          )}
+        </div>
 
-                    <input
-                      type="text"
-                      className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[360px] pt-[15px] pb-[15px] pr-[20px] pl-[20px]"
-                      placeholder="Enter Name"
-                      required
-                    />
-                  </div>
-                  <div className=" flex flex-col justify-center  gap-[5px]  ">
-                    <label className="text-amber-600 font-semibold text-[16px] sm:text-[18px] md:text-[20px] lg:text-[20px] pl-[10px]">
-                      cvc
-                    </label>
-
-                    <input
-                      type="text"
-                      className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[360px] pt-[15px] pb-[15px] pr-[20px] pl-[20px]"
-                      placeholder="Enter code"
-                      required
-                    />
-                  </div>
+        {/* Jazz Cash Payment Section */}
+        <div
+          className={`  mt-[10px] h-[30vh]  flex flex-col items-center justify-center overflow-hidden transition-all duration-500  w-[85%] sm:w-[80%] md:w-[70%] lg:w-[60%] mx-auto ${
+            showJazzCashSection
+              ? "max-h-[300px] opacity-100"
+              : "max-h-0 opacity-0"
+          }`}
+        >
+          {showJazzCashSection && (
+            <div className="">
+              <div className=" flex flex-col gap-[10px]">
+                <h2 className="text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] text-amber-600 font-semibold text-center">
+                  Enter Jazz Cash Details
+                </h2>
+                <div className="flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
+                  {" "}
+                  <input
+                    type="text"
+                    name="expiry_date"
+                    className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                    placeholder="Expiry Date MM/YY"
+                    required
+                  />
+                  <input
+                    type="text"
+                    name="expiry_date"
+                    className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                    placeholder="Expiry Date MM/YY"
+                    required
+                  />
                 </div>
               </div>
-            )}
-
-            {selectedPayment === "jazzcash" && (
-              <div className="p-4 border rounded-lg bg-yellow-100">
-                <h3 className="text-lg font-semibold">JazzCash Payment</h3>
-                <p className="text-gray-700">
-                  Send payment to **03XXXXXXXXX** and enter the transaction ID.
-                </p>
-              </div>
-            )}
-          </div>
+            </div>
+          )}
+        </div>
+        <div className="flex justify-center sm:mt-[30px] pt-[30px] pb-[30px]">
+          <Link className="text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] bg-amber-500 text-white pt-[15px] pb-[15px] pl-[45px] pr-[45px] rounded-full">
+            Order Complete
+          </Link>
         </div>
       </div>
     </>
   );
 }
-
 export default Checkout;
-
-<div className=" flex flex-col h-[50vh]  justify-center gap-[20px] ">
-  <label className="font-semibold text-[20px] sm:text-[25px] md:text-[30px] lg:text-[30px] pl-[10px]">
-    Payment
-  </label>
-  <div className=" flex flex-col gap-[10px]">
-    <div className=" flex gap-[5px] text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[400px] pt-[15px] pb-[15px] pr-[20px] pl-[20px]">
-      <input
-        type="radio"
-        name="payment"
-        value="mastercard"
-        className="h-[15px] w-[20px] relative top-[6px]"
-      />
-      <span className="text-lg">Mastercard</span>
-    </div>
-    <div className="flex gap-[5px] text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[400px] pt-[15px] pb-[15px] pr-[20px] pl-[20px]">
-      <input
-        type="radio"
-        name="payment"
-        value="jazzcash"
-        className="h-[15px] w-[20px] relative top-[6px]"
-      />
-      <span className="text-lg">JazzCash</span>
-    </div>
-    <div className=" flex gap-[5px] text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[400px] pt-[15px] pb-[15px] pr-[20px] pl-[20px]">
-      <input
-        type="radio"
-        name="payment"
-        value="cod"
-        className="h-[15px] w-[20px] relative top-[6px]"
-      />
-      <span className="text-lg">Cash on Delivery</span>
-    </div>
-  </div>
-</div>;
