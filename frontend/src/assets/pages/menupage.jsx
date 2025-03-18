@@ -1,9 +1,10 @@
 import Header from "../components/Header";
-// import food from "../../food_items.json";
-// import Food_items from "../components/fooditems";
+import food from "../../food_items.json";
+import Food_items from "../components/fooditems";
 import { useRef, useEffect } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import Footer from "../components/footer";
+import { Link } from "react-router-dom";
 
 // there u go
 function MenuPage() {
@@ -40,9 +41,9 @@ function MenuPage() {
           Top Restaurant
         </div>
         <div className="mt-[20px] grid grid-col-1 sm:grid-cols-3 gap-[20px]">
-          {/* {food.map((item) => (
+          {food.map((item) => (
             <Food_items key={item.Item_ID} data={item} />
-          ))} */}
+          ))}
         </div>
         <div className="mt-[40px] font-semibold text-[30px] sm:text-[30px] md:text-[40px] lg:text-[40px] pt-[12px] pb-[12px]  text-center">
           Cuisines
@@ -115,6 +116,89 @@ function MenuPage() {
           >
             <FaArrowRight />
           </button>
+        </div>
+        <div className="mt-[10px]">
+          <div className=" font-semibold text-[30px] sm:text-[30px] md:text-[40px] lg:text-[40px] pt-[12px] pb-[12px]  text-center">
+            Top Brands
+          </div>
+          <div className=" flex flex-row gap-[20px] sm:gap-[0px] justify-center items-center sm:flex-col w-[100%] h-[85vh] sm:h-[60vh] md:h-[67svh] lg:h-[70vh]">
+            <div className=" flex flex-col sm:flex-row  gap-[15px] lg:gap-[20px] items-center justify-center  sm:w-[100%] h-[100%] ">
+              <div className="flex flex-col gap-[5px] ">
+                <div className=" h-[120px] w-[170px] sm:h-[140px]  sm:w-[190px] md:h-[160px]  md:w-[200px] lg:h-[170px]  lg:w-[220px]">
+                  <img
+                    src="/images/macdonald.jpg"
+                    className="size-full object-cover"
+                  />
+                </div>
+                <div className=" text-center">
+                  <Link className="text-[18px]  font-semibold ">Mcdonald</Link>
+                </div>
+              </div>
+              <div className=" flex flex-col gap-[5px]">
+                <div className=" border-red-700 h-[120px] w-[170px] sm:h-[140px] sm:w-[190px] md:h-[160px]  md:w-[200px] lg:h-[170px]  lg:w-[220px]">
+                  <img
+                    src="/images/kfc.jpeg"
+                    className="size-full object-cover"
+                  />
+                </div>
+                <div className="text-center">
+                  <Link className="text-[18px]  font-semibold  ">Kfc</Link>
+                </div>
+              </div>
+              <div className="flex flex-col gap-[5px]">
+                <div className=" h-[120px] w-[170px] sm:h-[140px] sm:w-[190px] md:h-[160px]  md:w-[200px] lg:h-[170px]  lg:w-[220px]">
+                  <img
+                    src="/images/14 streets.jpg"
+                    className="size-full object-cover"
+                  />
+                </div>
+                <div className="text-center">
+                  <Link className="text-[18px]  font-semibold  ">
+                    14 Street Pizza
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className=" flex flex-col sm:flex-row gap-[15px] lg:gap-[20px] items-center justify-center  sm:w-[100%] h-[100%] ">
+              <div className=" flex flex-col gap-[5px]">
+                <div className=" border-red-700 h-[120px] w-[170px] sm:h-[140px] sm:w-[190px] md:h-[160px]  md:w-[200px] lg:h-[170px]  lg:w-[220px]">
+                  <img
+                    src="/images/domions.webp"
+                    className="size-full object-cover"
+                  />
+                </div>
+                <div className=" text-center">
+                  <Link className="text-[18px]  font-semibold ">Dominos</Link>
+                </div>
+              </div>
+              <div className=" flex flex-col gap-[5px]">
+                <div className="h-[120px] w-[170px] sm:h-[140px] sm:w-[190px] md:h-[160px]  md:w-[200px] lg:h-[170px]  lg:w-[220px]">
+                  <img
+                    src="/images/dunkin donuts.jpg"
+                    className="size-full object-cover"
+                  />
+                </div>
+                <div className=" text-center">
+                  <Link className="text-[18px]  font-semibold ">
+                    Dunkin Donuts
+                  </Link>
+                </div>
+              </div>
+              <div className=" flex flex-col gap-[5px]">
+                <div className="h-[120px] w-[170px] sm:h-[140px] sm:w-[190px] md:h-[160px]  md:w-[200px] lg:h-[170px]  lg:w-[220px]">
+                  <img
+                    src="/images/hareddes.webp"
+                    className="size-full object-cover"
+                  />
+                </div>
+                <div className="text-center">
+                  <Link className="text-[18px] text-amber-700 font-semibold  ">
+                    Hardee's
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <Footer />
