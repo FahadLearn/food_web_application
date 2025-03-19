@@ -106,7 +106,7 @@ function AdminSignup4() {
             </div>
           </div>
           <div className="flex  flex-col sm:flex-row items-center justify-center relative top-[30px]">
-            <Link to="/admin_signup_page_5">
+            <Link to="/admin_signup_page5">
               <input
                 type="Submit"
                 value="Next"

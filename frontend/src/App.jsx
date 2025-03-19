@@ -59,7 +59,7 @@ function App() {
           <Route path="/admin_signup_page_2" element={<AdminSignup2 />} />
           <Route path="/admin_signup_page_3" element={<AdminSignup3 />} />
           <Route path="/admin_signup_page_4" element={<AdminSignup4 />} />
-          <Route path="/admin_signup_page_5" element={<AdminSignup5 />} />
+          <Route path="/admin_signup_page5" element={<AdminSignup5 />} />
           <Route path="/ordersManagement" element={<OrdersManagement />} />
         </Routes>
       </Router>
