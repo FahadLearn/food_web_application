@@ -7,6 +7,7 @@ import {
   FindById,
   UpdateUser,
 } from "../Models/User.Model.js";
+// import upload from "../config/multer.config.js";
 
 // ✅ Register User
 export const Register = async (req, res) => {
@@ -109,7 +110,8 @@ export const Login = async (req, res) => {
 
 // ✅ Logout User
 export const logout = (req, res) => {
-  res.clearCookie("token");
+  res.clearCookie("Customer_ID");
+  res.clearCookie("isLoggedIn");
   res.json({ message: "Logged out successfully" });
 };
 
@@ -139,7 +141,7 @@ export const adminLogin = async (req, res) => {
       token,
     });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: error.message });
   }
 };
 export const getUserProfile = async (req, res) => {
@@ -153,39 +155,21 @@ export const getUserProfile = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
+    return res.json(user);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Internal Server Error" });
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
 // ✅ Update User
-export const updateUserProfile = async (req, res) => {
-  const Customer_ID = req.cookies.Customer_ID; // ✅ Get user ID from cookie
-  if (!Customer_ID) {
-    return res.status(401).json({ message: "Unauthorized: No User ID found" });
-  }
 
-  const { Name, Password, Phone_Number, IMG_URL } = req.body; // ✅ Email will not change
-
+export const chkLogin = async (req, res) => {
   try {
-    const user = await FindById(Customer_ID);
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
-
-    await UpdateUser({ Customer_ID, Name, Password, Phone_Number, IMG_URL });
-    res.json({ message: "User profile updated successfully" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Internal Server Error" });
-  }
-};
-export const chkLogin = async (res, req) => {
-  try {
-    const isLoggedIn = req.cookies.isLoggedIn || false;
-    res.status(200).json({ isLoggedIn });
+    const isLoggedIn = req.cookies.isLoggedIn;
+    console.log(isLoggedIn);
+    return res.status(200).json({ isLoggedIn });
   } catch (error) {
     console.error("Error getting auth status:", error);
-    res.status(500).json({ message: "Internal Server Error" });
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };

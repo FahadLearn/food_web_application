@@ -1,20 +1,30 @@
 import Sidebar from "./sidebar";
-import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Links from "./links";
 import { IoLocationSharp } from "react-icons/io5";
 
 function Header() {
-  const [isloggedin, setLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    const loggedIn = Cookies.get("isLoggedIn") === "true";
-    setLoggedIn(loggedIn);
-    // Cleanup interval to avoid memory leaks
-  }, []);
-  console.log(isloggedin);
+    const fetchAuthStatus = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/api/chkLogin", {
+          credentials: "include", // ✅ Send cookies with request
+        });
+        const data = await response.json();
+        console.log(data);
+        setIsLoggedIn(data.isLoggedIn);
+      } catch (error) {
+        console.error("Error fetching auth status:", error);
+      }
+    };
 
+    fetchAuthStatus();
+  }, []);
+
+  console.log(isLoggedIn);
   return (
     <>
       <p className=" bg-zinc-900 py-1 sm:h-8 text-slate-50 text-xs text-center object-cover object-center sm:text-sm  sm:py-1  md:text-sm md:h-9 md:py-2  lg:text-base lg:h-10">
@@ -82,7 +92,7 @@ function Header() {
               className="sm:size-full md:size-full lg:size-full"
             />
           </div>
-          {isloggedin ? (
+          {isLoggedIn ? (
             <Link
               to="/user_profile"
               className=" sm:text-[12px] md:text-[14px] lg:text-[16px]"

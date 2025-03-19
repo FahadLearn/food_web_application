@@ -7,8 +7,6 @@ import Sign from "./assets/pages/sign-page";
 import SignIn from "./assets/pages/signInpage";
 import RiderSignup from "./assets/pages/rider-signuppage";
 import SignUp from "./assets/pages/signup-page";
-
-import { LogOut } from "./assets/pages/Logout";
 // import { Admin_Dashoard } from "./assets/pages/adminDahboad";
 // import UploadImage from "./assets/pages/image_upload";
 import FoodDeliveryDashboard from "./assets/pages/Restaurant Dashboard";
@@ -39,8 +37,6 @@ function App() {
           <Route path="/Sign_IN" element={<SignIn />} />
           <Route path="/Sign_UP" element={<SignUp />} />
           <Route path="/Rider_Sign_up" element={<RiderSignup />} />
-
-          <Route path="/logout" element={<LogOut />} />
           <Route
             path="/restaurantDashboard"
             element={<FoodDeliveryDashboard />}
