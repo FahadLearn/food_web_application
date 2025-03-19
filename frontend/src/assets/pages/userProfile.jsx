@@ -70,7 +70,7 @@ function UserProfile() {
                   className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px]  w-[300px]  pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                   placeholder="Password"
                   onChange={handleState}
-                  autocomplete="off"
+                  autoComplete="off"
                   required
                 />{" "}
                 <input

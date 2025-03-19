@@ -17,18 +17,15 @@ import AddItem from "./assets/pages/add item";
 import Subscription_Signup from "./assets/pages/subscription signup";
 import Cart from "./assets/pages/cart";
 import Checkout from "./assets/pages/checkout page";
-import Menu from "./assets/components/menu";
+// import Menu from "./assets/components/menu";
 import UserProfile from "./assets/pages/userProfile";
-
 import AdminSignup from "./assets/pages/Admin signup page-1";
 import AdminSignup2 from "./assets/pages/Admin signup page-2";
 import AdminSignup3 from "./assets/pages/Admin signup page-3";
 import AdminSignup4 from "./assets/pages/Admin signup page-4";
 import AdminSignup5 from "./assets/pages/Admin signup page-5";
-
 import MenuPage from "./assets/pages/menupage";
 import OrdersManagement from "./assets/pages/orders managament";
-
 function App() {
   return (
     <>

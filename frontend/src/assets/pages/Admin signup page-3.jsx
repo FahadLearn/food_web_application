@@ -7,7 +7,6 @@ function AdminSignup3() {
     province: "",
     area: "",
     postal_code: "",
-
     address: "",
     additional_address: "",
   });
