@@ -1,10 +1,20 @@
 import Sidebar from "./sidebar";
-import { useState } from "react";
+import Cookies from "js-cookie";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Links from "./links";
 import { IoLocationSharp } from "react-icons/io5";
 
 function Header() {
+  const [isloggedin, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const loggedIn = Cookies.get("isLoggedIn") === "true";
+    setLoggedIn(loggedIn);
+    // Cleanup interval to avoid memory leaks
+  }, []);
+  console.log(isloggedin);
+
   return (
     <>
       <p className=" bg-zinc-900 py-1 sm:h-8 text-slate-50 text-xs text-center object-cover object-center sm:text-sm  sm:py-1  md:text-sm md:h-9 md:py-2  lg:text-base lg:h-10">
@@ -72,13 +82,21 @@ function Header() {
               className="sm:size-full md:size-full lg:size-full"
             />
           </div>
-          <Link
-            // to="/Sign"
-            to="/user_profile"
-            className=" sm:text-[12px] md:text-[14px] lg:text-[16px]"
-          >
-            Login
-          </Link>
+          {isloggedin ? (
+            <Link
+              to="/user_profile"
+              className=" sm:text-[12px] md:text-[14px] lg:text-[16px]"
+            >
+              Profile
+            </Link>
+          ) : (
+            <Link
+              to="/sign"
+              className=" sm:text-[12px] md:text-[14px] lg:text-[16px]"
+            >
+              Login
+            </Link>
+          )}
           <Link
             to="/cart"
             className="sm:text-[12px] md:text-[14px] lg:text-[16px]"

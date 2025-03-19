@@ -1,30 +1,44 @@
 import bcrypt from "bcryptjs";
 import { generateToken } from "../utils/generateTokens.js";
-import { AdminChk, CreateUser, FindByEmail } from "../Models/User.Model.js";
+import {
+  AdminChk,
+  CreateUser,
+  FindByEmail,
+  FindById,
+  UpdateUser,
+} from "../Models/User.Model.js";
 
+// ✅ Register User
 export const Register = async (req, res) => {
   try {
-    const { Customer_ID, Name, Email, Password, Address, Phone_Number } =
-      req.body;
+    const {
+      Customer_ID,
+      Name,
+      Email,
+      Password,
+      Address,
+      Phone_Number,
+      IMG_URL,
+    } = req.body;
 
-    // Validate input fields
+    // ✅ Validate input fields
     if (!Name || !Email || !Password || !Address || !Phone_Number) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
-    // Check if user already exists
+    // ✅ Check if user already exists
     const existingUser = await FindByEmail(Email);
     if (existingUser) {
       return res.status(400).json({ message: "Email already exists" });
     }
 
-    // Hash password
+    // ✅ Hash password
     // const hashedPassword = await bcrypt.hash(Password, 10);
 
-    // Generate custom user ID
+    // ✅ Generate custom user ID
     const userId = "USR" + Math.floor(1000 + Math.random() * 9000);
 
-    // Create new user
+    // ✅ Create new user
     const newUser = await CreateUser({
       Customer_ID: userId,
       Name,
@@ -34,10 +48,10 @@ export const Register = async (req, res) => {
       Phone_Number,
     });
 
-    // Send response
+    // ✅ Send response
     res.status(201).json({
       message: "User Registered",
-      user: newUser.Customer_ID, // Optional: return created user
+      user: newUser.Customer_ID, // ✅ Optional: return created user
       token: generateToken(userId),
     });
   } catch (error) {
@@ -45,6 +59,8 @@ export const Register = async (req, res) => {
     res.status(500).json({ message: error.message || "Internal Server Error" });
   }
 };
+
+// ✅ Login User
 export const Login = async (req, res) => {
   try {
     const { Email, Password } = req.body;
@@ -53,18 +69,23 @@ export const Login = async (req, res) => {
     if (Password !== user.Password) {
       return res.status(401).json({ message: "Invalid password" });
     }
+
     // const isMatch = await bcrypt.compare(Password, user.Password);
     // if (!isMatch)
-    //   return res
-    //     .status(401)
-    //     .json({ message: "Invalid Email Password password" });
+    //   return res.status(401).json({ message: "Invalid Email Password" });
 
     const token = generateToken(user);
-    res.cookie("token", token, {
-      httpOnly: true, // avoid js access
-      secure: true, // http secure
-      sameSite: "Strict", // to use on one site
-      maxAge: 3 * 24 * 60 * 60 * 1000, //3 days
+    res.cookie("isLoggedIn", true, {
+      httpOnly: false, // ✅ avoid js access
+      secure: true, // ✅ http secure
+      sameSite: "Strict", // ✅ to use on one site
+      maxAge: 3 * 24 * 60 * 60 * 1000, // ✅ 3 days
+    });
+    res.cookie("Customer_ID", user.Customer_ID, {
+      httpOnly: false, // ✅ avoid js access
+      secure: true, // ✅ http secure
+      sameSite: "Strict", // ✅ to use on one site
+      maxAge: 3 * 24 * 60 * 60 * 1000, // ✅ 3 days
     });
     res.json({
       message: "Login successful",
@@ -85,10 +106,14 @@ export const Login = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+// ✅ Logout User
 export const logout = (req, res) => {
   res.clearCookie("token");
   res.json({ message: "Logged out successfully" });
 };
+
+// ✅ Admin Login
 export const adminLogin = async (req, res) => {
   try {
     const { Email, Password } = req.body;
@@ -97,30 +122,70 @@ export const adminLogin = async (req, res) => {
     if (Password !== admin.Password) {
       return res.status(401).json({ message: "Invalid password" });
     }
+
     // const isMatch = await bcrypt.compare(Password, user.Password);
     // if (!isMatch)
-    //   return res
-    //     .status(401)
-    //     .json({ message: "Invalid Email Password password" });
+    //   return res.status(401).json({ message: "Invalid Email Password" });
 
     const token = generateToken(admin);
     res.cookie("token", token, {
-      httpOnly: true, // avoid js access
-      secure: true, // http secure
-      sameSite: "Strict", // to use on one site
-      maxAge: 3 * 24 * 60 * 60 * 1000, //3 days
+      httpOnly: true, // ✅ avoid js access
+      secure: true, // ✅ http secure
+      sameSite: "Strict", // ✅ to use on one site
+      maxAge: 3 * 24 * 60 * 60 * 1000, // ✅ 3 days
     });
     res.json({
       message: "Login successful",
       token,
     });
-
-    // res.json({
-    //   message: "Login successful",
-    //   token,
-    //   Customer_ID: user.Customer_ID,
-    // });
   } catch (error) {
     res.status(500).json({ message: error.message });
+  }
+};
+export const getUserProfile = async (req, res) => {
+  const Customer_ID = req.cookies.Customer_ID; // ✅ Get user ID from cookie
+
+  if (!Customer_ID) {
+    return res.status(401).json({ message: "Unauthorized: No User ID found" });
+  }
+  try {
+    const user = await FindById(Customer_ID);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+// ✅ Update User
+export const updateUserProfile = async (req, res) => {
+  const Customer_ID = req.cookies.Customer_ID; // ✅ Get user ID from cookie
+  if (!Customer_ID) {
+    return res.status(401).json({ message: "Unauthorized: No User ID found" });
+  }
+
+  const { Name, Password, Phone_Number, IMG_URL } = req.body; // ✅ Email will not change
+
+  try {
+    const user = await FindById(Customer_ID);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    await UpdateUser({ Customer_ID, Name, Password, Phone_Number, IMG_URL });
+    res.json({ message: "User profile updated successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+export const chkLogin = async (res, req) => {
+  try {
+    const isLoggedIn = req.cookies.isLoggedIn || false;
+    res.status(200).json({ isLoggedIn });
+  } catch (error) {
+    console.error("Error getting auth status:", error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 };

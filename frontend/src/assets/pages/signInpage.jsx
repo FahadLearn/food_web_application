@@ -28,7 +28,7 @@ function SignIn() {
     } else {
       const result = await User_Login(formData);
       if (result.success) {
-        navigate("/logout");
+        navigate("/menu_page");
       } else {
         setError(result.error || "Something went wrong!");
       }
