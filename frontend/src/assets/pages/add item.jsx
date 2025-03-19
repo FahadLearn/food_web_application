@@ -14,14 +14,14 @@ function AddItem() {
   };
   return (
     <>
-      <div className=" w-[100%] h-[100vh]">
+      <div className=" w-[100%]  h-[100vh]">
         <div className=" flex items-center justify-center h-[80px] shadow-md">
           <div className="text-amber-600 font-semibold text-[25px] sm:text-[35px] md:text-[40px] lg:text-[40px] ">
             Add Item
           </div>
         </div>
         <form>
-          <div className=" h-[86vh] flex justify-center items-center">
+          <div className=" h-[100vh] sm:h-[86vh] flex justify-center items-center">
             <div className="flex flex-col gap-[15px]  ">
               <div className=" flex flex-col sm:flex-row items-center justify-center gap-[10px] ">
                 <input

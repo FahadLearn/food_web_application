@@ -29,8 +29,8 @@ function AdminSignup3() {
 
   return (
     <>
-      <div className="w-[100%] h-[142vh] sm:h-[100vh]  flex flex-col justify-center gap-[30px]">
-        <div className="  text-center font-semibold text-amber-600 text-[23px] sm:text-[35px] md:text-[40px] lg:text-[40px]">
+      <div className=" w-[100%]  sm:h-[100vh]  flex flex-col justify-center gap-[30px]">
+        <div className="pt-[30px]  text-center font-semibold text-amber-600 text-[23px] sm:text-[35px] md:text-[40px] lg:text-[40px]">
           Where is your business located?
           <div className="mx-auto w-[300px] sm:w-[100%]  text-center font-semibold text-amber-600 text-[14px] sm:text-[16px] md:text-[18px] lg:text-[18px]">
             Rider will use this to find your business for pickup and delivery
@@ -97,7 +97,7 @@ function AdminSignup3() {
               />
             </div>
           </div>
-          <div className="flex  flex-col sm:flex-row items-center justify-center relative top-[30px]">
+          <div className="flex  flex-col sm:flex-row items-center justify-center relative top-[10px] sm:top-[30px] pt-[20px] pb-[20px]">
             <Link to="/admin_signup_page_4">
               <input
                 type="Submit"

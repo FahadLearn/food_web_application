@@ -29,7 +29,7 @@ function AdminSignup4() {
 
   return (
     <>
-      <div className="w-[100%] h-[142vh] sm:h-[100vh]  flex flex-col justify-center gap-[30px]">
+      <div className="w-[100%] h-[100vh]  flex flex-col justify-center gap-[30px]">
         <div className="  text-center font-semibold text-amber-600 text-[23px] sm:text-[35px] md:text-[40px] lg:text-[40px]">
           The Legal Stuff
           <div className="mx-auto w-[300px] sm:w-[100%]  text-center font-semibold text-amber-600 text-[14px] sm:text-[16px] md:text-[18px] lg:text-[18px]">

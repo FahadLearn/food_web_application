@@ -17,7 +17,7 @@ function AdminSignup2() {
   };
   return (
     <>
-      <div className="w-[100%] h-[142vh] sm:h-[100vh]  flex flex-col justify-center gap-[40px]">
+      <div className="w-[100%] h-[100vh]  flex flex-col justify-center gap-[40px]">
         <div className="  text-center font-semibold text-amber-600 text-[23px] sm:text-[35px] md:text-[40px] lg:text-[40px]">
           Tell us about your Business
         </div>

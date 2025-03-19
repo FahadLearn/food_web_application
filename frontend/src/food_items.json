@@ -1,0 +1,74 @@
+[
+  {
+    "Item_ID": 1,
+    "Image_url": "/public/images/chicken.jpg",
+    "Name": "Chicken",
+    "Price": 12.99,
+    "Description": "Classic Margherita pizza with fresh mozzarella, tomatoes, and basil.",
+    "Availability": "In Stock"
+  },
+  {
+    "Item_ID": 2,
+    "Image_url": "/public/images/pizza.jpg",
+    "Name": "Margherita Pizza",
+    "Price": 12.99,
+    "Description": "Classic Margherita pizza with fresh mozzarella, tomatoes, and basil.",
+    "Availability": "In Stock"
+  },
+  {
+   "Item_ID": 3,
+    "Image_url": "/public/images/tikka.jpg",
+    "Name": "Tikka",
+    "Price": 12.99,
+    "Description": "Classic Margherita pizza with fresh mozzarella, tomatoes, and basil.",
+    "Availability": "In Stock"
+  },
+  {
+   "Item_ID": 4,
+    "Image_url": "/public/images/birayni.webp",
+    "Name": "Chicken Biryani",
+    "Price": 12.99,
+    "Description": "Classic Margherita pizza with fresh mozzarella, tomatoes, and basil.",
+    "Availability": "In Stock"
+  },
+  {
+    "Item_ID": 5,
+    "Image_url": "/public/images/peanut noodles.jpg",
+    "Name": "Peanut Noodles",
+    "Price": 12.99,
+    "Description": "Classic Margherita pizza with fresh mozzarella, tomatoes, and basil.",
+    "Availability": "In Stock"
+  },
+  {
+    "Item_ID": 6,
+    "Image_url": "/public/images/burger.jpg",
+    "Name": "Burger with fries",
+    "Price": 12.99,
+    "Description": "Classic Margherita pizza with fresh mozzarella, tomatoes, and basil.",
+    "Availability": "In Stock"
+  },
+  {
+   "Item_ID": 7,
+    "Image_url": "/public/images/shorma.jpg",
+    "Name": "Chicken Shawarma",
+    "Price": 12.99,
+    "Description": "Classic Margherita pizza with fresh mozzarella, tomatoes, and basil.",
+    "Availability": "In Stock"
+  },
+  {
+    "Item_ID": 8,
+    "Image_url": "/public/images/karai.jpg",
+    "Name": "Mutton Karahi",
+    "Price": 12.99,
+    "Description": "Classic Margherita pizza with fresh mozzarella, tomatoes, and basil.",
+    "Availability": "In Stock"
+  },
+  {
+    "Item_ID": 9,
+    "Image_url": "/public/images/dessert.webp",
+    "Name": "Dessert",
+    "Price": 12.99,
+    "Description": "Classic Margherita pizza with fresh mozzarella, tomatoes, and basil.",
+    "Availability": "In Stock"
+  }
+]

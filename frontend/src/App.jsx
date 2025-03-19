@@ -19,15 +19,13 @@ import Cart from "./assets/pages/cart";
 import Checkout from "./assets/pages/checkout page";
 // import Menu from "./assets/components/menu";
 import UserProfile from "./assets/pages/userProfile";
-
 import AdminSignup from "./assets/pages/Admin signup page-1";
 import AdminSignup2 from "./assets/pages/Admin signup page-2";
 import AdminSignup3 from "./assets/pages/Admin signup page-3";
 import AdminSignup4 from "./assets/pages/Admin signup page-4";
 import AdminSignup5 from "./assets/pages/Admin signup page-5";
-
 import MenuPage from "./assets/pages/menupage";
-
+import OrdersManagement from "./assets/pages/orders managament";
 function App() {
   return (
     <>
@@ -62,6 +60,7 @@ function App() {
           <Route path="/admin_signup_page_3" element={<AdminSignup3 />} />
           <Route path="/admin_signup_page_4" element={<AdminSignup4 />} />
           <Route path="/admin_signup_page_5" element={<AdminSignup5 />} />
+          <Route path="/ordersManagement" element={<OrdersManagement />} />
         </Routes>
       </Router>
     </>
