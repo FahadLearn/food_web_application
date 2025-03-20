@@ -26,6 +26,8 @@ import AdminSignup4 from "./assets/pages/Admin signup page-4";
 import AdminSignup5 from "./assets/pages/Admin signup page-5";
 import MenuPage from "./assets/pages/menupage";
 import OrdersManagement from "./assets/pages/orders managament";
+import RiderDashboard from "./assets/pages/riderDashbaord";
+import RiderProfile from "./assets/pages/riderprofile";
 function App() {
   return (
     <>
@@ -61,6 +63,8 @@ function App() {
           <Route path="/admin_signup_page_4" element={<AdminSignup4 />} />
           <Route path="/admin_signup_page5" element={<AdminSignup5 />} />
           <Route path="/ordersManagement" element={<OrdersManagement />} />
+          <Route path="/riderdashbaord" element={<RiderDashboard />} />
+          <Route path="/riderprofile" element={<RiderProfile />} />
         </Routes>
       </Router>
     </>

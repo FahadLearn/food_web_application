@@ -115,7 +115,7 @@ function RiderSignup() {
           </div>
 
           <div className="flex  flex-col sm:flex-row items-center justify-center relative top-[30px]">
-            <Link>
+            <Link to="/riderdashbaord">
               <input
                 type="Submit"
                 value="Submit"
