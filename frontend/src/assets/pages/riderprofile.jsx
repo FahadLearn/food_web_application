@@ -21,13 +21,13 @@ function RiderProfile() {
         </div>
         <div className="relative top-[80px]  flex flex-col gap-[10px]">
           <div className="flex flex-col sm:flex-row justify-center items-center gap-[10px]">
-            <div className=" h-[150px] w-[200px] rounded-[10px] flex items-center justify-center bg-gray-200 shadow-md">
-              <Link>
+            <Link to="/rideraccount">
+              <div className=" h-[150px] w-[200px] rounded-[10px] flex items-center justify-center bg-gray-200 shadow-md">
                 <div className=" text-center text-[18px] sm:text-[20px] md:text-[22px] lg:text-[22px] font-semibold">
                   Account
                 </div>
-              </Link>
-            </div>
+              </div>
+            </Link>
             <div className=" h-[150px] w-[200px] rounded-[10px] flex items-center justify-center bg-gray-200 shadow-md">
               <Link>
                 <div className=" text-center text-[18px] sm:text-[20px] md:text-[22px] lg:text-[22px] font-semibold">
