@@ -6,7 +6,10 @@ import {
   FindByEmail,
   FindById,
   UpdateUser,
+  updateUserImage,
 } from "../Models/User.Model.js";
+import path from "path";
+import fs from "fs";
 // import upload from "../config/multer.config.js";
 
 // ✅ Register User
@@ -144,6 +147,7 @@ export const adminLogin = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
 export const getUserProfile = async (req, res) => {
   const Customer_ID = req.cookies.Customer_ID; // ✅ Get user ID from cookie
 
@@ -171,5 +175,104 @@ export const chkLogin = async (req, res) => {
   } catch (error) {
     console.error("Error getting auth status:", error);
     return res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+export const updateUser = async (req, res) => {
+  try {
+    const Customer_ID = req.cookies.Customer_ID; // ✅ Get user ID from cookies
+    const { Name, Email, Password, Address, Phone_Number } = req.body;
+
+    // ✅ Debugging: Log received data to check for undefined values
+    console.log("Received Update Request:", {
+      Customer_ID,
+      Name,
+      Email,
+      Password,
+      Address,
+      Phone_Number,
+    });
+
+    // ✅ Ensure all required fields are provided
+    if (
+      !Customer_ID ||
+      !Name ||
+      !Email ||
+      !Password ||
+      !Address ||
+      !Phone_Number
+    ) {
+      console.error("Error: Missing required fields", {
+        Customer_ID,
+        Name,
+        Email,
+        Password,
+        Address,
+        Phone_Number,
+      });
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
+    // ✅ Ensure `UpdateUser` function is correctly called with all parameters
+    const updatedUser = await UpdateUser({
+      Customer_ID: Customer_ID,
+      Name,
+      Email,
+      Password,
+      Address,
+      Phone_Number,
+    });
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: "Failed to update user" });
+    }
+
+    return res.status(200).json({ message: "User updated successfully" });
+  } catch (error) {
+    console.error("Error updating user:", error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+export const updateUserImageController = async (req, res) => {
+  try {
+    const Customer_ID = req.cookies.Customer_ID;
+    if (!Customer_ID) {
+      return res
+        .status(401)
+        .json({ message: "Unauthorized: No User ID found" });
+    }
+
+    if (!req.file) {
+      return res.status(400).json({ message: "No image uploaded" });
+    }
+
+    const user = await FindById(Customer_ID);
+    const oldImagePath = user?.IMG_URL; // 🔥 Get old image URL from DB
+
+    // ✅ 2. Delete old image if it exists
+    if (oldImagePath) {
+      const oldImageFullPath = path.join(process.cwd(), oldImagePath);
+      if (fs.existsSync(oldImageFullPath)) {
+        fs.unlinkSync(oldImageFullPath); // ✅ Delete old image
+      } else {
+        console.warn("⚠️ Old image not found:", oldImageFullPath);
+      }
+    }
+    const IMG_URL = `/uploads/${req.file.filename}`; // ✅ Save path to DB
+    console.log("Updating image for user:", Customer_ID); // Debug log
+    console.log("Image Path:", IMG_URL);
+    // ✅ Update Image
+    const updateResult = await updateUserImage({ Customer_ID, IMG_URL });
+    console.log("Update Result:", updateResult); // Debug log
+
+    if (updateResult[0] === 0) {
+      return res.status(400).json({ message: "Image update failed" });
+    }
+
+    res.status(200).json({ message: "Image updated successfully", IMG_URL });
+  } catch (error) {
+    console.error("Error updating image:", error);
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };

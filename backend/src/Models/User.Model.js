@@ -44,7 +44,18 @@ export const FindByEmail = async (email) => {
   }
 };
 
-// ✅ Check if Admin
+export const FindById = async (Customer_ID) => {
+  try {
+    const sql = "SELECT * FROM customers WHERE Customer_ID=?";
+    const values = [Customer_ID];
+    const [rows] = await db.execute(sql, values);
+    return rows.length > 0 ? rows[0] : null; // ✅ Return user if found, else null
+  } catch (error) {
+    console.error(error);
+    throw new Error(error);
+  }
+};
+
 export const AdminChk = async (email) => {
   try {
     const sql = "SELECT * FROM admin WHERE Email = ?";
@@ -57,34 +68,44 @@ export const AdminChk = async (email) => {
   }
 };
 
-// ✅ Update User Profile (New Function)
 export const UpdateUser = async ({
   Customer_ID,
   Name,
-  Address,
+  Email,
+  Password,
   Phone_Number,
-  IMG_URL,
+  Address,
 }) => {
   try {
-    const sql =
-      "UPDATE customers SET Name=?, Address=?, Phone_Number=?, IMG_URL=? WHERE Customer_ID=?";
-    const values = [Name, Address, Phone_Number, IMG_URL, Customer_ID];
+    const sql = `
+      UPDATE customers 
+      SET Name=?, Email=?, Password=?, Phone_Number=?, Address=? 
+      WHERE Customer_ID=?`;
 
-    const result = await db.execute(sql, values);
-    return result;
+    const values = [Name, Email, Password, Phone_Number, Address, Customer_ID];
+
+    const [result] = await db.execute(sql, values);
+    return result.affectedRows > 0;
   } catch (error) {
-    console.error(error);
+    console.error("Update Error:", error);
     throw new Error(error);
   }
 };
-export const FindById = async (Customer_ID) => {
+
+export const updateUserImage = async ({ Customer_ID, IMG_URL }) => {
   try {
-    const sql = "SELECT * FROM customers WHERE Customer_ID=?";
-    const values = [Customer_ID];
-    const [rows] = await db.execute(sql, values);
-    return rows.length > 0 ? rows[0] : null; // ✅ Return user if found, else null
+    const query = `UPDATE customers SET IMG_URL = ? WHERE Customer_ID = ?`;
+    const values = [IMG_URL, Customer_ID];
+
+    const [result] = await db.execute(query, values);
+
+    if (result.affectedRows === 0) {
+      throw new Error("User not found or image update failed");
+    }
+
+    return { success: true, message: "Image updated successfully" };
   } catch (error) {
-    console.error(error);
-    throw new Error(error);
+    console.error("❌ Error in updateUserImage:", error.message);
+    throw new Error(error.message || "Database error while updating image");
   }
 };
