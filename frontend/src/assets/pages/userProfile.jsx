@@ -121,7 +121,7 @@ function UserProfile() {
               <div className="w-[100%] flex justify-center">
                 <div className="h-[150px] w-[170px] rounded-full">
                   {/* ✅ Image Display Logic */}
-                  {/* <img
+                  <img
                     src={
                       selectedImage
                         ? selectedImage
@@ -135,7 +135,7 @@ function UserProfile() {
                     }}
                     className="size-full rounded-full object-cover"
                     alt="User Profile"
-                  /> */}
+                  />
                 </div>
               </div>
               <div className="gap-[10px] w-[100%] sm:gap-[10px] md:gap-[10px] flex flex-col items-center lg:gap-[10px]">
