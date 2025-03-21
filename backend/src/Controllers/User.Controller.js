@@ -133,7 +133,13 @@ export const adminLogin = async (req, res) => {
     //   return res.status(401).json({ message: "Invalid Email Password" });
 
     const token = generateToken(admin);
-    res.cookie("token", token, {
+    res.cookie("isLoggedIN", true, {
+      httpOnly: true, // ✅ avoid js access
+      secure: true, // ✅ http secure
+      sameSite: "Strict", // ✅ to use on one site
+      maxAge: 3 * 24 * 60 * 60 * 1000, // ✅ 3 days
+    });
+    res.cookie("Email", Email, {
       httpOnly: true, // ✅ avoid js access
       secure: true, // ✅ http secure
       sameSite: "Strict", // ✅ to use on one site
@@ -141,7 +147,7 @@ export const adminLogin = async (req, res) => {
     });
     res.json({
       message: "Login successful",
-      token,
+      Email,
     });
   } catch (error) {
     return res.status(500).json({ message: error.message });
