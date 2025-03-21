@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function RiderProfile() {
   return (
     <>
-      <div className="h-[140vh] sm:h-[120vh]">
+      <div className=" ">
         <div className=" border-amber-500 text-center font-semibold text-[30px] sm:text-[30px] md:text-[40px] lg:text-[40px] pt-[12px] pb-[12px] bg-amber-500 text-white">
           My Profile
         </div>
@@ -19,40 +19,116 @@ function RiderProfile() {
           </div>
           <div className="text-center">Your ID</div>
         </div>
-        <div className="relative top-[80px]  flex flex-col gap-[10px]">
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-[10px]">
-            <Link to="/rideraccount">
-              <div className=" h-[150px] w-[200px] rounded-[10px] flex items-center justify-center bg-gray-200 shadow-md">
-                <div className=" text-center text-[18px] sm:text-[20px] md:text-[22px] lg:text-[22px] font-semibold">
-                  Account
-                </div>
+        <form>
+          <div className=" mt-[65px]  flex flex-col justify-center items-center">
+            <div className=" flex flex-col gap-[10px]">
+              <div className=" flex  flex-col sm:flex-row items-center justify-center">
+                <input
+                  type="text"
+                  name="Name"
+                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] sm:w-[605px] md:w-[605px] lg:w-[610px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                  placeholder="Name"
+                  required
+                />
               </div>
-            </Link>
-            <div className=" h-[150px] w-[200px] rounded-[10px] flex items-center justify-center bg-gray-200 shadow-md">
-              <Link>
-                <div className=" text-center text-[18px] sm:text-[20px] md:text-[22px] lg:text-[22px] font-semibold">
-                  Vehicles
-                </div>
+              <div className=" flex  flex-col sm:flex-row items-center justify-center">
+                <input
+                  type="text"
+                  name="email"
+                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] sm:w-[605px] md:w-[605px] lg:w-[610px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                  placeholder="Enter Email"
+                  required
+                />
+              </div>
+              <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
+                <input
+                  type="text"
+                  name="password"
+                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                  placeholder="Password"
+                  required
+                />
+                <input
+                  type="text"
+                  name="phone_number"
+                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                  placeholder="Phone Number"
+                  required
+                />
+              </div>
+              <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
+                <input
+                  type="text"
+                  name="active_contract"
+                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                  placeholder="Active Contract"
+                  required
+                />
+                <input
+                  type="text"
+                  name="joined_at"
+                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                  placeholder="Joined at"
+                  required
+                />
+              </div>
+              <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
+                <select
+                  name="vehicle"
+                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none"
+                >
+                  <option value="" disabled selected>
+                    Select a vehicle
+                  </option>
+                  <option value="bike">Bike</option>
+                  <option value="scooter">Scooter</option>
+                </select>
+                <input
+                  type="text"
+                  name="date_of_birth"
+                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                  placeholder="Date of Birth"
+                  required
+                />
+              </div>
+              <div className="text-[16px] text-amber-600 pl-[12px] ">
+                Enter front pic of Id card
+              </div>
+              <div className="flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px]  w-[300px]  pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                  placeholder="Upload Img"
+                  required
+                />
+                <input
+                  type="text"
+                  name="id_card"
+                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                  placeholder="IdCard Number"
+                  required
+                />
+              </div>
+            </div>
+            <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]  pt-[40px] pb-[40px]">
+              <Link to="">
+                <input
+                  type="Submit"
+                  value="Delete Account"
+                  className="text-white  outline-none rounded-[30px] bg-amber-500 text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                />
+              </Link>
+              <Link to="">
+                <input
+                  type="Submit"
+                  value="Save information"
+                  className="text-white  outline-none rounded-[30px] bg-amber-500 text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                />
               </Link>
             </div>
           </div>
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-[10px]">
-            <div className="  h-[150px] w-[200px] rounded-[10px] flex items-center justify-center bg-gray-200 shadow-md">
-              <Link>
-                <div className=" text-center text-[18px] sm:text-[20px] md:text-[22px] lg:text-[22px] font-semibold">
-                  Id Card
-                </div>
-              </Link>
-            </div>
-            <div className="  h-[150px] w-[200px] rounded-[10px] flex items-center justify-center bg-gray-200 shadow-md ">
-              <Link>
-                <div className=" text-center text-[18px] sm:text-[20px] md:text-[22px] lg:text-[22px] font-semibold ">
-                  Driver License
-                </div>
-              </Link>
-            </div>
-          </div>
-        </div>
+        </form>
       </div>
     </>
   );
