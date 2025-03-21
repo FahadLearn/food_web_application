@@ -35,77 +35,60 @@ function UserProfile() {
               ? `http://localhost:3000${data.IMG_URL}`
               : null,
           });
+          setSelectedImage(
+            data.IMG_URL ? `http://localhost:3000${data.IMG_URL}` : null
+          );
         }
       })
       .catch((err) => console.error("Error fetching user data:", err));
-  }, [formData.IMG_URL]); // ✅ Re-fetch jab image update ho
+  }, []); // ✅ Empty Dependency Array (Sirf Ek Baar Run Karega)
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
-      setSelectedImage(URL.createObjectURL(file)); // ✅ Preview image
-      setFormData({ ...formData, IMG_URL: file });
+      console.log("📸 Selected File:", file); // ✅ Debugging
+      setSelectedImage(URL.createObjectURL(file)); // ✅ Preview ke liye URL
+      setFormData((prev) => ({
+        ...prev,
+        IMG_URL: file, // ✅ Ensure File Object is Stored
+      }));
     }
   };
 
   const handleState = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const formDataToSend = new FormData();
+    formDataToSend.append("Name", formData.Name);
+    formDataToSend.append("Email", formData.Email);
+    formDataToSend.append("Password", formData.Password);
+    formDataToSend.append("Address", formData.Address);
+    formDataToSend.append("Phone_Number", formData.Phone_Number);
+
+    if (formData.IMG_URL instanceof File) {
+      console.log("📸 Uploading Image:", formData.IMG_URL.name); // ✅ Debugging
+      formDataToSend.append("IMG_URL", formData.IMG_URL);
+    } else {
+      console.warn("🚫 No new image selected!");
+    }
+
     try {
-      let imgPath = formData.IMG_URL; // Default old image path
-
-      // ✅ If new image selected, upload first
-      if (formData.IMG_URL instanceof File) {
-        const imgData = new FormData();
-        imgData.append("IMG_URL", formData.IMG_URL);
-
-        const imgResponse = await fetch("http://localhost:3000/api/Image", {
-          method: "PATCH",
-          body: imgData,
-          credentials: "include",
-        });
-
-        if (!imgResponse.ok) {
-          const errorData = await imgResponse.json();
-          throw new Error(errorData.message || "Failed to upload image");
-        }
-
-        const imgResult = await imgResponse.json();
-        imgPath = `http://localhost:3000${imgResult.IMG_URL}`; // ✅ Use full path
-      }
-
-      // ✅ Now update user data
-      const userData = {
-        Customer_ID: formData.Customer_ID,
-        Name: formData.Name,
-        Email: formData.Email,
-        Password: formData.Password,
-        Address: formData.Address,
-        Phone_Number: formData.Phone_Number,
-        IMG_URL: imgPath,
-      };
-
-      const userResponse = await fetch("http://localhost:3000/api/Update", {
+      const response = await fetch("http://localhost:3000/api/Update", {
         method: "PATCH",
         credentials: "include",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userData),
+        body: formDataToSend,
       });
 
-      if (!userResponse.ok) {
-        const errorData = await userResponse.json();
-        throw new Error(errorData.message || "Failed to update user");
-      }
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.message);
 
-      setMessage("Profile updated successfully!");
-      setFormData((prev) => ({ ...prev, IMG_URL: imgPath })); // ✅ Update preview
+      setMessage("✅ Profile updated successfully!");
     } catch (error) {
-      console.error("Error updating profile:", error);
-      alert(`Error: ${error.message}`);
+      console.error("❌ Update Failed:", error);
+      setMessage("❌ Error: " + error.message);
     }
   };
 
@@ -117,7 +100,7 @@ function UserProfile() {
             User Profile
           </div>
           <div className="flex flex-col justify-center lg:h-[100%] lg:w-[50%] md:h-[100%] md:w-[50%] sm:h-[100%] sm:w-[60%] h-[100%] w-[90%] mx-auto gap-[20px]">
-            <form onSubmit={handleSubmit} encType="multipart/form-data">
+            <form encType="multipart/form-data" onSubmit={handleSubmit}>
               <div className="w-[100%] flex justify-center">
                 <div className="h-[150px] w-[170px] rounded-full">
                   {/* ✅ Image Display Logic */}

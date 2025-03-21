@@ -2,24 +2,29 @@ import multer from "multer";
 import path from "path";
 import fs from "fs";
 
-// ✅ Ensure "uploads" folder exists
+// Ensure uploads folder exists
 const uploadDir = path.join("uploads");
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
 }
 
-// ✅ Configure Multer Storage
+// Configure Multer Storage
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, uploadDir); // Save files inside the "uploads" folder
+    console.log("📂 Saving file to:", uploadDir); // Debugging
+    cb(null, uploadDir);
   },
   filename: (req, file, cb) => {
     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    cb(null, uniqueSuffix + path.extname(file.originalname)); // Generate unique filename
+    console.log(
+      "📸 Generating filename:",
+      uniqueSuffix + path.extname(file.originalname)
+    ); // Debugging
+    cb(null, uniqueSuffix + path.extname(file.originalname));
   },
 });
 
-// ✅ File Filter (Only Images Allowed)
+// File Filter (Only Images Allowed)
 const fileFilter = (req, file, cb) => {
   const allowedTypes = /jpeg|jpg|png/;
   const extname = allowedTypes.test(
@@ -30,11 +35,11 @@ const fileFilter = (req, file, cb) => {
   if (extname && mimetype) {
     cb(null, true);
   } else {
-    cb(new Error("Only images (JPG, PNG, GIF) are allowed!"), false);
+    cb(new Error("Only images (JPG, PNG) are allowed!"), false);
   }
 };
 
-// ✅ Multer Upload Middleware
+// Multer Upload Middleware
 const upload = multer({
   storage,
   fileFilter,

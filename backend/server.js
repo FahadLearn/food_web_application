@@ -2,8 +2,6 @@ import express from "express";
 import dotenv from "dotenv";
 import path from "path";
 import UserRouter from "./src/Routes/User.Routes.js";
-// import rider_router from "./src/Routes/riderRoute.js";
-// import restaurant_router from "./src/Routes/restaurantRoute.js";
 import db from "./src/config/db.js";
 
 import cors from "cors";

@@ -67,45 +67,28 @@ export const AdminChk = async (email) => {
     throw new Error(error);
   }
 };
-
 export const UpdateUser = async ({
   Customer_ID,
   Name,
   Email,
   Password,
-  Phone_Number,
   Address,
+  Phone_Number,
+  IMG_URL,
 }) => {
   try {
     const sql = `
-      UPDATE customers 
-      SET Name=?, Email=?, Password=?, Phone_Number=?, Address=? 
-      WHERE Customer_ID=?`;
-
-    const values = [Name, Email, Password, Phone_Number, Address, Customer_ID];
+      UPDATE CUSTOMERS 
+      SET Name = ?, Email = ?, Password = ?, Address = ?, Phone_Number = ?, IMG_URL = ? 
+      WHERE Customer_ID = ?
+    `;
+    const values = [Name, Email, Password, Address, Phone_Number, IMG_URL, Customer_ID];
 
     const [result] = await db.execute(sql, values);
-    return result.affectedRows > 0;
+    return result.affectedRows;
   } catch (error) {
-    console.error("Update Error:", error);
+    console.error(error);
     throw new Error(error);
   }
 };
 
-export const updateUserImage = async ({ Customer_ID, IMG_URL }) => {
-  try {
-    const query = `UPDATE customers SET IMG_URL = ? WHERE Customer_ID = ?`;
-    const values = [IMG_URL, Customer_ID];
-
-    const [result] = await db.execute(query, values);
-
-    if (result.affectedRows === 0) {
-      throw new Error("User not found or image update failed");
-    }
-
-    return { success: true, message: "Image updated successfully" };
-  } catch (error) {
-    console.error("❌ Error in updateUserImage:", error.message);
-    throw new Error(error.message || "Database error while updating image");
-  }
-};

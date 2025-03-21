@@ -6,7 +6,6 @@ import {
   FindByEmail,
   FindById,
   UpdateUser,
-  updateUserImage,
 } from "../Models/User.Model.js";
 import path from "path";
 import fs from "fs";
@@ -186,99 +185,52 @@ export const chkLogin = async (req, res) => {
 
 export const updateUser = async (req, res) => {
   try {
-    const Customer_ID = req.cookies.Customer_ID; // ✅ Get user ID from cookies
+    const Customer_ID = req.cookies.Customer_ID;
     const { Name, Email, Password, Address, Phone_Number } = req.body;
 
-    // ✅ Debugging: Log received data to check for undefined values
-    console.log("Received Update Request:", {
-      Customer_ID,
-      Name,
-      Email,
-      Password,
-      Address,
-      Phone_Number,
-    });
-
-    // ✅ Ensure all required fields are provided
-    if (
-      !Customer_ID ||
-      !Name ||
-      !Email ||
-      !Password ||
-      !Address ||
-      !Phone_Number
-    ) {
-      console.error("Error: Missing required fields", {
-        Customer_ID,
-        Name,
-        Email,
-        Password,
-        Address,
-        Phone_Number,
-      });
-      return res.status(400).json({ message: "All fields are required" });
-    }
-
-    // ✅ Ensure `UpdateUser` function is correctly called with all parameters
-    const updatedUser = await UpdateUser({
-      Customer_ID: Customer_ID,
-      Name,
-      Email,
-      Password,
-      Address,
-      Phone_Number,
-    });
-
-    if (!updatedUser) {
-      return res.status(404).json({ message: "Failed to update user" });
-    }
-
-    return res.status(200).json({ message: "User updated successfully" });
-  } catch (error) {
-    console.error("Error updating user:", error);
-    return res.status(500).json({ message: "Internal Server Error" });
-  }
-};
-
-export const updateUserImageController = async (req, res) => {
-  try {
-    const Customer_ID = req.cookies.Customer_ID;
     if (!Customer_ID) {
-      return res
-        .status(401)
-        .json({ message: "Unauthorized: No User ID found" });
+      return res.status(400).json({ message: "User ID is required." });
     }
 
-    if (!req.file) {
-      return res.status(400).json({ message: "No image uploaded" });
-    }
-
+    // ✅ Check if user exists
     const user = await FindById(Customer_ID);
-    const oldImagePath = user?.IMG_URL; // 🔥 Get old image URL from DB
+    if (!user) {
+      return res.status(404).json({ message: "User does not exist." });
+    }
 
-    // ✅ 2. Delete old image if it exists
-    if (oldImagePath) {
-      const oldImageFullPath = path.join(process.cwd(), oldImagePath);
-      if (fs.existsSync(oldImageFullPath)) {
-        fs.unlinkSync(oldImageFullPath); // ✅ Delete old image
-      } else {
-        console.warn("⚠️ Old image not found:", oldImageFullPath);
+    let IMG_URL = user.IMG_URL; // Default: Keep old image
+
+    // ✅ If new image uploaded, delete old image
+    if (req.file) {
+      const oldImagePath = path.join("uploads", path.basename(user.IMG_URL)); // Old image path
+      const newImagePath = `/uploads/${req.file.filename}`; // New image path
+
+      // ❌ Delete old image if it exists
+      if (user.IMG_URL && fs.existsSync(oldImagePath)) {
+        fs.unlinkSync(oldImagePath);
       }
-    }
-    const IMG_URL = `/uploads/${req.file.filename}`; // ✅ Save path to DB
-    console.log("Updating image for user:", Customer_ID); // Debug log
-    console.log("Image Path:", IMG_URL);
-    // ✅ Update Image
-    const updateResult = await updateUserImage({ Customer_ID, IMG_URL });
-    console.log("Update Result:", updateResult); // Debug log
 
-    if (updateResult[0] === 0) {
-      return res.status(400).json({ message: "Image update failed" });
+      IMG_URL = newImagePath; // ✅ Update image path
     }
 
-    res.status(200).json({ message: "Image updated successfully", IMG_URL });
+    // ✅ Update user in database
+    const updatedRows = await UpdateUser({
+      Customer_ID,
+      Name: Name || user.Name,
+      Email: Email || user.Email,
+      Password: Password || user.Password,
+      Address: Address || user.Address,
+      Phone_Number: Phone_Number || user.Phone_Number,
+      IMG_URL,
+    });
+
+    if (updatedRows === 0) {
+      return res.status(400).json({ message: "No changes made." });
+    }
+
+    res.status(200).json({ message: "User updated successfully." });
   } catch (error) {
-    console.error("Error updating image:", error);
-    res.status(500).json({ message: "Server error", error: error.message });
+    console.error("❌ Error updating user:", error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 };
