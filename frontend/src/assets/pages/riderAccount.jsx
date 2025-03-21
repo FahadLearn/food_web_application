@@ -59,46 +59,8 @@ function RiderAccount() {
                   required
                 />
               </div>
-              <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
-                <select
-                  name="vehicle"
-                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none"
-                >
-                  <option value="" disabled selected>
-                    Select a vehicle
-                  </option>
-                  <option value="bike">Bike</option>
-                  <option value="scooter">Scooter</option>
-                </select>
-                <input
-                  type="text"
-                  name="date_of_birth"
-                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                  placeholder="Date of Birth"
-                  required
-                />
-              </div>
-              <div className="text-[16px] text-amber-600 pl-[12px] ">
-                Enter front pic of Id card
-              </div>
-              <div className="flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
-                <input
-                  type="file"
-                  accept="image/*"
-                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px]  w-[300px]  pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                  placeholder="Upload Img"
-                  required
-                />
-                <input
-                  type="text"
-                  name="id_card"
-                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                  placeholder="IdCard Number"
-                  required
-                />
-              </div>
             </div>
-            <div className=" flex  flex-col sm:flex-row items-center justify-center  relative top-[20px]">
+            <div className="flex  flex-col sm:flex-row items-center justify-center  pt-[20px] pb-[20px] gap-[10px]">
               <Link to="">
                 <input
                   type="Submit"
