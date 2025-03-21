@@ -1,11 +1,11 @@
-import order from "../../order.managment.json";
-import Orders from "../components/ordermangment";
-function OrdersManagement() {
+import customer from "../../customer.json";
+import Customers from "../components/customer managment";
+function CustomersManagement() {
   return (
     <>
       <div className="">
         <div className="border-2 border-amber-500 text-center font-semibold text-[30px] sm:text-[30px] md:text-[40px] lg:text-[40px] pt-[12px] pb-[12px] bg-amber-500 text-white">
-          Order Management
+          Customers Management
         </div>
         <div className="mt-[20px] flex  flex-col sm:flex-row items-center justify-center">
           <input
@@ -19,19 +19,19 @@ function OrdersManagement() {
         <table className="mt-[20px] w-[100%] bg-gray-200 border-gray-500 border-2">
           <thead>
             <tr className="bg-amber-500 text-white font-lighter ">
-              <th className="w-[10%] border-2 border-gray-500">Order ID</th>
-              <th className="w-[12%]  border-2 border-gray-500">Customer</th>
+              <th className="w-[10%] border-2 border-gray-500">Customer Id</th>
+              <th className="w-[12%]  border-2 border-gray-500">Name</th>
               <th className="w-[25%]  border-2 border-gray-500">Address</th>
-              <th className="w-[10%]  border-2 border-gray-500">Date</th>
-              <th className="w-[10%]  border-2 border-gray-500">Total</th>
+              <th className="w-[10%]  border-2 border-gray-500">Phone</th>
+              <th className="w-[10%]  border-2 border-gray-500">Orders</th>
 
-              <th className="w-[5%]  border-2 border-gray-500">Status</th>
-              <th className=" w-[10%]  border-2 border-gray-500">Method</th>
+              <th className="w-[10%]  border-2 border-gray-500">Total Spent</th>
+              <th className=" w-[10%]  border-2 border-gray-500">Status</th>
             </tr>
           </thead>
           <tbody>
-            {order.map((item) => (
-              <Orders key={item.id} data={item} />
+            {customer.map((item) => (
+              <Customers key={item.id} data={item} />
             ))}
           </tbody>
         </table>
@@ -39,4 +39,4 @@ function OrdersManagement() {
     </>
   );
 }
-export default OrdersManagement;
+export default CustomersManagement;

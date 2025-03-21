@@ -1,0 +1,30 @@
+[
+    {
+      "id": 1,
+      "item_name": "Chicken Biryani",
+      "category": "Rice Dishes",
+      "price": 500,
+      "discountPrice": 450,
+      "description": "Spicy and flavorful biryani.",
+      "available":"no"
+    },
+    {
+      "id": 2,
+      "item_name": "Beef Burger",
+      "category": "Fast Food",
+      "price": 300,
+      "discountPrice": 270,
+      "description": "Juicy beef patty with cheese.",
+      "available": "yes"
+    },
+    {
+      "id": 3,
+      "item_name": "Mango Shake",
+      "category": "Beverages",
+      "price": 200,
+      "discountPrice": 180,
+      "description": "Fresh mango shake with ice cream.",
+      "available": "no"
+    }
+  ]
+  

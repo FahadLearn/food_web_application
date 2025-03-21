@@ -1,0 +1,57 @@
+[
+    {
+      "id": 1,
+      "name": "Ali Khan",
+     "address":"Defence colony",
+      "phone": "123-456-7890",
+      "orders": 10,
+      "totalSpent": "$500",
+      "status": "Active"
+    },
+    {
+      "id": 2,
+      "name": "Sara Ahmed",
+      "address":"F mess",
+      "phone": "987-654-3210",
+      "orders": 5,
+      "totalSpent": "$250",
+      "status": "Inactive"
+    },
+    {
+        "id": 1,
+        "name": "Ali Khan",
+       "address":"Defence colony",
+        "phone": "123-456-7890",
+        "orders": 10,
+        "totalSpent": "$500",
+        "status": "Active"
+      },
+      {
+        "id": 1,
+        "name": "Ali Khan",
+       "address":"Defence colony",
+        "phone": "123-456-7890",
+        "orders": 10,
+        "totalSpent": "$500",
+        "status": "Active"
+      },
+      {
+        "id": 1,
+        "name": "Ali Khan",
+       "address":"Defence colony",
+        "phone": "123-456-7890",
+        "orders": 10,
+        "totalSpent": "$500",
+        "status": "Active"
+      },
+      {
+        "id": 1,
+        "name": "Ali Khan",
+       "address":"Defence colony",
+        "phone": "123-456-7890",
+        "orders": 10,
+        "totalSpent": "$500",
+        "status": "Active"
+      }
+  ]
+  

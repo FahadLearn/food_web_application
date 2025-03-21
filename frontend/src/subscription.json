@@ -1,0 +1,23 @@
+[
+    {
+      "id": 1,
+      "name": "Ali Khan",
+      "email": "ali@example.com",
+      "plan": "Monthly",
+      "startDate": "2025-03-01",
+      "endDate": "2025-04-01",
+      "paymentStatus": "Paid",
+      "status": "Active"
+    },
+    {
+      "id": 2,
+      "name": "Sara Ahmed",
+      "email": "sara@example.com",
+      "plan": "Weekly",
+      "startDate": "2025-03-15",
+      "endDate": "2025-03-22",
+      "paymentStatus": "Pending",
+      "status": "Active"
+    }
+  ]
+  
