@@ -27,7 +27,7 @@ function AdminSignup5() {
 
   return (
     <>
-      <div className="w-[100%] h-[120vh] sm:h-[100vh]  flex flex-col justify-center gap-[40px]">
+      <div className=" border-2 w-[100%] h-[120vh] sm:h-[100vh]  flex flex-col justify-center gap-[40px]">
         <div className="w-[330px] sm:w-[100%] mx-auto  text-center font-semibold text-amber-600 text-[23px] sm:text-[35px] md:text-[40px] lg:text-[40px]">
           Add your bank details to receive payments
           <div className="mx-auto w-[300px] sm:w-[100%]  text-center font-semibold text-amber-600 text-[14px] sm:text-[16px] md:text-[18px] lg:text-[18px]">
@@ -99,7 +99,6 @@ function AdminSignup5() {
               <input
                 type="Submit"
                 value="Submit"
-                onChange={handleSubmit}
                 className="text-white  outline-none rounded-[30px] bg-amber-500 text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
               />
             </Link>
