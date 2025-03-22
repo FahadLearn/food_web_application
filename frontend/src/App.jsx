@@ -32,6 +32,7 @@ import RiderProfile from "./assets/pages/riderprofile";
 import CustomersManagement from "./assets/pages/customermanagement";
 import SubscriptionManagement from "./assets/pages/subscription managment";
 import BrandPage from "./assets/pages/brandpage";
+import Cuisine from "./assets/pages/cuisine page";
 
 function App() {
   return (
@@ -78,6 +79,7 @@ function App() {
             element={<SubscriptionManagement />}
           />
           <Route path="/brandpage" element={<BrandPage />} />
+          <Route path="/cuisine" element={<Cuisine />} />
         </Routes>
       </Router>
     </>
