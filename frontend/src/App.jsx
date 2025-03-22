@@ -31,6 +31,7 @@ import RiderProfile from "./assets/pages/riderprofile";
 
 import CustomersManagement from "./assets/pages/customermanagement";
 import SubscriptionManagement from "./assets/pages/subscription managment";
+import BrandPage from "./assets/pages/brandpage";
 
 function App() {
   return (
@@ -76,6 +77,7 @@ function App() {
             path="/subscription_managment"
             element={<SubscriptionManagement />}
           />
+          <Route path="/brandpage" element={<BrandPage />} />
         </Routes>
       </Router>
     </>

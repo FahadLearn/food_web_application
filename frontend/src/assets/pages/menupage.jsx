@@ -123,17 +123,21 @@ function MenuPage() {
           </div>
           <div className=" flex flex-row gap-[20px] sm:gap-[0px] justify-center items-center sm:flex-col w-[100%] h-[85vh] sm:h-[60vh] md:h-[67svh] lg:h-[70vh]">
             <div className=" flex flex-col sm:flex-row  gap-[15px] lg:gap-[20px] items-center justify-center  sm:w-[100%] h-[100%] ">
-              <div className="flex flex-col gap-[5px] ">
-                <div className=" h-[120px] w-[170px] sm:h-[140px]  sm:w-[190px] md:h-[160px]  md:w-[200px] lg:h-[170px]  lg:w-[220px] shadow-sm drop-shadow-md">
-                  <img
-                    src="/images/mac.webp"
-                    className="size-full object-cover"
-                  />
+              <Link to="/brandpage">
+                <div className="flex flex-col gap-[5px] ">
+                  <div className=" h-[120px] w-[170px] sm:h-[140px]  sm:w-[190px] md:h-[160px]  md:w-[200px] lg:h-[170px]  lg:w-[220px] shadow-sm drop-shadow-md">
+                    <img
+                      src="/images/mac.webp"
+                      className="size-full object-cover"
+                    />
+                  </div>
+                  <div className=" text-center">
+                    <Link className="text-[18px]  font-semibold ">
+                      Mcdonald
+                    </Link>
+                  </div>
                 </div>
-                <div className=" text-center">
-                  <Link className="text-[18px]  font-semibold ">Mcdonald</Link>
-                </div>
-              </div>
+              </Link>
               <div className=" flex flex-col gap-[5px]">
                 <div className=" border-red-700 h-[120px] w-[170px] sm:h-[140px] sm:w-[190px] md:h-[160px]  md:w-[200px] lg:h-[170px]  lg:w-[220px] shadow-sm drop-shadow-md">
                   <img
