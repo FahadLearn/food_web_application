@@ -94,15 +94,15 @@ function UserProfile() {
 
   return (
     <>
-      <div className="h-[100vh] w-[100%] ">
-        <div className="h-[100%] w-[100%] ">
+      <div className=" w-[100%] ">
+        <div className="  w-[100%] ">
           <div className="border-2 border-amber-500 text-center font-semibold text-[30px] sm:text-[30px] md:text-[40px] lg:text-[40px] pt-[12px] pb-[12px] bg-amber-500 text-white">
             User Profile
           </div>
-          <div className="flex flex-col justify-center lg:h-[100%] lg:w-[50%] md:h-[100%] md:w-[50%] sm:h-[100%] sm:w-[60%] h-[100%] w-[90%] mx-auto gap-[20px]">
+          <div className="h-[130vh]   flex flex-col justify-center  lg:w-[50%]  md:w-[50%] sm:w-[60%]  w-[90%] mx-auto gap-[20px]">
             <form encType="multipart/form-data" onSubmit={handleSubmit}>
               <div className="w-[100%] flex justify-center">
-                <div className="h-[150px] w-[170px] rounded-full">
+                <div className="h-[150px] w-[180px] ">
                   {/* ✅ Image Display Logic */}
                   <img
                     src={
@@ -116,12 +116,12 @@ function UserProfile() {
                       e.target.onerror = null;
                       e.target.src = cameraIcon;
                     }}
-                    className="size-full rounded-full object-cover"
+                    className="size-full rounded-[30px] object-cover"
                     alt="User Profile"
                   />
                 </div>
               </div>
-              <div className="gap-[10px] w-[100%] sm:gap-[10px] md:gap-[10px] flex flex-col items-center lg:gap-[10px]">
+              <div className="gap-[10px] w-[100%]  flex flex-col items-center mt-[20px]">
                 <input
                   type="file"
                   accept="image/*"
@@ -179,7 +179,11 @@ function UserProfile() {
 
               {message ? <p>{message}</p> : null}
               <div className="w-[100%] top-[20px] flex flex-col items-center relative">
-                <input type="submit" value="Update" />
+                <input
+                  type="submit"
+                  value="Update"
+                  className="bg-amber-500 outline-none text-white font-semibold rounded-[30px] bg-[#ECECEC] text-[20px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px]  cursor-pointer"
+                />
               </div>
             </form>
             <LogOut />

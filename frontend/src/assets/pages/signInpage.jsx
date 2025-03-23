@@ -74,8 +74,11 @@ function SignIn() {
                 </div>
               </div>
               <div className="w-[100%] top-[50px] sm:top-[50px]  md:top-[50px] flex flex-col items-center  relative lg:top-[50px]  ">
-                {/* <Btn text="Sign In" /> */}
-                <input type="submit" value="Login" />
+                <input
+                  type="submit"
+                  value="Login"
+                  className="bg-amber-500 outline-none text-white font-semibold rounded-[30px] bg-[#ECECEC] text-[20px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px]  cursor-pointer"
+                />
               </div>
               {error && (
                 <p className="text-red-500 text-sm text-center">{error}</p>
