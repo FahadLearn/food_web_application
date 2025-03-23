@@ -89,7 +89,7 @@ function SignUp() {
                   <input
                     type="submit"
                     value="Signup"
-                    className="bg-amber-500 outline-none text-white font-semibold rounded-[30px] bg-[#ECECEC] text-[20px] w-[300px] sm:w-[490px] md:w-[560px] lg:w-[250px] pt-[15px] pb-[15px] pr-[20px] pl-[20px]  cursor-pointer"
+                    className="bg-amber-500 outline-none text-white font-semibold rounded-[30px] bg-[#ECECEC] text-[20px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px]  cursor-pointer"
                   />
                 </div>
               </div>

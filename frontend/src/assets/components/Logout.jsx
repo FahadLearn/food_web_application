@@ -12,7 +12,7 @@ export function LogOut() {
   return (
     <>
       <div
-        className="w-[100px] border-2 px-[20px] py-[10px] m-[auto] my-[50px]"
+        className="mt-[10px] bg-amber-500 mx-auto outline-none text-center text-white font-semibold rounded-[30px] bg-[#ECECEC] text-[20px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px]"
         onClick={handleLogout}
       >
         Logout
