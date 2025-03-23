@@ -21,14 +21,14 @@ function SignIn() {
     if (formData.Email.includes("@admin.com")) {
       const result = await Admin_login(formData);
       if (result.success) {
-        navigate("/Admin_dashboard");
+        navigate("/menu_page");
       } else {
         setError(result.error || "Something went wrong!");
       }
     } else {
       const result = await User_Login(formData);
       if (result.success) {
-        navigate("/logout");
+        navigate("/menu_page");
       } else {
         setError(result.error || "Something went wrong!");
       }

@@ -1,8 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
+import path from "path";
 import UserRouter from "./src/Routes/User.Routes.js";
-// import rider_router from "./src/Routes/riderRoute.js";
-// import restaurant_router from "./src/Routes/restaurantRoute.js";
 import db from "./src/config/db.js";
 
 import cors from "cors";
@@ -15,7 +14,7 @@ const PORT = process.env.PORT || 3000;
 
 // ✅ Middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended: true })); // For form-data support
+app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
 app.use(
@@ -24,6 +23,7 @@ app.use(
     credentials: true, // Cookies send karne ke liye
   })
 );
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 // ✅ Routes
 app.use("/api", UserRouter);
 

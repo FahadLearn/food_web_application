@@ -1,10 +1,40 @@
 import Sidebar from "./sidebar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Links from "./links";
 import { IoLocationSharp } from "react-icons/io5";
 
 function Header() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null); // ✅ Store user details
+
+  useEffect(() => {
+    const fetchAuthStatus = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/api/chkLogin", {
+          credentials: "include", // ✅ Send cookies with request
+        });
+        const data = await response.json();
+        setIsLoggedIn(data.isLoggedIn);
+
+        // ✅ Fetch user details if logged in
+        if (data.isLoggedIn) {
+          const userResponse = await fetch(
+            "http://localhost:3000/api/Profile",
+            { credentials: "include" }
+          );
+          const userData = await userResponse.json();
+          setUser(userData);
+        }
+      } catch (error) {
+        console.error("Error fetching auth status:", error);
+      }
+    };
+
+    fetchAuthStatus();
+  }, []);
+
+  console.log(isLoggedIn);
   return (
     <>
       <p className=" bg-zinc-900 py-1 sm:h-8 text-slate-50 text-xs text-center object-cover object-center sm:text-sm  sm:py-1  md:text-sm md:h-9 md:py-2  lg:text-base lg:h-10">
@@ -65,20 +95,35 @@ function Header() {
           <Links text="Contact" to="/contact" />
           <Links text="About" to="/about" />
         </div>
-        <div className="sm:gap-1 sm:w-[135px]  hidden sm:block sm:flex sm:items-center sm:justify-center md:block md:gap-1  md:w-[145px] md:flex md:items-center md:justify-center lg:block lg:flex  lg:items-center lg:justify-center lg:w-[175px] lg:gap-1 ">
-          <div className=" sm:h-[30px] sm:w-[30px] sm:relative sm:left-[4px] md:h-[35px] md:w-[35px] md:relative md:left-[4px]  lg:h-[40px] lg:w-[40px] lg:relative lg:left-[4px] ">
-            <img
-              src="/images/icon1.png"
-              className="sm:size-full md:size-full lg:size-full"
-            />
-          </div>
-          <Link
-            // to="/Sign"
-            to="/user_profile"
-            className=" sm:text-[12px] md:text-[14px] lg:text-[16px]"
-          >
-            Login
-          </Link>
+        <div className="sm:gap-1 sm:w-[135px] hidden sm:block sm:flex sm:items-center sm:justify-center md:block md:gap-1 md:w-[145px] md:flex md:items-center md:justify-center lg:block lg:flex lg:items-center lg:justify-center lg:w-[175px] lg:gap-[15px]">
+          {/* ✅ Icon sirf tab dikhayega jab user image na ho */}
+          {!user?.IMG_URL && (
+            <div className="sm:h-[30px] sm:w-[30px] sm:relative sm:left-[4px] md:h-[35px] md:w-[35px] md:relative md:left-[4px] lg:h-[40px] lg:w-[40px] lg:relative lg:left-[4px]">
+              <img
+                src="/images/icon1.png"
+                className="sm:size-full md:size-full lg:size-full"
+              />
+            </div>
+          )}
+
+          {isLoggedIn ? (
+            <Link to="/user_profile" className="flex items-center gap-2">
+              <img
+                src={
+                  user?.IMG_URL
+                    ? `http://localhost:3000${user.IMG_URL}`
+                    : "/images/default-user.png"
+                }
+                className="w-10 h-10 rounded-full border border-gray-400"
+                alt="User Profile"
+              />
+            </Link>
+          ) : (
+            <Link to="/sign" className="text-[14px] lg:text-[16px]">
+              Login
+            </Link>
+          )}
+
           <Link
             to="/cart"
             className="sm:text-[12px] md:text-[14px] lg:text-[16px]"
