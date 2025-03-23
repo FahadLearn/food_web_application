@@ -26,7 +26,12 @@ import MenuPage from "./assets/pages/menupage";
 import OrdersManagement from "./assets/pages/orders managament";
 import RiderDashboard from "./assets/pages/riderDashbaord";
 import RiderProfile from "./assets/pages/riderprofile";
-import RiderAccount from "./assets/pages/riderAccount";
+import CustomersManagement from "./assets/pages/customermanagement";
+import SubscriptionManagement from "./assets/pages/subscription managment";
+import BrandPage from "./assets/pages/brandpage";
+import Cuisine from "./assets/pages/cuisine page";
+import ItemDescription from "./assets/pages/item description";
+
 function App() {
   return (
     <>
@@ -62,7 +67,15 @@ function App() {
           <Route path="/ordersManagement" element={<OrdersManagement />} />
           <Route path="/riderdashbaord" element={<RiderDashboard />} />
           <Route path="/riderprofile" element={<RiderProfile />} />
-          <Route path="/rideraccount" element={<RiderAccount />} />
+          <Route path="/customer_managment" element={<CustomersManagement />} />
+
+          <Route
+            path="/subscription_managment"
+            element={<SubscriptionManagement />}
+          />
+          <Route path="/brandpage" element={<BrandPage />} />
+          <Route path="/cuisine" element={<Cuisine />} />
+          <Route path="/itemdesc" element={<ItemDescription />} />
         </Routes>
       </Router>
     </>
