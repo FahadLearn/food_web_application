@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import cameraIcon from "/public/images/camera.jpg";
+
 import { useState, useEffect } from "react";
 function RiderDashboard() {
   const [isVisible, setIsVisible] = useState(false);

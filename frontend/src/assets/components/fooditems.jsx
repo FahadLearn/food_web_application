@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Food_items({ data }) {
   const {
     Item_ID,
@@ -11,7 +13,7 @@ function Food_items({ data }) {
   } = data;
 
   return (
-    <div className="">
+    <Link to="/itemdesc">
       <ul key={Item_ID} className="flex flex-col gap-[2px]  ">
         <li className="w-[380px] sm:w-[200px] sm:h-[130px] md:w-[230px] md:h-[160px] lg:w-[320px] lg:h-[200px] mx-auto  rounded-[10px]">
           <img
@@ -39,7 +41,7 @@ function Food_items({ data }) {
           {Availability}
         </li>
       </ul>
-    </div>
+    </Link>
   );
 }
 export default Food_items;
