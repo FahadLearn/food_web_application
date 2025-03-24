@@ -154,13 +154,13 @@ export const adminLogin = async (req, res) => {
 };
 
 export const getUserProfile = async (req, res) => {
-  const Customer_ID = req.cookies.Customer_ID; // ✅ Get user ID from cookie
+  const { Customer_ID } = req.cookies; // ✅ Get user ID from cookie
 
   if (!Customer_ID) {
     return res.status(401).json({ message: "Unauthorized: No User ID found" });
   }
   try {
-    const user = await FindById(Customer_ID);
+    const user = await FindById({ Customer_ID });
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
