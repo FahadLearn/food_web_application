@@ -9,6 +9,8 @@ function RiderSignup() {
     vehicle: "",
     cnic: "",
     phone_no: "",
+    Dob: "",
+    License: "",
     payment_method: "",
     account_title: "",
   });
@@ -29,6 +31,7 @@ function RiderSignup() {
                 name="first_name"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="First Name"
+                onChange={handleState}
                 required
               />
               <input
@@ -36,6 +39,7 @@ function RiderSignup() {
                 name="last_name"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Last Name"
+                onChange={handleState}
                 required
               />
             </div>
@@ -45,11 +49,13 @@ function RiderSignup() {
                 name="city"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Enter City"
+                onChange={handleState}
                 required
               />
               <select
                 name="vehicle"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none"
+                onChange={handleState}
               >
                 <option value="" disabled selected>
                   Select a vehicle
@@ -64,6 +70,7 @@ function RiderSignup() {
                 name="license"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="License"
+                onChange={handleState}
                 required
               />
 
@@ -72,6 +79,7 @@ function RiderSignup() {
                 name="date_of_birth"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Date of Birth"
+                onChange={handleState}
                 required
               />
             </div>
@@ -79,12 +87,13 @@ function RiderSignup() {
               <select
                 name="payment_method"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none"
+                onChange={handleState}
               >
                 <option value="" disabled selected>
                   Select payment method
                 </option>
-                <option value="Easy Paisa">Easy Paisa</option>
-                <option value="Jazz Cash">Jazz Cash</option>
+                <option value="easypaisa">Easy Paisa</option>
+                <option value="Jazzcash">Jazz Cash</option>
               </select>
 
               <input
@@ -92,6 +101,7 @@ function RiderSignup() {
                 name="cnic"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="CNIC"
+                onChange={handleState}
                 required
               />
             </div>
@@ -101,14 +111,31 @@ function RiderSignup() {
                 name="phone_no"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Phone no"
+                onChange={handleState}
                 required
               />
-
+              <input
+                type="Date"
+                name="DOB"
+                className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                placeholder="Date of Birth"
+                onChange={handleState}
+                required
+              />
+              <input
+                type="tel"
+                name="License"
+                className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                placeholder="License no"
+                onChange={handleState}
+                required
+              />
               <input
                 type="text"
                 name="account_title"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="account_title"
+                onChange={handleState}
                 required
               />
             </div>
