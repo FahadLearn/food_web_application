@@ -10,7 +10,7 @@ function SectionTwo() {
           h1="Signup as a business"
           h2="Partner with us"
           btn="Get Started "
-          to="/admin_signup_page_1"
+          to="/restaurantsignup"
         />
         <PartnerShip
           src="/images/pic3.jpg"

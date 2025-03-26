@@ -1,35 +1,7 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-
-function AdminSignup() {
-  const [formData, SetformData] = useState({
-    first_name: "",
-    last_name: "",
-    business_name: "",
-    email: "",
-    business_type: "",
-    mobile_number: "",
-  });
-
-  const handleState = (event) => {
-    SetformData({ ...formData, [event.target.name]: event.target.value });
-  };
-  // const handleSubmit = (event) => {
-  //   event.preventDefault(); // Prevent page reload
-  //   fetch("http://localhost:3000/api/restaurant", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify(formData),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => console.log(data))
-  //     .catch((error) => console.error("Fetch error:", error));
-  //   console.log(formData);
-  // };
-
+function RestaurantSignup1() {
   return (
     <>
-      <div className="w-[100%] h-[100vh]  flex flex-col justify-center gap-[40px]">
+      <div className=" w-[100%] h-[100vh] sm:h-[70vh]  flex flex-col justify-center gap-[40px]">
         <div className="  text-center font-semibold text-amber-600 text-[23px] sm:text-[35px] md:text-[40px] lg:text-[40px]">
           Ready to grow Your business
         </div>
@@ -41,7 +13,6 @@ function AdminSignup() {
                 name="first_name"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="First Name"
-                onChange={handleState}
                 required
               />
               <input
@@ -49,7 +20,6 @@ function AdminSignup() {
                 name="last_name"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Last Name"
-                onChange={handleState}
                 required
               />
             </div>
@@ -59,7 +29,6 @@ function AdminSignup() {
                 name="business_name"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Enter Business Name"
-                onChange={handleState}
                 required
               />
               <input
@@ -67,7 +36,6 @@ function AdminSignup() {
                 name="email"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Enter Business Email"
-                onChange={handleState}
                 required
               />
             </div>
@@ -75,7 +43,6 @@ function AdminSignup() {
               <select
                 name="business_type"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none"
-                onChange={handleState}
               >
                 <option value="" disabled selected>
                   Business Type
@@ -88,23 +55,13 @@ function AdminSignup() {
                 name="number"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Enter Mobile Number"
-                onChange={handleState}
                 required
               />
             </div>
-          </div>
-          <div className="flex  flex-col sm:flex-row items-center justify-center relative top-[30px]">
-            <Link to="/admin_signup_page_2">
-              <input
-                type="Submit"
-                value="Next"
-                className="text-white  outline-none rounded-[30px] bg-amber-500 text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-              />
-            </Link>
           </div>
         </form>
       </div>
     </>
   );
 }
-export default AdminSignup;
+export default RestaurantSignup1;
