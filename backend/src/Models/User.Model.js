@@ -44,7 +44,7 @@ export const FindByEmail = async (email) => {
   }
 };
 
-export const FindById = async (Customer_ID) => {
+export const FindById = async ({ Customer_ID }) => {
   try {
     const sql = "SELECT * FROM customers WHERE Customer_ID=?";
     const values = [Customer_ID];
@@ -67,6 +67,39 @@ export const AdminChk = async (email) => {
     throw new Error(error);
   }
 };
+// export const UpdateUser = async ({
+//   Customer_ID,
+//   Name,
+//   Email,
+//   Password,
+//   Address,
+//   Phone_Number,
+//   IMG_URL,
+// }) => {
+//   try {
+//     const sql = `
+//       UPDATE CUSTOMERS
+//       SET Name = ?, Email = ?, Password = ?, Address = ?, Phone_Number = ?, IMG_URL = ?
+//       WHERE Customer_ID = ?
+//     `;
+//     const values = [
+//       Name,
+//       Email,
+//       Password,
+//       Address,
+//       Phone_Number,
+//       IMG_URL,
+//       Customer_ID,
+//     ];
+
+//     const [result] = await db.execute(sql, values);
+//     return result.affectedRows;
+//   } catch (error) {
+//     console.error(error);
+//     throw new Error(error);
+//   }
+// };
+
 export const UpdateUser = async ({
   Customer_ID,
   Name,
@@ -78,11 +111,17 @@ export const UpdateUser = async ({
 }) => {
   try {
     const sql = `
-      UPDATE CUSTOMERS 
-      SET Name = ?, Email = ?, Password = ?, Address = ?, Phone_Number = ?, IMG_URL = ? 
-      WHERE Customer_ID = ?
+      UPDATE CUSTOMERS SET NAME = ? , Email = ? , Password = ? , Address = ? , Phone_Number = ? , IMG_URL = ? WHERE Customer_ID = ?
     `;
-    const values = [Name, Email, Password, Address, Phone_Number, IMG_URL, Customer_ID];
+    const values = [
+      Name,
+      Email,
+      Password,
+      Address,
+      Phone_Number,
+      IMG_URL,
+      Customer_ID,
+    ];
 
     const [result] = await db.execute(sql, values);
     return result.affectedRows;
@@ -91,4 +130,3 @@ export const UpdateUser = async ({
     throw new Error(error);
   }
 };
-
