@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs";
 import { generateToken } from "../utils/generateTokens.js";
 import {
   AdminChk,
+  chkRider,
   CreateUser,
   FindByEmail,
   FindById,
@@ -28,7 +29,12 @@ export const Register = async (req, res) => {
     if (!Name || !Email || !Password || !Address || !Phone_Number) {
       return res.status(400).json({ message: "All fields are required" });
     }
-
+    const rider = await chkRider({ Email });
+    if (rider) {
+      return res.status(400).json({
+        message: " Email already exists as Rider Plz use different one.",
+      });
+    }
     // ✅ Check if user already exists
     const existingUser = await FindByEmail(Email);
     if (existingUser) {

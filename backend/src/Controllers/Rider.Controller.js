@@ -95,7 +95,6 @@ export const login = async (req, res) => {
       return res.status(401).json({ message: "Invalid password" });
     }
 
-    const token = generateToken(user);
     res.cookie("isLoggedIn", true, {
       httpOnly: false, // ✅ avoid js access
       secure: true, // ✅ http secure
@@ -110,7 +109,6 @@ export const login = async (req, res) => {
     });
     res.json({
       message: "Login successful",
-      token,
       user: {
         Rider_ID: user.RIDER_ID,
         Name: user.First_Name,
