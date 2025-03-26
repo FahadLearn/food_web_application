@@ -16,6 +16,7 @@ function RiderSignup() {
     Email: "",
     Password: "",
   });
+
   const [message, setMessage] = useState("");
   const handleState = (event) => {
     SetformData({ ...formData, [event.target.name]: event.target.value });
@@ -45,7 +46,7 @@ function RiderSignup() {
   };
   return (
     <>
-      <div className="w-[100%]  h-[142vh] sm:h-[100vh] flex flex-col justify-center gap-[40px]">
+      <div className="w-[100%]  h-[170vh] sm:h-[100vh] flex flex-col justify-center gap-[40px]">
         <div className="  text-center font-semibold text-amber-600 text-[23px] sm:text-[35px] md:text-[40px] lg:text-[40px]">
           Start Your Journey as a Rider
         </div>
@@ -65,6 +66,24 @@ function RiderSignup() {
                 name="Last_Name"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Last Name"
+                onChange={handleState}
+                required
+              />
+            </div>
+            <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
+              <input
+                type="email"
+                name="Email"
+                className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                placeholder="Enter your email"
+                onChange={handleState}
+                required
+              />
+              <input
+                type="password"
+                name="Password"
+                className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                placeholder="Password"
                 onChange={handleState}
                 required
               />
@@ -101,7 +120,7 @@ function RiderSignup() {
               />
 
               <input
-                type="Date"
+                type="text"
                 name="Date_of_Birth"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Date of Birth"
@@ -140,22 +159,7 @@ function RiderSignup() {
                 onChange={handleState}
                 required
               />
-              <input
-                type="email"
-                name="Email"
-                className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                placeholder="Enter your email"
-                onChange={handleState}
-                required
-              />
-              <input
-                type="password"
-                name="Password"
-                className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                placeholder="Password"
-                onChange={handleState}
-                required
-              />
+
               <input
                 type="text"
                 name="Account_Title"

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function AdminSignup2() {
+function RestaurantSignup2() {
   const [formData, SetformData] = useState({
     business_name: "",
 
@@ -103,4 +103,4 @@ function AdminSignup2() {
     </>
   );
 }
-export default AdminSignup2;
+export default RestaurantSignup2;

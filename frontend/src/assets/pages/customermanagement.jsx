@@ -16,25 +16,29 @@ function CustomersManagement() {
             required
           />
         </div>
-        <table className="mt-[20px] w-[100%] bg-gray-200 border-gray-500 border-2">
-          <thead>
-            <tr className="bg-amber-500 text-white font-lighter ">
-              <th className="w-[10%] border-2 border-gray-500">Customer Id</th>
-              <th className="w-[12%]  border-2 border-gray-500">Name</th>
-              <th className="w-[25%]  border-2 border-gray-500">Address</th>
-              <th className="w-[10%]  border-2 border-gray-500">Phone</th>
-              <th className="w-[10%]  border-2 border-gray-500">Orders</th>
+        <div className="border-2 overflow-x-auto w-full  mt-5">
+          <table className="mt-[20px] w-full bg-gray-200 border-gray-500 border-2">
+            <thead>
+              <tr className="bg-amber-500 text-white font-lighter ">
+                <th className="border-2 border-gray-500 text-[14px]">
+                  Customer Id
+                </th>
+                <th className=" border-2 border-gray-500">Name</th>
+                <th className=" border-2 border-gray-500">Address</th>
+                <th className="  border-2 border-gray-500">Phone</th>
+                <th className=" border-2 border-gray-500">Orders</th>
 
-              <th className="w-[10%]  border-2 border-gray-500">Total Spent</th>
-              <th className=" w-[10%]  border-2 border-gray-500">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {customer.map((item) => (
-              <Customers key={item.id} data={item} />
-            ))}
-          </tbody>
-        </table>
+                <th className=" border-2 border-gray-500">Total Spent</th>
+                <th className="  border-2 border-gray-500">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {customer.map((item) => (
+                <Customers key={item.id} data={item} />
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </>
   );
