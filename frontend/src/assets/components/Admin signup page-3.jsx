@@ -1,4 +1,5 @@
-function RestaurantSignup3() {
+function RestaurantSignup3({ formData, onChange }) {
+  const { City, Province, Area, Postal_Code, Detail_Address } = formData;
   return (
     <>
       <div className=" w-[100%] h-[90vh] sm:h-[70vh]  flex flex-col justify-center gap-[30px]">
@@ -14,14 +15,18 @@ function RestaurantSignup3() {
             <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
               <input
                 type="text"
-                name="city"
+                name="City"
+                value={City}
+                onChange={onChange}
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Your City"
                 required
               />
               <input
                 type="text"
-                name="province"
+                name="Province"
+                value={Province}
+                onChange={onChange}
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Your province"
                 required
@@ -30,14 +35,18 @@ function RestaurantSignup3() {
             <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
               <input
                 type="text"
-                name="area"
+                name="Area"
+                value={Area}
+                onChange={onChange}
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Enter Your Area"
                 required
               />
               <input
                 type="text"
-                name="postal_code"
+                name="Postal_Code"
+                value={Postal_Code}
+                onChange={onChange}
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Postal Code"
                 required
@@ -47,7 +56,9 @@ function RestaurantSignup3() {
             <div className=" flex  flex-col sm:flex-row items-center justify-center">
               <input
                 type="text"
-                name=" address"
+                name="Detail_Address"
+                value={Detail_Address}
+                onChange={onChange}
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] sm:w-[605px] md:w-[605px] lg:w-[610px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Enter Your Business Name and Address"
                 required
@@ -56,7 +67,9 @@ function RestaurantSignup3() {
             <div className=" flex  flex-col sm:flex-row items-center justify-center">
               <input
                 type="text"
-                name="   additional_address"
+                name="Detail_Address"
+                value={Detail_Address}
+                onChange={onChange}
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] sm:w-[605px] md:w-[605px] lg:w-[610px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Enter Additional Address"
                 required

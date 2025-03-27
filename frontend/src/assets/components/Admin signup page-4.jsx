@@ -1,4 +1,5 @@
-function RestaurantSignup4() {
+function RestaurantSignup4({ formData, onChange }) {
+  const { CNIC, Operating_License, FBR } = formData;
   return (
     <>
       <div className=" w-[100%] h-[70vh]  flex flex-col justify-center gap-[30px]">
@@ -13,13 +14,17 @@ function RestaurantSignup4() {
             <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
               <input
                 type="text"
-                name="cnic"
+                name="CNIC"
+                value={CNIC}
+                onChange={onChange}
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Enter CNIC"
                 required
               />
               <select
-                name="business_type"
+                name="Operating_License"
+                value={Operating_License}
+                onChange={onChange}
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none"
               >
                 <option value="" disabled selected>
@@ -43,7 +48,9 @@ function RestaurantSignup4() {
             </div>
             <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
               <select
-                name="business_type"
+                name="FBR"
+                value={FBR}
+                onChange={onChange}
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] sm:w-[605px] md:w-[605px] lg:w-[610px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none"
               >
                 <option value="" disabled selected>

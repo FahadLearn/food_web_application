@@ -1,4 +1,13 @@
-function RestaurantSignup1() {
+function RestaurantSignup1({ formData, onChange }) {
+  const {
+    First_Name,
+    Last_Name,
+    Business_Name,
+    Business_Email,
+    Password,
+    Business_Type,
+    Phone_Number,
+  } = formData;
   return (
     <>
       <div className=" w-[100%] h-[100vh] sm:h-[70vh]  flex flex-col justify-center gap-[40px]">
@@ -10,14 +19,18 @@ function RestaurantSignup1() {
             <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
               <input
                 type="text"
-                name="first_name"
+                name="First_Name"
+                value={First_Name}
+                onChange={onChange}
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="First Name"
                 required
               />
               <input
                 type="text"
-                name="last_name"
+                name="Last_name"
+                value={Last_Name}
+                onChange={onChange}
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Last Name"
                 required
@@ -26,14 +39,18 @@ function RestaurantSignup1() {
             <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
               <input
                 type="text"
-                name="business_name"
+                name="Business_Name"
+                value={Business_Name}
+                onChange={onChange}
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Enter Business Name"
                 required
               />
               <input
                 type="text"
-                name="email"
+                name="Business_Email"
+                value={Business_Email}
+                onChange={onChange}
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Enter Business Email"
                 required
@@ -41,7 +58,9 @@ function RestaurantSignup1() {
             </div>
             <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
               <select
-                name="business_type"
+                name="Business_Type"
+                value={Business_Type}
+                onChange={onChange}
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none"
               >
                 <option value="" disabled selected>
@@ -52,7 +71,9 @@ function RestaurantSignup1() {
               </select>
               <input
                 type="tell"
-                name="number"
+                name="Phone_Number"
+                value={Phone_Number}
+                onChange={onChange}
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Enter Mobile Number"
                 required

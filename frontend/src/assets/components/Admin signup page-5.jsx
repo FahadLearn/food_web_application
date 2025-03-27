@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
-function RestaurantSignup5() {
+function RestaurantSignup5({ formData, onChange }) {
+  const { Account_Title, Bank_Name, IBAN, Owner_ID } = formData;
   return (
     <>
       <div className="w-[100%] h-[120vh] sm:h-[100vh]  flex flex-col justify-center gap-[40px]">
@@ -15,14 +16,18 @@ function RestaurantSignup5() {
             <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
               <input
                 type="text"
-                name="bank_account_owner_title"
+                name="Account_Title"
+                value={Account_Title}
+                onChange={onChange}
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Bank Account Owner/Title"
                 required
               />
               <input
                 type="text"
-                name="bank_name"
+                name="Bank_Name"
+                value={Bank_Name}
+                onChange={onChange}
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Bank Name"
                 required
@@ -31,7 +36,9 @@ function RestaurantSignup5() {
             <div className=" flex  flex-col sm:flex-row items-center justify-center">
               <input
                 type="text"
-                name="iban_number"
+                name="IBAN"
+                value={IBAN}
+                onChange={onChange}
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] sm:w-[605px] md:w-[605px] lg:w-[610px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="IBAN Number"
                 required
@@ -40,7 +47,9 @@ function RestaurantSignup5() {
             <div className=" flex  flex-col sm:flex-row items-center justify-center">
               <input
                 type="text"
-                name="business_owner_id_license"
+                name="Owner_ID"
+                value={Owner_ID}
+                onChange={onChange}
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] sm:w-[605px] md:w-[605px] lg:w-[610px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Business Owner ID/License"
                 required
