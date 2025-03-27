@@ -34,6 +34,11 @@ function RestaurantSignup() {
   const handleChange = (event) => {
     SetformData({ ...formData, [event.target.name]: event.target.value });
   };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Submit form data to your server here
+    console.log(formData);
+  };
 
   return (
     <>
@@ -77,6 +82,7 @@ function RestaurantSignup() {
           Owner_ID: formData.Owner_ID,
         }}
         onChange={handleChange}
+        onSubmit={handleSubmit}
       />
     </>
   );
