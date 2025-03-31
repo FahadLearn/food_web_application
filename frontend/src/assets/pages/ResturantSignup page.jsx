@@ -1,24 +1,24 @@
 import { useState } from "react";
 function RestaurantSignup() {
   const [formData, SetformData] = useState({
-    first_name: "",
-    last_name: "",
-    phone_no: "",
-    cnic: "",
-    business_name: "",
-    business_type: "",
-    email: "",
-    password: "",
-    city: "",
-    province: "",
-    area: "",
-    postal_code: "",
-    address: "",
-    legal_1: "",
-    legal_2: "",
-    bank_account_owner_title: "",
-    bank_name: "",
-    iban_number: "",
+    First_Name: "",
+    Last_Name: "",
+    Business_Name: "",
+    Business_Email: "",
+    Password: "",
+    Business_Type: "",
+    Phone_Number: "",
+    City: "",
+    Province: "",
+    Area: "",
+    Postal_Code: "",
+    Detail_Address: "",
+    CNIC: "",
+    Operating_License: "",
+    FBR: "",
+    Account_Title: "",
+    Bank_Name: "",
+    IBAN: "",
   });
 
   const handleState = (event) => {
@@ -53,15 +53,15 @@ function RestaurantSignup() {
             <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
               <input
                 type="tell"
-                name="phone_no"
+                name="Phone_Number"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                placeholder="Phone NUmber"
+                placeholder="Phone Number"
                 onChange={handleState}
                 required
               />
               <input
                 type="text"
-                name="cnic"
+                name="CNIC"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="CNIC"
                 onChange={handleState}
@@ -71,14 +71,14 @@ function RestaurantSignup() {
             <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
               <input
                 type="text"
-                name="business-name"
+                name="Business_Name"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Enter your Business Name"
                 onChange={handleState}
                 required
               />
               <select
-                name="business_type"
+                name="Business_Type"
                 onChange={handleState}
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none"
               >
@@ -93,7 +93,7 @@ function RestaurantSignup() {
             <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
               <input
                 type="text"
-                name="email"
+                name="Business_Email"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Enter Business Email"
                 onChange={handleState}
@@ -101,7 +101,7 @@ function RestaurantSignup() {
               />
               <input
                 type="password"
-                name="password"
+                name="Password"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Password"
                 onChange={handleState}
@@ -111,7 +111,7 @@ function RestaurantSignup() {
             <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
               <input
                 type="text"
-                name="city"
+                name="City"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Your City"
                 onChange={handleState}
@@ -119,7 +119,7 @@ function RestaurantSignup() {
               />
               <input
                 type="text"
-                name="province"
+                name="Province"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Your province"
                 onChange={handleState}
@@ -129,7 +129,7 @@ function RestaurantSignup() {
             <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
               <input
                 type="text"
-                name="area"
+                name="Area"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Enter Your Area"
                 onChange={handleState}
@@ -137,7 +137,7 @@ function RestaurantSignup() {
               />
               <input
                 type="text"
-                name="postal_code"
+                name="Postal_Code"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Postal Code"
                 onChange={handleState}
@@ -147,7 +147,7 @@ function RestaurantSignup() {
             <div className=" flex  flex-col sm:flex-row items-center justify-center">
               <input
                 type="text"
-                name=" address"
+                name="Detail_Address"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] sm:w-[605px] md:w-[605px] lg:w-[610px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Enter Your Business Name and Address"
                 onChange={handleState}
@@ -156,7 +156,7 @@ function RestaurantSignup() {
             </div>
             <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
               <select
-                name="legal_1"
+                name="Operating_license"
                 onChange={handleState}
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] sm:w-[605px] md:w-[605px] lg:w-[610px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none"
               >
@@ -169,7 +169,7 @@ function RestaurantSignup() {
             </div>
             <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
               <select
-                name="legal_2"
+                name="FBR"
                 onChange={handleState}
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] sm:w-[605px] md:w-[605px] lg:w-[610px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none"
               >
@@ -184,7 +184,7 @@ function RestaurantSignup() {
             <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
               <input
                 type="text"
-                name="bank_account_owner_title"
+                name="Account_Title"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Bank Account Owner/Title"
                 onChange={handleState}
@@ -192,7 +192,7 @@ function RestaurantSignup() {
               />
               <input
                 type="text"
-                name="bank_name"
+                name="Bank_Name"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="Bank Name"
                 onChange={handleState}
@@ -202,7 +202,7 @@ function RestaurantSignup() {
             <div className=" flex  flex-col sm:flex-row items-center justify-center">
               <input
                 type="text"
-                name="iban_number"
+                name="IBAN"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] sm:w-[605px] md:w-[605px] lg:w-[610px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="IBAN Number"
                 onChange={handleState}
