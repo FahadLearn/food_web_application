@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Admin_login, User_Login } from "../api/user";
-import { Rider_login } from "../api/rider";
 function SignIn() {
   const [formData, SetformData] = useState({
     Email: "",
@@ -31,12 +30,7 @@ function SignIn() {
       if (result.success) {
         navigate("/menu_page");
       } else {
-        const rider = await Rider_login(formData);
-        if (rider.success) {
-          navigate("/riderdashbaord");
-        } else {
-          setError(rider.error || "Something went wrong!");
-        }
+        setError(result.error || "Something went wrong!");
       }
     }
   };

@@ -46,7 +46,7 @@ function Header() {
         <div className=" relative left-5 sm:opacity-0  h-[20px] w-[25px] ">
           {/* left */}
           <Sidebar />
-        </div>  
+        </div>
         <div className="sm:h-16  sm:flex sm:flex-col sm:items-center md:h-20 lg:h-24 ">
           {/* center */}
           <div className="hidden sm:block  sm:w-12 sm:h-10 md:w-16 md:h-16 lg:h-20  lg:w-20 lg:h-16 ">
