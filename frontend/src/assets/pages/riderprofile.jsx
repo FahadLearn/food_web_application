@@ -19,40 +19,6 @@ function RiderProfile() {
           </div>
           <div className="text-center">Your ID</div>
         </div>
-        <div className="relative top-[80px]  flex flex-col gap-[10px]">
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-[10px]">
-            <Link to="">
-              <div className=" h-[150px] w-[200px] rounded-[10px] flex items-center justify-center bg-gray-200 shadow-md">
-                <div className=" text-center text-[18px] sm:text-[20px] md:text-[22px] lg:text-[22px] font-semibold">
-                  Account
-                </div>
-              </div>
-            </Link>
-            <div className=" h-[150px] w-[200px] rounded-[10px] flex items-center justify-center bg-gray-200 shadow-md">
-              <Link>
-                <div className=" text-center text-[18px] sm:text-[20px] md:text-[22px] lg:text-[22px] font-semibold">
-                  Vehicles
-                </div>
-              </Link>
-            </div>
-          </div>
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-[10px]">
-            <div className="  h-[150px] w-[200px] rounded-[10px] flex items-center justify-center bg-gray-200 shadow-md">
-              <Link>
-                <div className=" text-center text-[18px] sm:text-[20px] md:text-[22px] lg:text-[22px] font-semibold">
-                  Id Card
-                </div>
-              </Link>
-            </div>
-            <div className="  h-[150px] w-[200px] rounded-[10px] flex items-center justify-center bg-gray-200 shadow-md ">
-              <Link>
-                <div className=" text-center text-[18px] sm:text-[20px] md:text-[22px] lg:text-[22px] font-semibold ">
-                  Driver License
-                </div>
-              </Link>
-            </div>
-          </div>
-        </div>
       </div>
     </>
   );
