@@ -1,8 +1,35 @@
 import { Link } from "react-router-dom";
-import menu from "../../menu.json";
+// import menu from "../../menu.json";
 import MenuAdmin from "../components/menu managment";
+import { useEffect, useState } from "react";
 
 function MenuManagement() {
+  const [menu, setmenu] = useState([]);
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/menu/getMenu", {
+          credentials: "include",
+        });
+        if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+        const data = await res.json();
+        console.log(data);
+
+        if (data && Array.isArray(data.data)) {
+          setmenu(data.data);
+        } else {
+          console.error("Expected an array in data.data, but got:", data);
+          setmenu([]);
+        }
+      } catch (error) {
+        console.error("Error fetching menu items:", error);
+        setmenu([]);
+      }
+    };
+    fetchItems();
+  }, []); // Empty dependency array to run only once on mount// Empty dependency array to run only once on mount
   return (
     <>
       <div className="border-2 w-[100%] h-[100vh]">
@@ -36,7 +63,7 @@ function MenuManagement() {
               <th className="w-[10%]  border-2 border-gray-500">Category</th>
               <th className="w-[10%]  border-2 border-gray-500">Price</th>
               <th className="w-[10%]  border-2 border-gray-500">
-                Didcount Price
+                Discount Price
               </th>
 
               <th className="w-[25%]  border-2 border-gray-500">Description</th>
@@ -45,9 +72,15 @@ function MenuManagement() {
             </tr>
           </thead>
           <tbody>
-            {menu.map((item) => (
-              <MenuAdmin key={item.id} data={item} />
-            ))}
+            {menu.length > 0 ? (
+              menu.map((item) => <MenuAdmin key={item.Item_ID} data={item} />)
+            ) : (
+              <tr>
+                <td colSpan="8" className="text-center py-4">
+                  No items found
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
