@@ -2,12 +2,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 function AddItem() {
   const [formData, SetformData] = useState({
+    id: "",
     name: "",
-    catagory: "",
+
     price: "",
     discount: "",
     description: "",
     availability: "",
+    catagory: "",
   });
   const handleState = (event) => {
     SetformData({ ...formData, [event.target.name]: event.target.value });
@@ -21,9 +23,17 @@ function AddItem() {
           </div>
         </div>
         <form>
-          <div className=" h-[100vh] sm:h-[86vh] flex justify-center items-center">
+          <div className=" h-[125vh] sm:h-[90vh] flex justify-center items-center border-2">
             <div className="flex flex-col gap-[15px]  ">
               <div className=" flex flex-col sm:flex-row items-center justify-center gap-[10px] ">
+                <input
+                  type="text"
+                  name="id"
+                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                  placeholder="Enter Id"
+                  onChange={handleState}
+                  required
+                />
                 <input
                   type="text"
                   name="name"
@@ -32,21 +42,6 @@ function AddItem() {
                   onChange={handleState}
                   required
                 />
-                <select
-                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none "
-                  placeholder="Catagory"
-                  onChange={handleState}
-                  name="category"
-                >
-                  <option value="" disabled selected>
-                    Select Category
-                  </option>
-                  <option value="fast-food">Fast Food</option>
-                  <option value="italian">Italian</option>
-                  <option value="chinese">Chinese</option>
-                  <option value="indian">Indian</option>
-                  <option value="desserts">Desserts</option>
-                </select>
               </div>
               <div className=" flex flex-col sm:flex-row items-center justify-center gap-[10px]">
                 <input
@@ -79,7 +74,7 @@ function AddItem() {
        pt-[15px] pb-[15px] pr-[20px] pl-[20px]  bg-[#ECECEC] rounded-[10px] overflow-hidden"
                 ></textarea>
               </div>
-              <div className=" flex flex-col sm:flex-row items-center justify-start ">
+              <div className="  flex flex-col sm:flex-row items-center justify-center gap-[10px] ">
                 <select
                   className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none "
                   placeholder="Available "
@@ -92,6 +87,28 @@ function AddItem() {
                   <option value="Yes">Yes</option>
                   <option value="No">No</option>
                 </select>
+                <select
+                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none "
+                  placeholder="Catagory"
+                  onChange={handleState}
+                  name="category"
+                >
+                  <option value="" disabled selected>
+                    Select Category
+                  </option>
+                  <option value="fast-food">Fast Food</option>
+                  <option value="italian">Italian</option>
+                  <option value="chinese">Chinese</option>
+                  <option value="indian">Indian</option>
+                  <option value="desserts">Desserts</option>
+                </select>
+              </div>
+              <div className=" flex flex-col sm:flex-row items-center justify-start gap-[10px]">
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none "
+                />
               </div>
               <div className="flex  flex-col sm:flex-row items-center justify-center gap-[10px] relative top-[20px]">
                 <Link>
