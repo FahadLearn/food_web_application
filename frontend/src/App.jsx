@@ -28,6 +28,7 @@ import BrandPage from "./assets/pages/brandpage";
 import Cuisine from "./assets/pages/cuisine page";
 import ItemDescription from "./assets/pages/item description";
 import RestaurantSignup from "./assets/pages/ResturantSignup page";
+import UpdateItem from "./assets/pages/updateitem";
 
 function App() {
   return (
@@ -69,6 +70,7 @@ function App() {
           <Route path="/cuisine" element={<Cuisine />} />
           <Route path="/itemdesc" element={<ItemDescription />} />
           <Route path="/restaurantsignup" element={<RestaurantSignup />} />
+          <Route path="/updateitem" element={<UpdateItem />} />
         </Routes>
       </Router>
     </>

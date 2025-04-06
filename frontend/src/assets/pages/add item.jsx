@@ -1,16 +1,6 @@
 import { useState } from "react";
 function AddItem() {
   const [formData, SetformData] = useState({
-<<<<<<< HEAD
-    id: "",
-    name: "",
-
-    price: "",
-    discount: "",
-    description: "",
-    availability: "",
-    catagory: "",
-=======
     Item_ID: "",
     Name: "",
     Category: "",
@@ -18,7 +8,6 @@ function AddItem() {
     Discount: "",
     Description: "",
     Availability: "",
->>>>>>> 366449e053b29f49f2b5fdad87006a5aa4fe4929
   });
   const [error, setError] = useState(null);
   const [Img, SetImg] = useState(null);
@@ -64,21 +53,13 @@ function AddItem() {
             Add Item
           </div>
         </div>
-<<<<<<< HEAD
-        <form>
-=======
         <form onSubmit={handleSubmit}>
->>>>>>> 366449e053b29f49f2b5fdad87006a5aa4fe4929
           <div className=" h-[125vh] sm:h-[90vh] flex justify-center items-center border-2">
             <div className="flex flex-col gap-[15px]  ">
               <div className=" flex flex-col sm:flex-row items-center justify-center gap-[10px] ">
                 <input
                   type="text"
-<<<<<<< HEAD
-                  name="id"
-=======
                   name="Item_ID"
->>>>>>> 366449e053b29f49f2b5fdad87006a5aa4fe4929
                   className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                   placeholder="Enter Id"
                   onChange={handleState}
@@ -86,18 +67,12 @@ function AddItem() {
                 />
                 <input
                   type="text"
-<<<<<<< HEAD
-                  name="name"
-=======
                   name="Name"
->>>>>>> 366449e053b29f49f2b5fdad87006a5aa4fe4929
                   className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                   placeholder="Item Name"
                   onChange={handleState}
                   required
                 />
-<<<<<<< HEAD
-=======
               </div>
               <div className=" flex flex-col sm:flex-row items-center justify-center gap-[10px]">
                 <input
@@ -157,69 +132,17 @@ function AddItem() {
                   <option value="indian">Indian</option>
                   <option value="desserts">Desserts</option>
                 </select>
->>>>>>> 366449e053b29f49f2b5fdad87006a5aa4fe4929
               </div>
               <div className=" flex flex-col sm:flex-row items-center justify-start gap-[10px]">
                 <input
                   type="file"
                   accept="image/*"
                   onChange={(e) => SetImg(e.target.files[0])}
+                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                   required
                 />
               </div>
-<<<<<<< HEAD
-
-              <div className=" flex justify-center gap-[10px]">
-                <textarea
-                  rows="4"
-                  name="description"
-                  placeholder="Description"
-                  onChange={handleState}
-                  required
-                  className=" outline-none
-         w-[300px] sm:w-[600px] md:w-[600px] lg:w-[600px]
-       pt-[15px] pb-[15px] pr-[20px] pl-[20px]  bg-[#ECECEC] rounded-[10px] overflow-hidden"
-                ></textarea>
-              </div>
-              <div className="  flex flex-col sm:flex-row items-center justify-center gap-[10px] ">
-                <select
-                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none "
-                  placeholder="Available "
-                  onChange={handleState}
-                  name="availability"
-                >
-                  <option value="" disabled selected>
-                    Available
-                  </option>
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
-                </select>
-                <select
-                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none "
-                  placeholder="Catagory"
-                  onChange={handleState}
-                  name="category"
-                >
-                  <option value="" disabled selected>
-                    Select Category
-                  </option>
-                  <option value="fast-food">Fast Food</option>
-                  <option value="italian">Italian</option>
-                  <option value="chinese">Chinese</option>
-                  <option value="indian">Indian</option>
-                  <option value="desserts">Desserts</option>
-                </select>
-              </div>
-              <div className=" flex flex-col sm:flex-row items-center justify-start gap-[10px]">
-                <input
-                  type="file"
-                  accept="image/*"
-                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none "
-                />
-              </div>
-=======
               {error && <div className="text-red-500 mx-[auto]">{error}</div>}
->>>>>>> 366449e053b29f49f2b5fdad87006a5aa4fe4929
               <div className="flex  flex-col sm:flex-row items-center justify-center gap-[10px] relative top-[20px]">
                 <input
                   type="Submit"
