@@ -138,6 +138,7 @@ function AddItem() {
                   type="file"
                   accept="image/*"
                   onChange={(e) => SetImg(e.target.files[0])}
+                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                   required
                 />
               </div>

@@ -1,5 +1,7 @@
 // import { useState } from "react";
 
+import { Link } from "react-router-dom";
+
 function MenuAdmin({ data }) {
   const {
     Item_ID,
@@ -22,9 +24,16 @@ function MenuAdmin({ data }) {
         <td className="border-2 border-gray-500">{Description} </td>
         <td className="border-2 border-gray-500">{Availability}</td>
         <td className="border-2 border-gray-500 p-2">
-          <button className="bg-amber-500 text-white px-3 py-1 rounded">
-            Delete
-          </button>
+          <div className=" flex gap-[5px]">
+            <button className="bg-amber-500 text-white px-3 py-1 rounded">
+              Delete
+            </button>
+            <Link to="/updateitem">
+              <button className="bg-amber-500 text-white px-3 py-1 rounded">
+                Update
+              </button>
+            </Link>
+          </div>
         </td>
       </tr>
     </>
