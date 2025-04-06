@@ -1,7 +1,7 @@
 import { useState } from "react";
-function AddItem() {
+import { Link } from "react-router-dom";
+function UpdateItem() {
   const [formData, SetformData] = useState({
-<<<<<<< HEAD
     id: "",
     name: "",
 
@@ -10,75 +10,31 @@ function AddItem() {
     description: "",
     availability: "",
     catagory: "",
-=======
-    Item_ID: "",
-    Name: "",
-    Category: "",
-    Price: "",
-    Discount: "",
-    Description: "",
-    Availability: "",
->>>>>>> 366449e053b29f49f2b5fdad87006a5aa4fe4929
   });
-  const [error, setError] = useState(null);
-  const [Img, SetImg] = useState(null);
   const handleState = (event) => {
     SetformData({ ...formData, [event.target.name]: event.target.value });
   };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const data = new FormData();
-    data.append("Item_ID", formData.Item_ID);
-    data.append("Name", formData.Name);
-    data.append("Category", formData.Category);
-    data.append("Price", formData.Price);
-    data.append("Discount", formData.Discount);
-    data.append("Description", formData.Description);
-    data.append("Availability", formData.Availability);
-    data.append("Img", Img);
-
-    try {
-      const response = await fetch("http://localhost:3000/menu/Add", {
-        method: "POST",
-        body: data,
-        credentials: "include", // 👈 for cookies
-      });
-
-      const result = await response.json();
-      if (response.ok) {
-        setError("Item added successfully");
-      } else {
-        setError(result.message);
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-
   return (
     <>
       <div className=" w-[100%]  h-[100vh]">
         <div className=" flex items-center justify-center h-[80px] shadow-md">
           <div className="text-amber-600 font-semibold text-[25px] sm:text-[35px] md:text-[40px] lg:text-[40px] ">
-            Add Item
+            Update Item
           </div>
         </div>
-<<<<<<< HEAD
+        <div className="relative top-[30px]  h-[100px] w-[100px] sm:h-[150px] sm:w-[150px]   md:h-[170px] md:w-[170px] lg:h-[190px] lg:w-[190px] rounded-full mx-auto">
+          <img
+            src="/images/profile pic.webp"
+            className="size-full object-fit rounded-full"
+          />
+        </div>
         <form>
-=======
-        <form onSubmit={handleSubmit}>
->>>>>>> 366449e053b29f49f2b5fdad87006a5aa4fe4929
-          <div className=" h-[125vh] sm:h-[90vh] flex justify-center items-center border-2">
+          <div className=" h-[125vh] sm:h-[90vh] flex justify-center items-center ">
             <div className="flex flex-col gap-[15px]  ">
               <div className=" flex flex-col sm:flex-row items-center justify-center gap-[10px] ">
                 <input
                   type="text"
-<<<<<<< HEAD
                   name="id"
-=======
-                  name="Item_ID"
->>>>>>> 366449e053b29f49f2b5fdad87006a5aa4fe4929
                   className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                   placeholder="Enter Id"
                   onChange={handleState}
@@ -86,23 +42,17 @@ function AddItem() {
                 />
                 <input
                   type="text"
-<<<<<<< HEAD
                   name="name"
-=======
-                  name="Name"
->>>>>>> 366449e053b29f49f2b5fdad87006a5aa4fe4929
                   className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                   placeholder="Item Name"
                   onChange={handleState}
                   required
                 />
-<<<<<<< HEAD
-=======
               </div>
               <div className=" flex flex-col sm:flex-row items-center justify-center gap-[10px]">
                 <input
                   type="text"
-                  name="Price"
+                  name="price"
                   className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                   placeholder="Price"
                   onChange={handleState}
@@ -110,64 +60,13 @@ function AddItem() {
                 />
                 <input
                   type="text"
-                  name="Discount"
+                  name="discount="
                   className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                   placeholder="Discount price"
                   onChange={handleState}
-                />
-              </div>
-
-              <div className=" flex justify-center gap-[10px]">
-                <textarea
-                  rows="4"
-                  name="Description"
-                  placeholder="Description"
-                  onChange={handleState}
-                  required
-                  className=" outline-none
-         w-[300px] sm:w-[600px] md:w-[600px] lg:w-[600px]
-       pt-[15px] pb-[15px] pr-[20px] pl-[20px]  bg-[#ECECEC] rounded-[10px] overflow-hidden"
-                ></textarea>
-              </div>
-              <div className="  flex flex-col sm:flex-row items-center justify-center gap-[10px] ">
-                <select
-                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none "
-                  placeholder="Available "
-                  onChange={handleState}
-                  name="Availability"
-                >
-                  <option value="" disabled selected>
-                    Available
-                  </option>
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
-                </select>
-                <select
-                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none "
-                  placeholder="Catagory"
-                  onChange={handleState}
-                  name="Category"
-                >
-                  <option value="" disabled selected>
-                    Select Category
-                  </option>
-                  <option value="fast-food">Fast Food</option>
-                  <option value="italian">Italian</option>
-                  <option value="chinese">Chinese</option>
-                  <option value="indian">Indian</option>
-                  <option value="desserts">Desserts</option>
-                </select>
->>>>>>> 366449e053b29f49f2b5fdad87006a5aa4fe4929
-              </div>
-              <div className=" flex flex-col sm:flex-row items-center justify-start gap-[10px]">
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => SetImg(e.target.files[0])}
                   required
                 />
               </div>
-<<<<<<< HEAD
 
               <div className=" flex justify-center gap-[10px]">
                 <textarea
@@ -217,15 +116,14 @@ function AddItem() {
                   className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none "
                 />
               </div>
-=======
-              {error && <div className="text-red-500 mx-[auto]">{error}</div>}
->>>>>>> 366449e053b29f49f2b5fdad87006a5aa4fe4929
               <div className="flex  flex-col sm:flex-row items-center justify-center gap-[10px] relative top-[20px]">
-                <input
-                  type="Submit"
-                  value="Add"
-                  className="text-white  outline-none rounded-[30px] bg-amber-500 text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                />
+                <Link>
+                  <input
+                    type="Submit"
+                    value="Update"
+                    className="text-white  outline-none rounded-[30px] bg-amber-500 text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                  />
+                </Link>
               </div>
             </div>
           </div>
@@ -234,4 +132,4 @@ function AddItem() {
     </>
   );
 }
-export default AddItem;
+export default UpdateItem;

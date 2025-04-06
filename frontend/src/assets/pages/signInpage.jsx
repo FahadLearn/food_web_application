@@ -1,7 +1,8 @@
 // import Btn from "../components/input button";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Admin_login, User_Login } from "../api/user";
+import { universalLogin } from "../api/universalLogin";
+// import { Admin_login, User_Login } from "../api/user";
 function SignIn() {
   const [formData, SetformData] = useState({
     Email: "",
@@ -16,22 +17,32 @@ function SignIn() {
     event.preventDefault();
     if (!formData.Email || !formData.Password) {
       setError("Email and Password are required");
-      return;
     }
-    if (formData.Email.includes("@admin.com")) {
-      const result = await Admin_login(formData);
+    try {
+      const result = await universalLogin(formData);
       if (result.success) {
-        navigate("/menu_page");
+        switch (result.userType) {
+          case "Admin":
+            navigate("/menu_page");
+            break;
+          case "Customer":
+            navigate("/menu_page");
+            break;
+          case "Rider":
+            navigate("/riderdashbaord");
+            break;
+          case "Restaurant":
+            navigate("/restaurantDashboard");
+            break;
+          default:
+            setError("Unrecognized user type.");
+        }
       } else {
-        setError(result.error || "Something went wrong!");
+        setError(result.error || "Login failed");
       }
-    } else {
-      const result = await User_Login(formData);
-      if (result.success) {
-        navigate("/menu_page");
-      } else {
-        setError(result.error || "Something went wrong!");
-      }
+    } catch (error) {
+      console.error("Login error:", error);
+      setError("Something went wrong during login.");
     }
   };
 
