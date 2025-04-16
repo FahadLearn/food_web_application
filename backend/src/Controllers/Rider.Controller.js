@@ -1,6 +1,6 @@
 import {
   CreateRider,
-  FindByEmail,
+  FindRiderByEmail,
   FindById,
   UpdateRider,
 } from "../Models/Rider.Model.js";
@@ -53,7 +53,7 @@ export const createRider = async (req, res) => {
     //     .status(400)
     //     .json({ message: "Rider with this ID already exists." });
     // }
-    const existingRider = await FindByEmail({ Email }); // Adjust function if needed
+    const existingRider = await FindRiderByEmail({ Email }); // Adjust function if needed
     if (existingRider) {
       return res
         .status(400)
@@ -89,7 +89,7 @@ export const createRider = async (req, res) => {
 export const login = async (req, res) => {
   try {
     const { Email, Password } = req.body;
-    const user = await FindByEmail({ Email });
+    const user = await FindRiderByEmail({ Email });
     if (!user) return res.status(401).json({ message: "Invalid Email" });
     if (Password !== user.Password) {
       return res.status(401).json({ message: "Invalid password" });

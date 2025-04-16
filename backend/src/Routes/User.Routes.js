@@ -14,7 +14,7 @@ const UserRouter = express.Router();
 
 UserRouter.post("/Register", Register);
 UserRouter.get("/Profile", getUserProfile);
-UserRouter.post("/Login", Login);
+// UserRouter.post("/Login", Login);
 UserRouter.patch("/Update", chkUser, upload.single("IMG_URL"), updateUser);
 UserRouter.get("/chkLogin", chkLogin);
 UserRouter.post("/Admin_dashboard", adminLogin);

@@ -1,6 +1,21 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function RiderProfile() {
+  const [formData, setformData] = useState({
+    First_Name: "",
+    Last_Name: "",
+    City: "",
+    Vehicle: "",
+    Cnic: "",
+    Phone_No: "",
+    Date_of_Birth: "",
+    License: "",
+    Payment_Method: "",
+    Account_Title: "",
+    RIDER_ID: "",
+    IMG: "",
+  });
   return (
     <>
       <div className=" ">

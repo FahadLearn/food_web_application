@@ -55,7 +55,7 @@ export const FindById = async ({ Rider_ID }) => {
   }
 };
 
-export const FindByEmail = async ({ Email }) => {
+export const FindRiderByEmail = async ({ Email }) => {
   try {
     const sql = "SELECT * FROM rider WHERE Email =?";
     const values = [Email];

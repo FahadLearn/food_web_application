@@ -70,7 +70,7 @@ function App() {
           <Route path="/cuisine" element={<Cuisine />} />
           <Route path="/itemdesc" element={<ItemDescription />} />
           <Route path="/restaurantsignup" element={<RestaurantSignup />} />
-          <Route path="/updateitem" element={<UpdateItem />} />
+          <Route path="/updateitem/:Item_ID" element={<UpdateItem />} />
         </Routes>
       </Router>
     </>

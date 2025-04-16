@@ -3,7 +3,7 @@ import path from "path";
 import fs from "fs";
 
 // Ensure "uploads/customer" folder exists
-const customerDir = path.join("uploads", "customer");
+const customerDir = path.join("uploads", "Restaurants");
 if (!fs.existsSync(customerDir)) {
   fs.mkdirSync(customerDir, { recursive: true });
 }

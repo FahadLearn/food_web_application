@@ -12,6 +12,29 @@ function MenuAdmin({ data }) {
     Description,
     Availability,
   } = data;
+  const handleDelete = async (Item_ID) => {
+    try {
+      const res = await fetch(
+        `http://localhost:3000/menu/deleteItem/${Item_ID}`,
+        {
+          method: "DELETE",
+          credentials: "include",
+        }
+      );
+
+      const data = await res.json();
+      console.log(data); // Should say "Item deleted successfully"
+
+      if (res.ok) {
+        alert("Item deleted successfully!");
+        // Optional: refresh your list of items
+      } else {
+        alert(data.message || "Failed to delete item");
+      }
+    } catch (error) {
+      console.error("Delete error:", error);
+    }
+  };
 
   return (
     <>
@@ -25,10 +48,14 @@ function MenuAdmin({ data }) {
         <td className="border-2 border-gray-500">{Availability}</td>
         <td className="border-2 border-gray-500 p-2">
           <div className=" flex gap-[5px]">
-            <button className="bg-amber-500 text-white px-3 py-1 rounded">
+            <button
+              className="bg-amber-500 text-white px-3 py-1 rounded"
+              onClick={() => handleDelete(Item_ID)}
+            >
               Delete
             </button>
-            <Link to="/updateitem">
+
+            <Link to={`/updateitem/${Item_ID}`}>
               <button className="bg-amber-500 text-white px-3 py-1 rounded">
                 Update
               </button>
