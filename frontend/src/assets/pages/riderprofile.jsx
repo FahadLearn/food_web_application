@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function RiderProfile() {
-  const [formData, setformData] = useState({
+  const [formData, SetformData] = useState({
     First_Name: "",
     Last_Name: "",
     City: "",
@@ -13,9 +13,13 @@ function RiderProfile() {
     License: "",
     Payment_Method: "",
     Account_Title: "",
-    RIDER_ID: "",
-    IMG: "",
+    Email: "",
+    Password: "",
   });
+
+  const handleState = (event) => {
+    SetformData({ ...formData, [event.target.name]: event.target.value });
+  };
   return (
     <>
       <div className=" ">
@@ -35,96 +39,123 @@ function RiderProfile() {
           <div className="text-center">Your ID</div>
         </div>
         <form>
-          <div className=" mt-[65px]  flex flex-col justify-center items-center ">
-            <div className=" flex flex-col gap-[10px]">
-              <div className=" flex  flex-col sm:flex-row items-center justify-center">
-                <input
-                  type="text"
-                  name="Name"
-                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] sm:w-[605px] md:w-[605px] lg:w-[610px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                  placeholder="Name"
-                  required
-                />
-              </div>
-              <div className=" flex  flex-col sm:flex-row items-center justify-center">
-                <input
-                  type="text"
-                  name="email"
-                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] sm:w-[605px] md:w-[605px] lg:w-[610px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                  placeholder="Enter Email"
-                  required
-                />
-              </div>
-              <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
-                <input
-                  type="text"
-                  name="password"
-                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                  placeholder="Password"
-                  required
-                />
-                <input
-                  type="text"
-                  name="phone_number"
-                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                  placeholder="Phone Number"
-                  required
-                />
-              </div>
-              <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
-                <input
-                  type="text"
-                  name="active_contract"
-                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                  placeholder="Active Contract"
-                  required
-                />
-                <input
-                  type="text"
-                  name="joined_at"
-                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                  placeholder="Joined at"
-                  required
-                />
-              </div>
-              <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
-                <select
-                  name="vehicle"
-                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none"
-                >
-                  <option value="" disabled selected>
-                    Select a vehicle
-                  </option>
-                  <option value="bike">Bike</option>
-                  <option value="scooter">Scooter</option>
-                </select>
-                <input
-                  type="text"
-                  name="date_of_birth"
-                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                  placeholder="Date of Birth"
-                  required
-                />
-              </div>
-              <div className="text-[16px] text-amber-600 pl-[12px] ">
-                Enter front pic of Id card
-              </div>
-              <div className="flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
-                <input
-                  type="file"
-                  accept="image/*"
-                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px]  w-[300px]  pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                  placeholder="Upload Img"
-                  required
-                />
-                <input
-                  type="text"
-                  name="id_card"
-                  className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                  placeholder="IdCard Number"
-                  required
-                />
-              </div>
+          <div className="mt-[80px]  flex flex-col gap-[10px]">
+            <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
+              <input
+                type="text"
+                name="First_Name"
+                className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                placeholder="First Name"
+                onChange={handleState}
+                required
+              />
+              <input
+                type="text"
+                name="Last_Name"
+                className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                placeholder="Last Name"
+                onChange={handleState}
+                required
+              />
+            </div>
+            <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
+              <input
+                type="email"
+                name="Email"
+                className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                placeholder="Enter your email"
+                onChange={handleState}
+                required
+              />
+              <input
+                type="password"
+                name="Password"
+                className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                placeholder="Password"
+                onChange={handleState}
+                required
+              />
+            </div>
+            <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
+              <input
+                type="text"
+                name="City"
+                className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                placeholder="Enter City"
+                onChange={handleState}
+                required
+              />
+              <select
+                name="Vehicle"
+                className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none"
+                onChange={handleState}
+              >
+                <option value="" disabled selected>
+                  Select a vehicle
+                </option>
+                <option value="bike">Bike</option>
+                <option value="scooter">Scooter</option>
+              </select>
+            </div>
+            <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
+              <input
+                type="text"
+                name="License"
+                className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                placeholder="License"
+                onChange={handleState}
+                required
+              />
+
+              <input
+                type="text"
+                name="Date_of_Birth"
+                className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                placeholder="Date of Birth"
+                onChange={handleState}
+                required
+              />
+            </div>
+            <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
+              <select
+                name="Payment_Method"
+                className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none"
+                onChange={handleState}
+              >
+                <option value="" disabled selected>
+                  Select payment method
+                </option>
+                <option value="easypaisa">Easy Paisa</option>
+                <option value="Jazzcash">Jazz Cash</option>
+              </select>
+
+              <input
+                type="text"
+                name="Cnic"
+                className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                placeholder="CNIC"
+                onChange={handleState}
+                required
+              />
+            </div>
+            <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
+              <input
+                type="tel"
+                name="Phone_No"
+                className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                placeholder="Phone no"
+                onChange={handleState}
+                required
+              />
+
+              <input
+                type="text"
+                name="Account_Title"
+                className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+                placeholder="account_title"
+                onChange={handleState}
+                required
+              />
             </div>
             <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]  pt-[40px] pb-[40px]">
               <Link to="">

@@ -29,7 +29,7 @@ function MenuPage() {
   return (
     <>
       <Header />
-      <div className="border-2">
+      <div className="">
         <div className="mt-[10px] flex justify-center pt-[10px] pb-[10px]">
           <input
             type="text"
