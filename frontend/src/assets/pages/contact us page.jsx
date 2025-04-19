@@ -72,7 +72,7 @@ function Contact() {
                     rows="5"
                     className="text-white outline-none
                   border-2 w-[385px] sm:w-[570px] md:w-[590px] lg:w-[610px]
-                  pt-[6px] pb-[6px] pr-[7px] pl-[7px] border-white overflow-hidden"
+                  pt-[6px] pb-[6px] pr-[7px] pl-[7px] border-white scrollbar-hide"
                   ></textarea>
                 </div>
               </div>

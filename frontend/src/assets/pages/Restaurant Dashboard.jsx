@@ -1,11 +1,8 @@
 import { Link } from "react-router-dom";
-import cameraIcon from "/public/images/camera.jpg";
 
 import { useState, useEffect } from "react";
 
 function FoodDeliveryDashboard() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [stats, setStats] = useState({
     totalOrders: 0,
@@ -27,14 +24,6 @@ function FoodDeliveryDashboard() {
     return () => clearInterval(interval);
   }, []);
 
-  // Handle image upload
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      setSelectedImage(URL.createObjectURL(file));
-    }
-  };
-
   return (
     <>
       <div className="flex w-[100%] h-[100vh]">
@@ -55,6 +44,12 @@ function FoodDeliveryDashboard() {
             Food Delivery
           </div>
           <div className="flex flex-col top-[100px]  relative">
+            <Link
+              to="/restaurantprofile"
+              className="text-center text-white lg:text-[20px] pt-[8px] pb-[8px] border-t-1 border-gray-200 hover:bg-neutral-400 duration-400"
+            >
+              Profile
+            </Link>
             <Link
               to=""
               className="text-center text-white lg:text-[20px] pt-[8px] pb-[8px] border-t-1 border-gray-200 hover:bg-neutral-400 duration-400"
@@ -85,15 +80,22 @@ function FoodDeliveryDashboard() {
             >
               Subscription
             </Link>
-            <Link className="text-center text-white lg:text-[20px] pt-[8px] pb-[8px] border-t-1  border-gray-200 bg-amber-500">
+
+            <Link className="text-center text-white  lg:text-[20px] pt-[8px] pb-[8px] border-t-1 border-gray-200 hover:bg-neutral-400 duration-400">
               Payment
+            </Link>
+            <Link className="text-center text-white  lg:text-[20px] pt-[8px] pb-[8px] border-t-1 border-gray-200 hover:bg-neutral-400 duration-400">
+              Setting
+            </Link>
+            <Link className="text-center text-white lg:text-[20px] pt-[8px] pb-[8px] border-t-1  border-gray-200 bg-amber-500">
+              Logout
             </Link>
           </div>
         </div>
         <div className="w-[100%] sm:w-[70%] md:w-[73%] lg:w-[75%]">
-          <div className="flex items-center justify-between h-[70px] shadow-md">
+          <div className="flex items-center justify-center sm:justify-start h-[70px] shadow-md">
             <div
-              className="flex flex-col gap-[5px] relative left-[15px] block sm:hidden"
+              className="flex flex-col gap-[5px] relative right-[90px] block sm:hidden "
               onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             >
               <div className="border-2 w-[23px] "></div>
@@ -103,50 +105,8 @@ function FoodDeliveryDashboard() {
             <div className="relative sm:left-[15px] lg:left-[30px] font-semibold text-[20px] sm:text-[20px] md:text-[25px] lg:text-[30px]">
               Admin Dashboard
             </div>
-            <div className="h-[50px] w-[50px] relative right-[15px] lg:right-[30px] rounded-full">
-              <img
-                src={selectedImage || cameraIcon}
-                className="size-full rounded-full"
-                onClick={() => setIsVisible(!isVisible)}
-              />
-            </div>
           </div>
 
-          <div
-            className={`bg-gray-900 absolute right-[0px] top-[70px] text-white z-[1000] transition-all duration-300 sm:w-[30%] md:w-[25%] lg:w-[23%]  ml-auto ${
-              isVisible
-                ? "h-100  opacity-100"
-                : "h-0  opacity-0 overflow-hidden"
-            }`}
-          >
-            <div className=" w-[95%] mx-auto relative top-[40px]">
-              <h2 className="text-center  sm:text-[20px] md:text-[20px] lg:text-[25px] font-bold  ">
-                Upload an Image
-              </h2>
-
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleImageUpload}
-                className="block w-[85%] mx-auto relative top-[10px] text-sm text-gray-300 bg-gray-800 border border-gray-600 rounded-lg cursor-pointer focus:outline-none p-2"
-              />
-              <div className="flex flex-col relative top-[150px] text-center pt-[8px] pb-[8px]">
-                <Link
-                  className="pt-[8px] pb-[8px] text-[20px] border-t-1  border-gray-200
-               "
-                >
-                  Setting
-                </Link>
-
-                <Link
-                  className="pt-[8px] pb-[8px] text-[20px] bg-amber-500 border-t-1  border-gray-200
-               "
-                >
-                  Logout
-                </Link>
-              </div>
-            </div>
-          </div>
           <div className=" font-semibold text-[30px] sm:text-[25px] md:text-[30px] lg:text-[30px] relative top-[20px] left-[15px] lg:left-[30px] w-[200px]">
             DashBoard
           </div>
