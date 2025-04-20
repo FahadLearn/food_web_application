@@ -54,7 +54,7 @@ function AddItem() {
           </div>
         </div>
         <form onSubmit={handleSubmit}>
-          <div className=" h-[125vh] sm:h-[90vh] flex justify-center items-center border-2">
+          <div className=" h-[125vh] sm:h-[90vh] flex justify-center items-center ">
             <div className="flex flex-col gap-[15px]  ">
               <div className=" flex flex-col sm:flex-row items-center justify-center gap-[10px] ">
                 <input
@@ -101,7 +101,7 @@ function AddItem() {
                   required
                   className=" outline-none
          w-[300px] sm:w-[600px] md:w-[600px] lg:w-[600px]
-       pt-[15px] pb-[15px] pr-[20px] pl-[20px]  bg-[#ECECEC] rounded-[10px] overflow-hidden"
+       pt-[15px] pb-[15px] pr-[20px] pl-[20px]  bg-[#ECECEC] rounded-[10px] scrollbar-hide"
                 ></textarea>
               </div>
               <div className="  flex flex-col sm:flex-row items-center justify-center gap-[10px] ">

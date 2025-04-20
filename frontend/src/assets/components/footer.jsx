@@ -5,28 +5,30 @@ import { FaTwitter } from "react-icons/fa";
 function Footer() {
   return (
     <>
-      <div className="mt-[40px] w-[100%] h-[50vh] bg-[#212121] absolute -z-10 ">
-        <div className="flex justify-center items-center gap-[15px] w-[100%] h-[90%]  ">
-          <div className=" w-[15%] lg:w-[12%] ">
-            <div className="flex flex-col gap-[20px] w-[100%] h-[80%]  ">
-              <div className="flex w-[100%]  sm:gap-[10px] ">
-                <div className="sm:w-[60%]  font-bold text-amber-500 text-[20px] lg:text-[30px]">
-                  Foodies
-                </div>
+      <div className="mt-[40px] w-[100%] h-[60vh] sm:h-[50vh] bg-[#212121] absolute -z-10 ">
+        <div className="flex flex-col sm:flex-row  justify-center items-center sm:gap-[15px] w-[100%] h-[90%]  ">
+          <div className=" w-[100%] sm:w-[15%] lg:w-[12%] ">
+            <div className="block w-[200px]  mx-auto sm:hidden font-bold text-amber-500 text-[20px] ">
+              Foodies
+            </div>
+            <div className="flex sm:flex-col justify-center flex-row gap-[10px] sm:gap-[20px] w-[100%] h-[80%]  ">
+              <div className="hidden sm:block sm:w-[60%]  font-bold text-amber-500 text-[20px] lg:text-[30px]">
+                Foodies
               </div>
-              <div className=" sm:w-[120px] sm:text-[9px] md:text-[10px] md:w-[120px]  text-[#BBBBBB] relative  ">
+
+              <div className="w-[180px] sm:w-[120px] text-[12px] sm:text-[9px] md:text-[10px] md:w-[120px]  text-[#BBBBBB] relative  ">
                 Our job is to filling your tummy with delicious food and with
                 fast and free delivery.
               </div>
-              <div className="flex  sm:w-[100%] sm:h-[10%] sm:gap-[10px] ">
+              <div className="flex  sm:flex-row flex-col sm:w-[100%] sm:h-[10%] gap-[10px] sm:gap-[10px] ">
                 <FaInstagram className="text-[#424242] " />
                 <FaFacebook className="text-[#424242] " />
                 <FaTwitter className="text-[#424242] " />
               </div>
             </div>
           </div>
-          <div className=" flex justify-center w-[50%] h-[50%] ">
-            <div className=" h-[100%] w-[30%] ">
+          <div className=" sm:flex sm:justify-center w-[50%] h-[50%] hidden sm:block sm:flex-row ">
+            <div className="  w-[30%] ">
               <div className=" text-white sm:text-[14px] md:text-[16px]  font-semibold">
                 Company
               </div>
@@ -45,7 +47,7 @@ function Footer() {
                 </a>
               </div>
             </div>
-            <div className="h-[100%] w-[30%]">
+            <div className=" w-[30%]">
               <div className=" text-white sm:text-[14px]  md:text-[16px] font-semibold">
                 Contact
               </div>
@@ -61,7 +63,7 @@ function Footer() {
                 </a>
               </div>
             </div>
-            <div className="h-[100%] w-[20%] ">
+            <div className="w-[20%] ">
               <div className=" text-white sm:text-[14px] md:text-[16px] font-semibold">
                 Legal
               </div>
@@ -78,9 +80,9 @@ function Footer() {
               </div>
             </div>
           </div>
-          <div className=" h-[50%]">
+          <div className="mt-[10px] sm:mt-[0px] h-[50%]">
             <div className="w-[100%] h-[100%] ">
-              <div className=" sm:text-[14px] md:text-[18px] font-semibold text-[#BBBBBB]  sm:w-[100%] relative -top-[4px]">
+              <div className=" sm:text-[14px] md:text-[18px] font-semibold text-[#BBBBBB]  sm:w-[100%] relative   sm:-top-[4px]">
                 Get in Touch
               </div>
               <div className=" sm:w-[100%] sm:h-[20%]  flex flex-col sm:gap-[7px] relative top-[8px]">
@@ -91,19 +93,28 @@ function Footer() {
                   We’d love to hear from you
                 </a>
               </div>
-              <div className="relative top-[26px] sm:w-[100%] sm:h-[20%] ">
+              <div className="relative top-[26px] sm:w-[100%] sm:h-[20%]  flex ">
                 <form action="" method="">
                   <input
                     type="text"
-                    className=" relative  text-[12px] text-[#ADADAD] outline-none bg-[#424242] sm:pt-[10px] sm:pb-[10px] sm:pl-[5px] sm:pr-[5px] rounded-[5px] sm:w-[130px] md:w-[150px]"
+                    className=" relative  text-[12px] text-[#ADADAD] outline-none bg-[#424242] pt-[10px] pb-[10px] pl-[5px] pr-[5px] rounded-[5px] w-[130px] md:w-[150px]"
                     placeholder="Enter your email"
                   />
                 </form>
+                <div className=" w-[100%] h-[20%] block sm:hidden relative top-[5px] left-[20px]">
+                  <a
+                    href="#"
+                    className="  relative  pl-[15px] pr-[15px] pt-[5px] pb-[5px] text-[12px] rounded-[5px] bg-amber-500 text-white transition relative before:absolute before:top-[8px] before:-left-[7px] before:w-[80px] before:h-[25px] before:bg-amber-500 before:-z-1 before:opacity-[0.35] before:rounded-[9px] before:blur-[10px]
+ "
+                  >
+                    Submit
+                  </a>
+                </div>
               </div>
-              <div className="relative top-[45px] sm:w-[100%] sm:h-[20%] ">
+              <div className="relative top-[45px] sm:w-[100%] sm:h-[20%] hidden sm:block">
                 <a
                   href="#"
-                  className="  relative  sm:pl-[15px] sm:pr-[15px] sm:pt-[5px] sm:pb-[5px] sm:text-[12px] rounded-[5px] bg-amber-500 text-white transition relative before:absolute before:top-[8px] before:-left-[7px] before:w-[80px] before:h-[25px] before:bg-amber-500 before:-z-1 before:opacity-[0.35] before:rounded-[9px] before:blur-[10px]
+                  className="  relative  pl-[15px] pr-[15px] pt-[5px] pb-[5px] text-[12px] rounded-[5px] bg-amber-500 text-white transition relative before:absolute before:top-[8px] before:-left-[7px] before:w-[80px] before:h-[25px] before:bg-amber-500 before:-z-1 before:opacity-[0.35] before:rounded-[9px] before:blur-[10px]
  "
                 >
                   Submit

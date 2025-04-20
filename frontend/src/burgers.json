@@ -9,35 +9,35 @@
     },
     {
       "Name": "McChicken",
-     "Image_url": "/public/images/burger2.jpeg",
+     "Image_url": "/images/burger2.jpeg",
       "Description": "Crispy chicken patty with lettuce and mayo on a toasted bun.",
       "Price": 3.49,
       "Availability": "In Stock"
     },
     {
       "Name": "Quarter Pounder with Cheese",
-    "Image_url": "/public/images/burger3.jpeg",
+    "Image_url": "/images/burger3.jpeg",
       "Description": "A quarter-pound beef patty with cheese, pickles, onions, ketchup, and mustard.",
       "Price": 6.29,
       "Availability": "In Stock"
     },
     {
       "Name": "Filet-O-Fish",
-    "Image_url": "/public/images/burger4.jpeg",
+    "Image_url": "/images/burger4.jpeg",
       "Description": "A breaded fish fillet with tartar sauce and cheese on a steamed bun.",
       "Price": 4.99,
       "Availability": "In Stock"
     },
     {
       "Name": "McDouble",
-    "Image_url": "/public/images/burger5.webp",
+    "Image_url": "/images/burger5.webp",
       "Description": "Two beef patties, a slice of cheese, pickles, onions, ketchup, and mustard on a bun.",
       "Price": 2.99,
       "Availability": "In Stock"
     },
     {
       "name": "Cheeseburger",
-    "Image_url": "/public/images/burger6.jpg",
+    "Image_url": "/images/burger6.jpg",
       "Description": "A classic cheeseburger with a beef patty, cheese, pickles, onions, ketchup, and mustard.",
       "Price": 2.19,
       "Availability": "In Stock"

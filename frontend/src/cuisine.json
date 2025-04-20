@@ -8,35 +8,35 @@
     },
     {
       "Name": "McChicken",
-     "Image_url": "/public/images/burger2.jpeg",
+     "Image_url": "/images/burger2.jpeg",
      "rating":"0.00",
      "Offer": "Free delivery for first order"
      
     },
     {
       "Name": "Quarter Pounder with Cheese",
-    "Image_url": "/public/images/burger3.jpeg",
+    "Image_url": "/images/burger3.jpeg",
     "rating":"0.00",
     "Offer": "Free delivery for first order"
       
     },
     {
       "Name": "Filet-O-Fish",
-    "Image_url": "/public/images/burger4.jpeg",
+    "Image_url": "/images/burger4.jpeg",
     "rating":"0.00",
      "Offer": "Free delivery for first order"
      
     },
     {
       "Name": "McDouble",
-    "Image_url": "/public/images/burger5.webp",
+    "Image_url": "/images/burger5.webp",
     "rating":"0.00",
      "Offer": "Free delivery for first order"
      
     },
     {
       "Name": "Cheeseburger",
-    "Image_url": "/public/images/burger6.jpg",
+    "Image_url": "/images/burger6.jpg",
     "rating":"0.00",
       "Offer": "Free delivery for first order"
       

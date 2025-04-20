@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import burgers from "../../burgers.json";
 import Food_items from "../components/fooditems";
 import Footer from "../components/footer";
@@ -18,10 +19,41 @@ function BrandPage() {
             Macdonald-Cantt
           </div>
         </div>
-        <div className="mt-[20px] ">
-          <div className="text-center text-[25px] sm:text-[25px] md:text-[30px] lg:text-[35px] font-semibold">
-            Burgers
+        <div className="w-full scrollbar-hide overflow-x-auto">
+          <div className=" flex  justify-center items-center gap-[30px] pt-[20px] pb-[15px] whitespace-nowrap px-4 min-w-max">
+            <Link>
+              <div className="border-b-3 border-amber-600 text-[18px] font-semibold text-gray-800 ">
+                Pizza
+              </div>
+            </Link>
+            <Link>
+              <div className="border-b-3 border-white text-[18px] font-semibold text-gray-800 hover:border-b-3 hover:border-amber-600">
+                Burger
+              </div>
+            </Link>
+            <Link>
+              <div className="border-b-3 border-white text-[18px] font-semibold text-gray-800 hover:border-b-3 hover:border-amber-600">
+                Pasta
+              </div>
+            </Link>
+            <Link>
+              <div className="border-b-3 border-white text-[18px] font-semibold text-gray-800 hover:border-b-3 hover:border-amber-600">
+                Coldrinks
+              </div>
+            </Link>
+            <Link>
+              <div className="border-b-3 border-white text-[18px] font-semibold text-gray-800 hover:border-b-3 hover:border-amber-600">
+                Dessert
+              </div>
+            </Link>
+            <Link>
+              <div className="border-b-3 border-white text-[18px] font-semibold text-gray-800 hover:border-b-3 hover:border-amber-600">
+                Sandwiches
+              </div>
+            </Link>
           </div>
+        </div>
+        <div className="mt-[20px] ">
           <div className="mt-[20px] grid grid-col-1 sm:grid-cols-3 gap-[20px]">
             {burgers.map((item) => (
               <Food_items key={item.Item_ID} data={item} />
@@ -29,9 +61,6 @@ function BrandPage() {
           </div>
         </div>
         <div className="mt-[20px] ">
-          <div className="text-center text-[25px] sm:text-[25px] md:text-[30px] lg:text-[35px] font-semibold">
-            Pizza
-          </div>
           <div className="mt-[20px] grid grid-col-1 sm:grid-cols-3 gap-[20px]">
             {burgers.map((item) => (
               <Food_items key={item.Item_ID} data={item} />
@@ -39,9 +68,6 @@ function BrandPage() {
           </div>
         </div>
         <div className="mt-[20px] ">
-          <div className="text-center text-[25px] sm:text-[25px] md:text-[30px] lg:text-[35px] font-semibold">
-            Dessert
-          </div>
           <div className="mt-[20px] grid grid-col-1 sm:grid-cols-3 gap-[20px]">
             {burgers.map((item) => (
               <Food_items key={item.Item_ID} data={item} />
