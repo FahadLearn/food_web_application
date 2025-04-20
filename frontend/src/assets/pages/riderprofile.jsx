@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 function RiderProfile() {
@@ -16,9 +16,45 @@ function RiderProfile() {
     Email: "",
     Password: "",
   });
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const res = await fetch("http://localhost:3000/Rider/Profile", {
+        method: "GET",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+      });
+      const data = await res.json();
+      SetformData(data);
+    };
 
+    fetchProfile();
+  }, []);
   const handleState = (event) => {
     SetformData({ ...formData, [event.target.name]: event.target.value });
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const newData = new FormData();
+    newData.append("First_Name", formData.First_Name);
+    newData.append("Last_Name", formData.Last_Name);
+    newData.append("City", formData.City);
+    newData.append("Vehicle", formData.Vehicle);
+    newData.append("Cnic", formData.Cnic);
+    newData.append("Phone_No", formData.Phone_No);
+    newData.append("Date_of_Birth", formData.Date_of_Birth);
+    newData.append("License", formData.License);
+    newData.append("Payment_Method", formData.Payment_Method);
+    newData.append("Account_Title", formData.Account_Title);
+    newData.append("Email", formData.Email);
+    newData.append("Password", formData.Password);
+
+    const response = await fetch("http://localhost:3000/Rider/updateProfile", {
+      method: "PATCH",
+      credentials: "include",
+      body: newData,
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.message);
   };
   return (
     <>
@@ -38,14 +74,14 @@ function RiderProfile() {
           </div>
           <div className="text-center">Your ID</div>
         </div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="mt-[80px]  flex flex-col gap-[10px]">
             <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
               <input
                 type="text"
                 name="First_Name"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                placeholder="First Name"
+                value={formData.First_Name}
                 onChange={handleState}
                 required
               />
@@ -53,7 +89,7 @@ function RiderProfile() {
                 type="text"
                 name="Last_Name"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                placeholder="Last Name"
+                value={formData.Last_Name}
                 onChange={handleState}
                 required
               />
@@ -63,7 +99,7 @@ function RiderProfile() {
                 type="email"
                 name="Email"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                placeholder="Enter your email"
+                value={formData.Email}
                 onChange={handleState}
                 required
               />
@@ -71,7 +107,7 @@ function RiderProfile() {
                 type="password"
                 name="Password"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                placeholder="Password"
+                value={formData.Password}
                 onChange={handleState}
                 required
               />
@@ -81,18 +117,17 @@ function RiderProfile() {
                 type="text"
                 name="City"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                placeholder="Enter City"
+                value={formData.City}
                 onChange={handleState}
                 required
               />
               <select
                 name="Vehicle"
+                value={formData.Vehicle}
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none"
                 onChange={handleState}
               >
-                <option value="" disabled selected>
-                  Select a vehicle
-                </option>
+                <option value="">Select a vehicle</option>
                 <option value="bike">Bike</option>
                 <option value="scooter">Scooter</option>
               </select>
@@ -102,7 +137,7 @@ function RiderProfile() {
                 type="text"
                 name="License"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                placeholder="License"
+                value={formData.License}
                 onChange={handleState}
                 required
               />
@@ -111,7 +146,7 @@ function RiderProfile() {
                 type="text"
                 name="Date_of_Birth"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                placeholder="Date of Birth"
+                value={formData.Date_of_Birth}
                 onChange={handleState}
                 required
               />
@@ -119,12 +154,11 @@ function RiderProfile() {
             <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
               <select
                 name="Payment_Method"
+                value={formData.Payment_Method}
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none"
                 onChange={handleState}
               >
-                <option value="" disabled selected>
-                  Select payment method
-                </option>
+                <option value="">Select payment method</option>
                 <option value="easypaisa">Easy Paisa</option>
                 <option value="Jazzcash">Jazz Cash</option>
               </select>
@@ -132,6 +166,7 @@ function RiderProfile() {
               <input
                 type="text"
                 name="Cnic"
+                value={formData.Cnic}
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="CNIC"
                 onChange={handleState}
@@ -143,7 +178,7 @@ function RiderProfile() {
                 type="tel"
                 name="Phone_No"
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                placeholder="Phone no"
+                value={formData.Phone_No}
                 onChange={handleState}
                 required
               />
@@ -151,6 +186,7 @@ function RiderProfile() {
               <input
                 type="text"
                 name="Account_Title"
+                value={formData.Account_Title}
                 className="text-gray-500  outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
                 placeholder="account_title"
                 onChange={handleState}
@@ -158,20 +194,17 @@ function RiderProfile() {
               />
             </div>
             <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]  pt-[40px] pb-[40px]">
-              <Link to="">
-                <input
-                  type="Submit"
-                  value="Delete Account"
-                  className="text-white  outline-none rounded-[30px] bg-amber-500 text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                />
-              </Link>
-              <Link to="">
-                <input
-                  type="Submit"
-                  value="Save information"
-                  className="text-white  outline-none rounded-[30px] bg-amber-500 text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
-                />
-              </Link>
+              {/* <input
+                type="Submit"
+                value="Delete Account"
+                className="text-white  outline-none rounded-[30px] bg-amber-500 text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+              /> */}
+
+              <input
+                type="Submit"
+                value="Save information"
+                className="text-white  outline-none rounded-[30px] bg-amber-500 text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] "
+              />
             </div>
           </div>
         </form>
