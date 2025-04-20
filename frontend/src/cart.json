@@ -1,0 +1,40 @@
+[
+    {
+      "Name": "Big Mac",
+       "des": "A juicy beef burger with lettuce, tomato, and cheese.",
+      "Image_url": "/images/burger1.jpg",
+      "price":"956",
+      "quantity": "1"
+    },
+    {
+        "Name": "Big Mac",
+         "des": "A juicy beef burger with lettuce, tomato, and cheese.",
+        "Image_url": "/images/burger1.jpg",
+        "price":"956",
+        "quantity": "1"
+      },
+      {
+        "Name": "Big Mac",
+         "des": "A juicy beef burger with lettuce, tomato, and cheese.",
+        "Image_url": "/images/burger1.jpg",
+        "price":"956",
+        "quantity": "1"
+      },
+      {
+        "Name": "Big Mac",
+         "des": "A juicy beef burger with lettuce, tomato, and cheese.",
+        "Image_url": "/images/burger1.jpg",
+        "price":"956",
+        "quantity": "1"
+      },
+      {
+        "Name": "Big Mac",
+         "des": "A juicy beef burger with lettuce, tomato, and cheese.",
+        "Image_url": "/images/burger1.jpg",
+        "price":"956",
+        "quantity": "1"
+      }
+     
+    
+  ]
+
