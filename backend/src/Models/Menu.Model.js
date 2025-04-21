@@ -121,3 +121,14 @@ export const Get_Items_By_Category = async ({ Category }) => {
     throw new Error(error);
   }
 };
+
+export const GetAllMenu = async () => {
+  try {
+    const sql = `SELECT * FROM MENU`;
+    const [rows] = await db.execute(sql);
+    return rows;
+  } catch (error) {
+    console.error(error);
+    throw new Error(error);
+  }
+};

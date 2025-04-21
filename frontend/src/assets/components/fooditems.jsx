@@ -8,17 +8,17 @@ function Food_items({ data }) {
     Price,
     Discount,
     Description,
-    Image_url,
+    Img,
     Availability,
   } = data;
-
   return (
-    <Link to="/itemdesc">
+    <Link to={`/itemdesc/${Item_ID}`}>
       <ul key={Item_ID} className="flex flex-col gap-[2px]  ">
         <li className="w-[380px] sm:w-[200px] sm:h-[130px] md:w-[230px] md:h-[160px] lg:w-[320px] lg:h-[200px] mx-auto  rounded-[10px]">
           <img
-            src={Image_url}
+            src={`http://localhost:3000${Img}`}
             alt={Name}
+            loading="lazy"
             className=" h-[100%] w-[100%] object-fit  rounded-[10px] "
           />
         </li>

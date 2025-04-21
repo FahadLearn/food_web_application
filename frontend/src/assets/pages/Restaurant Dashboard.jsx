@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useState, useEffect } from "react";
 
 function FoodDeliveryDashboard() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const Navigate = useNavigate();
   const [stats, setStats] = useState({
     totalOrders: 0,
     totalDelivered: 0,
@@ -23,7 +24,23 @@ function FoodDeliveryDashboard() {
     const interval = setInterval(updateDashboard, 5000);
     return () => clearInterval(interval);
   }, []);
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:3000/restaurant/logout", {
+        method: "POST",
+        credentials: "include",
+      });
+      const data = await response.json();
+      Navigate("/Sign_In");
 
+      if (!response.ok) {
+        return { success: false, error: data.message || "Login failed" };
+      }
+    } catch (error) {
+      console.error("Logout error:", error.message);
+    }
+  };
   return (
     <>
       <div className="flex w-[100%] h-[100vh]">
@@ -87,7 +104,10 @@ function FoodDeliveryDashboard() {
             <Link className="text-center text-white  lg:text-[20px] pt-[8px] pb-[8px] border-t-1 border-gray-200 hover:bg-neutral-400 duration-400">
               Setting
             </Link>
-            <Link className="text-center text-white lg:text-[20px] pt-[8px] pb-[8px] border-t-1  border-gray-200 bg-amber-500">
+            <Link
+              className="text-center text-white lg:text-[20px] pt-[8px] pb-[8px] border-t-1  border-gray-200 bg-amber-500"
+              onClick={handleLogout}
+            >
               Logout
             </Link>
           </div>

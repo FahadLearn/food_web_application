@@ -54,8 +54,8 @@ function UpdateItem() {
     SetformData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
+    // e.preventDefault();
 
     const form = new FormData();
     form.append("Item_ID", formData.Item_ID); // Make sure to append Item_ID
@@ -163,9 +163,9 @@ function UpdateItem() {
                   value={formData.Availability}
                   onChange={handleState}
                 >
-                  <option value="">Available</option>
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
+                  <option value="">Availability</option> {/* Neutral label */}
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
                 </select>
                 <select
                   className="text-gray-500 outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none"
@@ -173,12 +173,13 @@ function UpdateItem() {
                   onChange={handleState}
                   name="Category"
                 >
-                  <option value="">Select Category</option>
+                  <option value=" ">Select Category</option>
                   <option value="fast-food">Fast Food</option>
                   <option value="italian">Italian</option>
                   <option value="chinese">Chinese</option>
                   <option value="indian">Indian</option>
                   <option value="desserts">Desserts</option>
+                  <option value="Chicken">Chicken</option>
                 </select>
               </div>
               <div className="flex flex-col sm:flex-row items-center justify-start gap-[10px]">

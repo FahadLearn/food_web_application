@@ -176,7 +176,6 @@ export const getUserProfile = async (req, res) => {
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };
-// ✅ Update User
 
 export const chkLogin = async (req, res) => {
   try {
@@ -264,7 +263,10 @@ export const updateUser = async (req, res) => {
 
     // ✅ Old Image Handling (Fixed `path = string` error)
     if (user.IMG_URL) {
-      const oldImagePath = path.join("uploads", path.basename(user.IMG_URL));
+      const oldImagePath = path.join(
+        "uploads/customer",
+        path.basename(user.IMG_URL)
+      );
       if (fs.existsSync(oldImagePath)) {
         fs.unlinkSync(oldImagePath);
       }
@@ -272,10 +274,19 @@ export const updateUser = async (req, res) => {
 
     // ✅ New Image Handling
     if (req.file && req.file.filename) {
-      IMG_URL = `/uploads/${req.file.filename}`;
+      IMG_URL = `/uploads/customer/${req.file.filename}`;
     }
 
     // ✅ Update user in database
+    // ✅ Save new image path (if uploaded)
+    let newImagePath;
+    if (req.file && req.file.filename) {
+      newImagePath = `/uploads/customer/${req.file.filename}`;
+    } else {
+      newImagePath = user.IMG_URL; // fallback to old image
+    }
+
+    // ✅ Update user first
     const updatedRows = await UpdateUser({
       Customer_ID: Customer_ID,
       Name: req.body.Name || user.Name,
@@ -283,14 +294,29 @@ export const updateUser = async (req, res) => {
       Password: req.body.Password || user.Password,
       Address: req.body.Address || user.Address,
       Phone_Number: req.body.Phone_Number || user.Phone_Number,
-      IMG_URL: IMG_URL,
+      IMG_URL: newImagePath,
     });
 
-    if (updatedRows === 0) {
-      return res.status(400).json({ message: "No changes made." });
+    // ✅ Then safely delete old image (if different)
+    if (
+      updatedRows > 0 &&
+      req.file &&
+      user.IMG_URL &&
+      user.IMG_URL !== newImagePath
+    ) {
+      const oldImagePath = path.join(
+        "uploads/customer",
+        path.basename(user.IMG_URL)
+      );
+      if (fs.existsSync(oldImagePath)) {
+        fs.unlinkSync(oldImagePath);
+      }
     }
 
-    res.status(200).json({ message: "User profile updated successfully." });
+    res.status(200).json({
+      message: "User profile updated successfully.",
+      IMG_URL: IMG_URL,
+    });
   } catch (error) {
     console.error("❌ Error updating user:", error);
     res.status(500).json({ message: "Internal Server Error" });
