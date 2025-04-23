@@ -69,7 +69,10 @@ function App() {
 
           <Route path="/brandpage" element={<BrandPage />} />
           <Route path="/cuisine" element={<Cuisine />} />
-          <Route path="/itemdesc" element={<ItemDescription />} />
+          {/* <Route path="/itemdesc" element={<ItemDescription />} />
+           */}
+          <Route path="/itemdesc/:Item_ID" element={<ItemDescription />} />
+
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkoutpage" element={<Checkout />} />
           <Route

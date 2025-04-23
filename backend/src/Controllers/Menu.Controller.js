@@ -4,6 +4,7 @@ import {
   Delete_Item,
   FindById,
   Get_Items_By_Restaurant,
+  GetAllMenu,
   Update_Item,
 } from "../Models/Menu.Model.js";
 import fs from "fs";
@@ -206,6 +207,22 @@ export const getMenuItem = async (req, res) => {
     return res.status(200).json(item);
   } catch (error) {
     console.error("Error fetching menu item:", error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+export const getALLmenu = async (req, res) => {
+  try {
+    const menu = await GetAllMenu();
+    if (!menu) {
+      return res.status(404).json({ message: "Menu not found" });
+    }
+    return res.status(200).json({
+      message: "Menu fetched successfully",
+      menu,
+    });
+  } catch (error) {
+    console.error("Error fetching menu:", error);
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };

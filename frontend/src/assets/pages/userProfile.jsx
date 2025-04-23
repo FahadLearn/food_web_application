@@ -24,6 +24,7 @@ function UserProfile() {
       .then((res) => res.json())
       .then((data) => {
         if (data) {
+          console.log(data);
           setFormData({
             Customer_ID: data.Customer_ID || "",
             Name: data.Name || "",
@@ -35,19 +36,20 @@ function UserProfile() {
               ? `http://localhost:3000${data.IMG_URL}`
               : null,
           });
+          console.log(data.IMG_URL);
           setSelectedImage(
             data.IMG_URL ? `http://localhost:3000${data.IMG_URL}` : null
           );
         }
       })
       .catch((err) => console.error("Error fetching user data:", err));
-  }, []); // ✅ Empty Dependency Array (Sirf Ek Baar Run Karega)
+  }, []);
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
-      console.log("📸 Selected File:", file); // ✅ Debugging
-      setSelectedImage(URL.createObjectURL(file)); // ✅ Preview ke liye URL
+      console.log("📸 Selected File:", file);
+      setSelectedImage(URL.createObjectURL(file));
       setFormData((prev) => ({
         ...prev,
         IMG_URL: file, // ✅ Ensure File Object is Stored
@@ -69,10 +71,10 @@ function UserProfile() {
     formDataToSend.append("Phone_Number", formData.Phone_Number);
 
     if (formData.IMG_URL instanceof File) {
-      console.log("📸 Uploading Image:", formData.IMG_URL.name); // ✅ Debugging
+      console.log("📸 Uploading Image:", formData.IMG_URL.name);
       formDataToSend.append("IMG_URL", formData.IMG_URL);
     } else {
-      console.warn("🚫 No new image selected!");
+      console.warn("No new image selected!");
     }
 
     try {
@@ -85,7 +87,15 @@ function UserProfile() {
       const data = await response.json();
       if (!response.ok) throw new Error(data.message);
 
-      setMessage("✅ Profile updated successfully!");
+      // ✅ Update image on frontend too
+      if (data.IMG_URL) {
+        setSelectedImage(`http://localhost:3000${data.IMG_URL}`);
+        setFormData((prev) => ({
+          ...prev,
+          IMG_URL: `http://localhost:3000${data.IMG_URL}`,
+        }));
+        setMessage("Profile Updated Successfully!");
+      }
     } catch (error) {
       console.error("❌ Update Failed:", error);
       setMessage("❌ Error: " + error.message);
@@ -109,7 +119,7 @@ function UserProfile() {
                       selectedImage
                         ? selectedImage
                         : formData.IMG_URL
-                        ? formData.IMG_URL // ✅ Full path directly use karein
+                        ? formData.IMG_URL
                         : cameraIcon
                     }
                     onError={(e) => {

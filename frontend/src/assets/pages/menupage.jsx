@@ -1,13 +1,35 @@
 import Header from "../components/Header";
-import food from "../../food_items.json";
+// import food from "../../food_items.json";
 import Food_items from "../components/fooditems";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import Footer from "../components/footer";
 import { Link } from "react-router-dom";
-
-// there u go
 function MenuPage() {
+  const [menu, setMenu] = useState([]);
+  useEffect(() => {
+    const fetchMenu = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/menu/getAllmenu", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+        if (!res.ok) {
+          return { message: "Something went wrong" };
+        }
+        const data = await res.json();
+        const items = data.menu.slice(0, 20, 3);
+        console.log("Fetched data:", items);
+        setMenu(items);
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
+    fetchMenu();
+  }, []);
+  useEffect(() => {
+    console.log("Menu array", menu);
+  }, [menu]);
   const scrollRef = useRef(null);
 
   // Function to scroll manually
@@ -41,7 +63,7 @@ function MenuPage() {
           Top Restaurant
         </div>
         <div className="mt-[20px] grid grid-col-1 sm:grid-cols-3 gap-[20px]">
-          {food.map((item) => (
+          {menu.map((item) => (
             <Food_items key={item.Item_ID} data={item} />
           ))}
         </div>
