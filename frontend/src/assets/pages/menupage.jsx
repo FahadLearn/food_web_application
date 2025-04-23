@@ -6,6 +6,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import Footer from "../components/footer";
 import { Link } from "react-router-dom";
 function MenuPage() {
+  const [restaurant, Setrestaurant] = useState([]);
   const [menu, setMenu] = useState([]);
   useEffect(() => {
     const fetchMenu = async () => {
@@ -18,7 +19,7 @@ function MenuPage() {
           return { message: "Something went wrong" };
         }
         const data = await res.json();
-        const items = data.menu.slice(0, 20, 3);
+        const items = data.menu;
         console.log("Fetched data:", items);
         setMenu(items);
       } catch (error) {
@@ -28,8 +29,27 @@ function MenuPage() {
     fetchMenu();
   }, []);
   useEffect(() => {
-    console.log("Menu array", menu);
-  }, [menu]);
+    const fetchRest = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/restaurant/allRest", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        if (!res.ok) {
+          throw new Error("Failed to fetch restaurants");
+        }
+        const data = await res.json();
+        const rest = data.row;
+        Setrestaurant(rest);
+        console.log("restaurants", rest);
+      } catch (err) {
+        console.error("Restaurant fetch error:", err.message);
+      }
+    };
+    fetchRest();
+  }, []);
   const scrollRef = useRef(null);
 
   // Function to scroll manually
@@ -160,8 +180,9 @@ function MenuPage() {
           </div>
           <div className=" flex flex-row gap-[20px] sm:gap-[0px] justify-center items-center sm:flex-col w-[100%] h-[95vh] sm:h-[65vh] md:h-[75vh] lg:h-[80vh] ">
             <div className=" flex flex-col sm:flex-row  gap-[15px] lg:gap-[20px] items-center justify-center  sm:w-[100%] h-[100%] ">
-              <Link to="/brandpage">
-                <div className="flex flex-col gap-[5px] ">
+              {/* <Link to={`/brandpage/${restaurant[0].Restaurant_ID}`}>
+             
+              <div className="flex flex-col gap-[5px] ">
                   <div className=" h-[120px] w-[170px] sm:h-[140px]  sm:w-[190px] md:h-[160px]  md:w-[200px] lg:h-[170px]  lg:w-[220px] shadow-sm drop-shadow-md">
                     <img
                       src="/images/mac.webp"
@@ -170,12 +191,39 @@ function MenuPage() {
                   </div>
                   <div className=" text-center">
                     <Link className="text-[18px]  font-semibold ">
-                      Mcdonald
+                      {restaurant.map((rest) => (
+                        <div key={rest.Restaurant_ID}>
+                          <h2>{rest.Business_Name}</h2>
+                          {/* <p>ID: {rest.Restaurant_ID}</p> */}
+              {/* </div>
+                      ))}
                     </Link>
                   </div>
                 </div>
-              </Link>
-              <div className=" flex flex-col gap-[5px]">
+              </Link> */}
+              {restaurant.map((rest) => (
+                <Link
+                  key={rest.Restaurant_ID}
+                  to={`/brandpage/${rest.Restaurant_ID}`}
+                >
+                  <div className="flex flex-col gap-[5px] ">
+                    <div className=" h-[120px] w-[170px] sm:h-[140px] sm:w-[190px] md:h-[160px] md:w-[200px] lg:h-[170px] lg:w-[220px] shadow-sm drop-shadow-md">
+                      <img
+                        src="/images/mac.webp" // 👈 You can also make this dynamic if needed
+                        className="size-full object-cover"
+                        alt={rest.Business_Name}
+                      />
+                    </div>
+                    <div className=" text-center">
+                      <h2 className="text-[18px] font-semibold">
+                        {rest.Business_Name}
+                      </h2>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+
+              {/* <div className=" flex flex-col gap-[5px]">
                 <div className=" border-red-700 h-[120px] w-[170px] sm:h-[140px] sm:w-[190px] md:h-[160px]  md:w-[200px] lg:h-[170px]  lg:w-[220px] shadow-sm drop-shadow-md">
                   <img
                     src="/images/kfc.png"
@@ -235,9 +283,9 @@ function MenuPage() {
                 <div className="text-center">
                   <Link className="text-[18px] text-amber-700 font-semibold  ">
                     Hardee's
-                  </Link>
-                </div>
-              </div>
+                  </Link> */}
+              {/* </div> */}
+              {/* </div> */}
             </div>
           </div>
         </div>

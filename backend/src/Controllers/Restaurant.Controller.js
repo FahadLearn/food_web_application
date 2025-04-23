@@ -1,6 +1,7 @@
 import {
   chkBusiness,
   FindRestById,
+  GetAllRest,
   Register,
   UpdateRes,
 } from "../Models/Restaurant.Model.js";
@@ -163,6 +164,16 @@ export const restProfile = async (req, res) => {
     }
   } catch (error) {
     console.error("Error updating restaurant:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+export const getRest = async (req, res) => {
+  try {
+    const row = await GetAllRest();
+    res.status(200).json({ message: "Restaurant fetched", row });
+  } catch (error) {
+    console.error("Error fetching restaurants:", error);
     res.status(500).json({ message: "Internal Server Error" });
   }
 };

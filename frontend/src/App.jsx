@@ -67,7 +67,7 @@ function App() {
           <Route path="/ordersManagement" element={<OrdersManagement />} />
           <Route path="/customer_managment" element={<CustomersManagement />} />
 
-          <Route path="/brandpage" element={<BrandPage />} />
+          <Route path="/brandpage/:Restaurant_ID" element={<BrandPage />} />
           <Route path="/cuisine" element={<Cuisine />} />
           {/* <Route path="/itemdesc" element={<ItemDescription />} />
            */}

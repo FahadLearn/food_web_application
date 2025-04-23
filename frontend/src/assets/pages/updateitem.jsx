@@ -54,8 +54,8 @@ function UpdateItem() {
     SetformData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = async () => {
-    // e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
     const form = new FormData();
     form.append("Item_ID", formData.Item_ID); // Make sure to append Item_ID

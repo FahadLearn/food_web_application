@@ -150,3 +150,14 @@ export const UpdateRes = async ({
     throw new Error(error);
   }
 };
+
+export const GetAllRest = async () => {
+  try {
+    const sql = `SELECT * FROM restaurants`;
+    const [rows] = await db.execute(sql);
+    return rows;
+  } catch (error) {
+    console.error(error);
+    throw new Error(error);
+  }
+};

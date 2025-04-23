@@ -1,9 +1,31 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import burgers from "../../burgers.json";
 import Food_items from "../components/fooditems";
 import Footer from "../components/footer";
 import Header from "../components/Header";
+import { useEffect, useState } from "react";
 function BrandPage() {
+  const [category, setCategory] = useState([]);
+  const { Restaurant_ID } = useParams();
+
+  useEffect(() => {
+    const fetchCat = async () => {
+      const res = await fetch(
+        `http://localhost:3000/menu/Dis_cat/${Restaurant_ID}`,
+        {
+          method: "get",
+          headers: {
+            "Content-type": "application/json",
+          },
+        }
+      );
+      const data = await res.json();
+      setCategory(data.categories);
+    };
+    fetchCat();
+  }, [Restaurant_ID]);
+  console.log(category);
+
   return (
     <>
       <Header />
@@ -21,7 +43,7 @@ function BrandPage() {
         </div>
         <div className="w-full scrollbar-hide overflow-x-auto">
           <div className=" flex  justify-center items-center gap-[30px] pt-[20px] pb-[15px] whitespace-nowrap px-4 min-w-max">
-            <Link>
+            {/* <Link>
               <div className="border-b-3 border-amber-600 text-[18px] font-semibold text-gray-800 ">
                 Pizza
               </div>
@@ -50,7 +72,16 @@ function BrandPage() {
               <div className="border-b-3 border-white text-[18px] font-semibold text-gray-800 hover:border-b-3 hover:border-amber-600">
                 Sandwiches
               </div>
-            </Link>
+            </Link> */}
+            {/* {category.map((cat, index) => (
+              <Link
+                key={index}
+                // to={`/category/${cat.toLowerCase().replace(/\s+/g, "-")}`}
+                // className="text-amber-600 font-medium hover:underline"
+              >
+                {cat}
+              </Link>
+            ))} */}
           </div>
         </div>
         <div className="mt-[20px] ">
