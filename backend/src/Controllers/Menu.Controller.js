@@ -2,6 +2,8 @@ import path from "path";
 import {
   Add_Item,
   Delete_Item,
+  Distinct_Category,
+  Distinct_Restaurant_Category,
   FindById,
   Get_Items_By_Restaurant,
   GetAllMenu,
@@ -224,5 +226,31 @@ export const getALLmenu = async (req, res) => {
   } catch (error) {
     console.error("Error fetching menu:", error);
     return res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+export const fetchCategories = async (req, res) => {
+  try {
+    const rows = await Distinct_Category();
+    const categories = rows.map((row) => row.Category);
+    res.json(categories);
+  } catch (err) {
+    console.error("Error fetching categories:", err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+export const getRestaurantCategory = async (req, res) => {
+  try {
+    const { Restaurant_ID } = req.params;
+    const categories = await Distinct_Restaurant_Category({ Restaurant_ID });
+    if (!categories) {
+      res.status(400).json({ message: "Restaurant ID is required." });
+    }
+    res
+      .status(201)
+      .json({ message: "Categories fetched Successfully", categories });
+  } catch (error) {
+    console.error("Error fetching categories:", error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 };

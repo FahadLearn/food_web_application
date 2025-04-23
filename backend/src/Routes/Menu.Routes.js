@@ -2,9 +2,11 @@ import express from "express";
 import {
   addItem,
   delete_Item,
+  fetchCategories,
   Get_menu,
   getALLmenu,
   getMenuItem,
+  getRestaurantCategory,
   update_Item,
 } from "../Controllers/Menu.Controller.js";
 
@@ -17,4 +19,6 @@ Menu_Route.get("/getMenu", Get_menu);
 Menu_Route.get("/getItem/:Item_ID", getMenuItem);
 Menu_Route.delete("/deleteItem/:Item_ID", delete_Item);
 Menu_Route.get("/getAllMenu", getALLmenu);
+Menu_Route.get("/Dis_cat", fetchCategories);
+Menu_Route.get("/Dis_cat/:Restaurant_ID", getRestaurantCategory);
 export default Menu_Route;

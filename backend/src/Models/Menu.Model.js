@@ -132,3 +132,26 @@ export const GetAllMenu = async () => {
     throw new Error(error);
   }
 };
+
+export const Distinct_Category = async () => {
+  try {
+    const sql = `SELECT DISTINCT Category from Menu`;
+    const [rows] = await db.execute(sql);
+    return rows;
+  } catch (error) {
+    console.error(error);
+    throw new Error(error);
+  }
+};
+
+export const Distinct_Restaurant_Category = async ({ Restaurant_ID }) => {
+  try {
+    const sql = `SELECT DISTINCT Category from Menu WHERE Restaurant_ID = ?`;
+    const value = [Restaurant_ID];
+    const [rows] = await db.execute(sql, value);
+    return rows;
+  } catch (error) {
+    console.error(error);
+    throw new Error(error);
+  }
+};
