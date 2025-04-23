@@ -167,26 +167,21 @@ function UpdateItem() {
                   <option value="yes">Yes</option>
                   <option value="no">No</option>
                 </select>
-                <select
-                  className="text-gray-500 outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px] appearance-none"
+                <input
+                  type="text"
+                  name="category"
+                  className="text-gray-500 outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px]"
                   value={formData.Category}
                   onChange={handleState}
-                  name="Category"
-                >
-                  <option value=" ">Select Category</option>
-                  <option value="fast-food">Fast Food</option>
-                  <option value="italian">Italian</option>
-                  <option value="chinese">Chinese</option>
-                  <option value="indian">Indian</option>
-                  <option value="desserts">Desserts</option>
-                  <option value="Chicken">Chicken</option>
-                </select>
+                  placeholder="Enter Category"
+                  required
+                />
               </div>
               <div className="flex flex-col sm:flex-row items-center justify-start gap-[10px]">
                 <input
                   type="file"
                   accept="image/*"
-                  className="..."
+                  className="text-gray-500 outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px]"
                   onChange={(e) => setSelectedFile(e.target.files[0])}
                 />
               </div>
