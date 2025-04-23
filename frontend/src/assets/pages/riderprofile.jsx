@@ -75,7 +75,7 @@ function RiderProfile() {
           <div className="text-center">Your ID</div>
         </div>
         <form onSubmit={handleSubmit}>
-          <div className="mt-[80px]  flex flex-col gap-[10px]">
+          <div className="mt-[80px]  flex-col gap-[10px]  flex justify-center items-center">
             <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]">
               <input
                 type="text"
@@ -191,6 +191,14 @@ function RiderProfile() {
                 placeholder="account_title"
                 onChange={handleState}
                 required
+              />
+            </div>
+            <div className="flex flex-col sm:flex-row items-center justify-start gap-[10px]">
+              <input
+                type="file"
+                accept="image/*"
+                className="text-gray-500 outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px]"
+                onChange={(e) => setSelectedFile(e.target.files[0])}
               />
             </div>
             <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]  pt-[40px] pb-[40px]">
