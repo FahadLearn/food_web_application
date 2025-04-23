@@ -254,3 +254,21 @@ export const getRestaurantCategory = async (req, res) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
+export const getRestaurantItems = async (req, res) => {
+  try {
+    const { Restaurant_ID } = req.params;
+
+    if (!Restaurant_ID) {
+      return res.status(400).json({ message: "Restaurant ID is required" });
+    }
+    const menu = await Get_Items_By_Restaurant({ Restaurant_ID });
+    if (!menu) {
+      return res.status(404).json({ message: "Menu not found" });
+    }
+    return res.status(200).json({ message: "Menu fetched successfully", menu });
+  } catch (error) {
+    console.error("Error fetching menu:", error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+};

@@ -50,7 +50,7 @@ export const createRider = async (req, res) => {
     // const Rider = await FindById({ Rider_ID });
     // if (Rider) {
     //   return res
-    //     .status(400)
+    //     .status(400) 
     //     .json({ message: "Rider with this ID already exists." });
     // }
     const existingRider = await FindRiderByEmail({ Email }); // Adjust function if needed
@@ -157,19 +157,22 @@ export const updateRiderProfile = async (req, res) => {
       return res.status(404).json({ message: "Rider does not exist." });
     }
 
-    let IMG = rider.IMG; // Default: Keep old image
+    let newImagePath = rider.Img || ""; // fallback to empty string
 
-    // ✅ Now process image only if everything is valid
-    if (req.file) {
-      const oldImagePath = path.join("uploads", path.basename(rider.IMG)); // Old image path
-      const newImagePath = `/uploads/${req.file.filename}`; // New image path
-
-      // ❌ Delete old image if it exists
-      if (rider.IMG && fs.existsSync(oldImagePath)) {
+    // Delete old image if it exists
+    if (req.file?.filename && rest.Img) {
+      const oldImagePath = path.join(
+        "uploads/Restaurants",
+        path.basename(rest.Img)
+      );
+      if (fs.existsSync(oldImagePath)) {
         fs.unlinkSync(oldImagePath);
       }
+    }
 
-      IMG = newImagePath; // ✅ Update image path
+    // ✅ Update image path only if a new file is uploaded
+    if (req.file?.filename) {
+      newImagePath = `/uploads/Restaurants/${req.file.filename}`;
     }
 
     // ✅ Update rider in database
@@ -187,7 +190,7 @@ export const updateRiderProfile = async (req, res) => {
       Account_Title: req.body.Account_Title || rider.Account_Title,
       Email: req.body.Email || rider.Email,
       Password: req.body.Password || rider.Password,
-      IMG: IMG,
+      IMG: newImagePath,
     });
 
     if (updatedRows === 0) {

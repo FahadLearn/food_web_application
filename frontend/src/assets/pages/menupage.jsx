@@ -19,7 +19,7 @@ function MenuPage() {
           return { message: "Something went wrong" };
         }
         const data = await res.json();
-        const items = data.menu;
+        const items = data.menu.slice(40, 58);
         console.log("Fetched data:", items);
         setMenu(items);
       } catch (error) {
@@ -41,7 +41,7 @@ function MenuPage() {
           throw new Error("Failed to fetch restaurants");
         }
         const data = await res.json();
-        const rest = data.row;
+        const rest = data.row.slice(0, 6);
         Setrestaurant(rest);
         console.log("restaurants", rest);
       } catch (err) {
@@ -201,6 +201,7 @@ function MenuPage() {
                   </div>
                 </div>
               </Link> */}
+
               {restaurant.map((rest) => (
                 <Link
                   key={rest.Restaurant_ID}
@@ -209,7 +210,7 @@ function MenuPage() {
                   <div className="flex flex-col gap-[5px] ">
                     <div className=" h-[120px] w-[170px] sm:h-[140px] sm:w-[190px] md:h-[160px] md:w-[200px] lg:h-[170px] lg:w-[220px] shadow-sm drop-shadow-md">
                       <img
-                        src="/images/mac.webp" // 👈 You can also make this dynamic if needed
+                        src={`http://localhost:3000${rest.Img}`}
                         className="size-full object-cover"
                         alt={rest.Business_Name}
                       />

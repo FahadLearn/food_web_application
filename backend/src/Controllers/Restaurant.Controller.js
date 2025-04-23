@@ -5,7 +5,8 @@ import {
   Register,
   UpdateRes,
 } from "../Models/Restaurant.Model.js";
-import { FindById } from "../Models/User.Model.js";
+import fs from "fs";
+import path from "path";
 
 export const register = async (req, res) => {
   try {
@@ -119,6 +120,25 @@ export const updateRestaurant = async (req, res) => {
     if (!rest) {
       return res.status(404).json({ message: "Restaurant does not exist." });
     }
+
+    // ✅ Old Image Handling (Fixed `path = string` error)
+    let newImagePath = rest.Img || ""; // fallback to empty string
+
+    // Delete old image if it exists
+    if (req.file?.filename && rest.Img) {
+      const oldImagePath = path.join(
+        "uploads/Restaurants",
+        path.basename(rest.Img)
+      );
+      if (fs.existsSync(oldImagePath)) {
+        fs.unlinkSync(oldImagePath);
+      }
+    }
+
+    // ✅ Update image path only if a new file is uploaded
+    if (req.file?.filename) {
+      newImagePath = `/uploads/Restaurants/${req.file.filename}`;
+    }
     const updatedRestaurant = await UpdateRes({
       Restaurant_ID: Restaurant_ID,
       First_Name: req.body.First_Name || rest.First_Name,
@@ -139,7 +159,9 @@ export const updateRestaurant = async (req, res) => {
       Account_Title: req.body.Account_Title || rest.Account_Title,
       Bank_Name: req.body.Bank_Name || rest.Bank_Name,
       IBAN: req.body.IBAN || rest.IBAN,
+      Img: newImagePath,
     });
+
     if (updatedRestaurant) {
       return res
         .status(200)
@@ -175,5 +197,21 @@ export const getRest = async (req, res) => {
   } catch (error) {
     console.error("Error fetching restaurants:", error);
     res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+export const getRestById = async (req, res) => {
+  try {
+    const { Restaurant_ID } = req.params;
+    console.log("Extracted Restaurant_ID", Restaurant_ID);
+    if (!Restaurant_ID) {
+      return res.status(400).json({ message: "Restaurant_ID not found" });
+    }
+    const restaurant = await FindRestById({ Restaurant_ID });
+    if (restaurant) {
+      return res.status(200).json(restaurant);
+    }
+  } catch (error) {
+    console.error("Error updating restaurant:", error);
   }
 };

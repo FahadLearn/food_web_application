@@ -17,7 +17,7 @@ RiderRoute.get("/Profile", riderProfile);
 RiderRoute.patch(
   "/updateProfile",
   checkRiderID,
-  upload.single("IMG"),
+  upload.single("Img"),
   updateRiderProfile
 );
 export default RiderRoute;

@@ -7,6 +7,7 @@ import {
   getALLmenu,
   getMenuItem,
   getRestaurantCategory,
+  getRestaurantItems,
   update_Item,
 } from "../Controllers/Menu.Controller.js";
 
@@ -17,6 +18,7 @@ Menu_Route.post("/Add", upload.single("Img"), addItem);
 Menu_Route.patch("/Update/:Item_ID", upload.single("Img"), update_Item);
 Menu_Route.get("/getMenu", Get_menu);
 Menu_Route.get("/getItem/:Item_ID", getMenuItem);
+Menu_Route.get("/getAllItems/:Restaurant_ID", getRestaurantItems);
 Menu_Route.delete("/deleteItem/:Item_ID", delete_Item);
 Menu_Route.get("/getAllMenu", getALLmenu);
 Menu_Route.get("/Dis_cat", fetchCategories);

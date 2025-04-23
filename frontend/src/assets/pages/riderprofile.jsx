@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 // import { Link } from "react-router-dom";
 
 function RiderProfile() {
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [message, setmessage] = useState(null);
   const [formData, SetformData] = useState({
     First_Name: "",
     Last_Name: "",
@@ -15,6 +17,7 @@ function RiderProfile() {
     Account_Title: "",
     Email: "",
     Password: "",
+    Img: null,
   });
   useEffect(() => {
     const fetchProfile = async () => {
@@ -24,11 +27,37 @@ function RiderProfile() {
         headers: { "Content-Type": "application/json" },
       });
       const data = await res.json();
-      SetformData(data);
+      console.log(data);
+      SetformData({
+        First_Name: data.First_Name,
+        Last_Name: data.Last_Name,
+        City: data.City,
+        Vehicle: data.Vehicle,
+        Cnic: data.Cnic,
+        Phone_No: data.Phone_No,
+        Date_of_Birth: data.Date_of_Birth,
+        License: data.License,
+        Payment_Method: data.Payment_Method,
+        Account_Title: data.Account_Title,
+        Email: data.Email,
+        Password: data.Password,
+        Img: data.Img ? `http://localhost:3000${data.Img}` : null,
+      });
     };
 
     fetchProfile();
   }, []);
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      console.log("📸 Selected File:", file);
+      setSelectedFile(URL.createObjectURL(file));
+      SetformData((prev) => ({
+        ...prev,
+        Img: file, // ✅ Ensure File Object is Stored
+      }));
+    }
+  };
   const handleState = (event) => {
     SetformData({ ...formData, [event.target.name]: event.target.value });
   };
@@ -47,6 +76,12 @@ function RiderProfile() {
     newData.append("Account_Title", formData.Account_Title);
     newData.append("Email", formData.Email);
     newData.append("Password", formData.Password);
+    if (formData.Img instanceof File) {
+      console.log("📸 Uploading Image:", formData.Img.name);
+      newData.append("Img", formData.Img);
+    } else {
+      console.warn("No new image selected!");
+    }
 
     const response = await fetch("http://localhost:3000/Rider/updateProfile", {
       method: "PATCH",
@@ -55,6 +90,7 @@ function RiderProfile() {
     });
     const data = await response.json();
     if (!response.ok) throw new Error(data.message);
+    setmessage(data.message);
   };
   return (
     <>
@@ -64,15 +100,30 @@ function RiderProfile() {
         </div>
         <div className="relative top-[50px] flex flex-col gap-[5px]">
           <div className=" h-[100px] w-[100px] sm:h-[150px] sm:w-[150px]   md:h-[170px] md:w-[170px] lg:h-[190px] lg:w-[190px] rounded-full mx-auto">
-            <img
+            {/* <img
               src="/images/profile pic.webp"
               className="size-full object-fit rounded-full"
+            /> */}
+            <img
+              src={
+                selectedFile
+                  ? selectedFile
+                  : formData.Img
+                  ? formData.Img
+                  : "/images/profile pic.webp"
+              }
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = "/images/profile pic.webp";
+              }}
+              className="size-full rounded-[30px] object-cover"
+              alt="User Profile"
             />
           </div>
           <div className=" font-semibold text-center text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px]">
-            Your Name
+            {formData.First_Name + " " + formData.Last_Name}
           </div>
-          <div className="text-center">Your ID</div>
+          {/* <div className="text-center">Your ID</div> */}
         </div>
         <form onSubmit={handleSubmit}>
           <div className="mt-[80px]  flex-col gap-[10px]  flex justify-center items-center">
@@ -198,9 +249,10 @@ function RiderProfile() {
                 type="file"
                 accept="image/*"
                 className="text-gray-500 outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px]"
-                onChange={(e) => setSelectedFile(e.target.files[0])}
+                onChange={handleImageUpload}
               />
             </div>
+            {message && <p className="text-red-500">{message}</p>}
             <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]  pt-[40px] pb-[40px]">
               {/* <input
                 type="Submit"

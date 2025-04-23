@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 function UpdateItem() {
   const { Item_ID } = useParams(); // Extract Item_ID from the URL
   const [selectedFile, setSelectedFile] = useState(null);
-
+  const [msg, setmsg] = useState(null);
   const [formData, SetformData] = useState({
     Item_ID: "",
     Name: "",
@@ -83,12 +83,11 @@ function UpdateItem() {
       console.log(result); // Log result of the update request
 
       if (res.ok) {
-        alert("Item updated successfully!");
-      } else {
-        alert(result.message || "Something went wrong");
+        setmsg(result.message);
       }
     } catch (err) {
       console.error("Update failed:", err);
+      setmsg("Update failed.");
     }
   };
 
@@ -163,17 +162,16 @@ function UpdateItem() {
                   value={formData.Availability}
                   onChange={handleState}
                 >
-                  <option value="">Availability</option> {/* Neutral label */}
+                  <option value="">Availability</option>
                   <option value="yes">Yes</option>
                   <option value="no">No</option>
                 </select>
                 <input
                   type="text"
-                  name="category"
+                  name="Category"
                   className="text-gray-500 outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px]"
                   value={formData.Category}
                   onChange={handleState}
-                  placeholder="Enter Category"
                   required
                 />
               </div>
@@ -185,6 +183,7 @@ function UpdateItem() {
                   onChange={(e) => setSelectedFile(e.target.files[0])}
                 />
               </div>
+              {msg && <p className="text-red-500 mx-[auto]">{msg}</p>}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-[10px] relative top-[20px]">
                 <input
                   type="Submit"

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 function RestaurantProfile() {
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [message, setmessage] = useState(null);
   const [formData, SetformData] = useState({
     First_Name: "",
     Last_Name: "",
@@ -21,6 +23,7 @@ function RestaurantProfile() {
     Account_Title: "",
     Bank_Name: "",
     IBAN: "",
+    Img: null,
   });
 
   useEffect(() => {
@@ -40,7 +43,27 @@ function RestaurantProfile() {
 
         const data = await res.json();
         console.log(data);
-        SetformData(data);
+        SetformData({
+          First_Name: data.First_Name,
+          Last_Name: data.Last_Name,
+          Business_Name: data.Business_Name,
+          Email: data.Email,
+          Password: data.Password,
+          Business_Type: data.Business_Type,
+          Phone_Number: data.Phone_Number,
+          City: data.City,
+          Province: data.Province,
+          Area: data.Area,
+          Postal_Code: data.Postal_Code,
+          Detail_Address: data.Detail_Address,
+          CNIC: data.CNIC,
+          License: data.License,
+          FBR: data.FBR,
+          Account_Title: data.Account_Title,
+          Bank_Name: data.Bank_Name,
+          IBAN: data.IBAN,
+          Img: data.Img ? `http://localhost:3000${data.Img}` : null,
+        });
       } catch (error) {
         console.error("Fetch error:", error);
       }
@@ -51,6 +74,17 @@ function RestaurantProfile() {
 
   const handleState = (event) => {
     SetformData({ ...formData, [event.target.name]: event.target.value });
+  };
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      console.log("📸 Selected File:", file);
+      setSelectedFile(URL.createObjectURL(file));
+      SetformData((prev) => ({
+        ...prev,
+        Img: file, // ✅ Ensure File Object is Stored
+      }));
+    }
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -73,6 +107,13 @@ function RestaurantProfile() {
       newdata.append("Bank_Name", formData.Bank_Name);
       newdata.append("IBAN", formData.IBAN);
 
+      if (formData.Img instanceof File) {
+        console.log("📸 Uploading Image:", formData.Img.name);
+        newdata.append("Img", formData.Img);
+      } else {
+        console.warn("No new image selected!");
+      }
+
       const res = await fetch("http://localhost:3000/restaurant/update", {
         method: "PATCH",
         body: newdata,
@@ -84,6 +125,7 @@ function RestaurantProfile() {
       }
       const data = await res.json();
       console.log(data);
+      setmessage(data.message);
     } catch (error) {
       console.error(error.message);
     }
@@ -95,15 +137,30 @@ function RestaurantProfile() {
       </div>
       <div className="relative top-[50px] flex flex-col gap-[5px]">
         <div className=" h-[100px] w-[100px] sm:h-[150px] sm:w-[150px]   md:h-[170px] md:w-[170px] lg:h-[190px] lg:w-[190px] rounded-full mx-auto">
-          <img
-            src="/images/profile pic.webp"
+          {/* <img
+            src={formData.Img ? formData.Img : "/images/profile pic.webp"}
             className="size-full object-fit rounded-full"
+          /> */}
+          <img
+            src={
+              selectedFile
+                ? selectedFile
+                : formData.Img
+                ? formData.Img
+                : "/images/profile pic.webp"
+            }
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "/images/profile pic.webp";
+            }}
+            className="size-full rounded-[30px] object-cover"
+            alt="User Profile"
           />
         </div>
         <div className=" font-semibold text-center text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px]">
-          Your Name
+          {formData.Business_Name}
         </div>
-        <div className="text-center">Your ID</div>
+        {/* <div className="text-center">{formData.Restaurant_ID}</div> */}
       </div>
       <form onSubmit={handleSubmit}>
         <div className=" mt-[80px]  flex flex-col gap-[10px]">
@@ -306,10 +363,12 @@ function RestaurantProfile() {
                 type="file"
                 accept="image/*"
                 className="text-gray-500 outline-none rounded-[30px] bg-[#ECECEC] text-[16px] w-[300px] pt-[15px] pb-[15px] pr-[20px] pl-[20px]"
-                onChange={(e) => setSelectedFile(e.target.files[0])}
+                onChange={handleImageUpload}
               />
             </div>
           </div>
+          {message && <p className="text-red-500 mx-[auto]">{message}</p>}
+
           <div className=" flex  flex-col sm:flex-row items-center justify-center gap-[10px]  pt-[40px] pb-[40px]">
             {/* <Link to="">
               <input

@@ -96,6 +96,7 @@ export const UpdateRes = async ({
   Account_Title,
   Bank_Name,
   IBAN,
+  Img,
 }) => {
   try {
     const sql = `UPDATE restaurants
@@ -118,6 +119,8 @@ export const UpdateRes = async ({
       Account_Title = ?,
       Bank_Name = ?,
       IBAN = ?
+      ,Img = ?
+   
     WHERE Restaurant_ID = ?;
     `;
 
@@ -140,6 +143,7 @@ export const UpdateRes = async ({
       Account_Title,
       Bank_Name,
       IBAN,
+      Img,
       Restaurant_ID,
     ];
 
