@@ -1,16 +1,17 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 // import burgers from "../../burgers.json";
 import Food_items from "../components/fooditems";
 import Footer from "../components/footer";
 import Header from "../components/Header";
 import { useEffect, useState } from "react";
+
 function BrandPage() {
   const [category, setCategory] = useState([]);
   const [allItems, setAllItems] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [restaurant, Setrestaurant] = useState([]);
   const { Restaurant_ID } = useParams();
-
+  const Navigate = useNavigate();
   useEffect(() => {
     const fetchCat = async () => {
       const res = await fetch(
@@ -28,6 +29,7 @@ function BrandPage() {
     fetchCat();
   }, [Restaurant_ID]);
   console.log(category);
+
   useEffect(() => {
     const fetchItems = async () => {
       const res = await fetch(
@@ -39,6 +41,10 @@ function BrandPage() {
     };
     fetchItems();
   }, [Restaurant_ID]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // This will scroll to the top of the page when it loads
+  }, []);
   useEffect(() => {
     const fetchres = async () => {
       try {
@@ -165,7 +171,15 @@ function BrandPage() {
               selectedCategory ? item.Category === selectedCategory : true
             )
             .map((item) => (
-              <Food_items key={item.Item_ID} data={item} />
+              <div
+                key={item.Item_ID}
+                onClick={() => {
+                  Navigate(`/itemdesc/${item.Item_ID}`);
+                }}
+                className="cursor-pointer"
+              >
+                <Food_items key={item.Item_ID} data={item} />
+              </div>
             ))}
         </div>
       </div>

@@ -1,10 +1,13 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+// import { useCart } from "./assets/context/CartContext";
+import { useCart } from "../../context/CartContext";
 
 function ItemDescription() {
   const { Item_ID } = useParams();
-  const [count, setCount] = useState(0);
+  const { addToCart } = useCart();
+  const [count, setCount] = useState(1);
   const increment = () => setCount(count + 1);
   const decrement = () => setCount(count > 0 ? count - 1 : 0);
 
@@ -47,12 +50,18 @@ function ItemDescription() {
               <div onClick={decrement}>-</div>
             </div>
             <div className="flex items-center  justify-center w-[200px]">
-              <Link
+              {/* <Link
                 to="/cart"
                 className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[18px] font-semibold bg-amber-500 text-white  pt-[10px] pb-[10px] pl-[50px] pr-[50px] rounded-full"
               >
                 Add to Cart
-              </Link>
+              </Link> */}
+              <button
+                onClick={() => addToCart({ ...item, quantity: count })}
+                className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[18px] font-semibold bg-amber-500 text-white  pt-[10px] pb-[10px] pl-[50px] pr-[50px] rounded-full"
+              >
+                Add to Cart
+              </button>
             </div>
           </div>
         </div>

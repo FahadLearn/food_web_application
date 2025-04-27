@@ -7,6 +7,7 @@ import {
   FindById,
   Get_Items_By_Restaurant,
   GetAllMenu,
+  GetCategoriesFromCat,
   Update_Item,
 } from "../Models/Menu.Model.js";
 import fs from "fs";
@@ -269,6 +270,23 @@ export const getRestaurantItems = async (req, res) => {
     return res.status(200).json({ message: "Menu fetched successfully", menu });
   } catch (error) {
     console.error("Error fetching menu:", error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+// Controller for fetching the Categories form Categories table
+export const getCat = async (req, res) => {
+  try {
+    // const { CAT_NAME } = req.params;
+    // if (!CAT_NAME) {
+    //   return res.status(401).json({ message: "Fetching Categories Failed" });
+    // }
+    const cat = await GetCategoriesFromCat();
+    return res
+      .status(200)
+      .json({ message: "Categories fetched from Categories Table:", cat });
+  } catch (error) {
+    console.error("Error fetching Categories from Categories", error);
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };

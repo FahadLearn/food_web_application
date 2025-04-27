@@ -8,7 +8,6 @@ import {
   updateRestaurant,
 } from "../Controllers/Restaurant.Controller.js";
 import upload from "../config/Restaurant_multer.js";
-// import { GetAllMenu } from "../Models/Menu.Model.js";
 
 const Rest_Route = express.Router();
 

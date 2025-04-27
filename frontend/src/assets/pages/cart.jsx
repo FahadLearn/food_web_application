@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
 import AddCart from "./add cart";
-import cart from "../../cart.json";
+// import cart from "../../cart.json";
+import { useCart } from "../../context/CartContext";
+// import { useEffect, useState } from "react";
 
 function Cart() {
+  const { cart } = useCart();
+  const totalPrice = cart.reduce((acc, item) => {
+    return acc + item.Price * item.quantity;
+  }, 0);
   return (
     <>
       <div className=" w-[100%] ">
@@ -27,7 +33,7 @@ function Cart() {
             Total (incl. fees and tax)
           </div>
           <div className="text-[20px] sm:text-[20px] md:text-[25px] lg:text-[25px]">
-            Rs. 0
+            Rs. {totalPrice.toFixed(2)}
           </div>
         </div>
         <div className="bg-[#ECECEC]  flex justify-center pt-[20px] pb-[20px] ">

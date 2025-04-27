@@ -2,7 +2,26 @@ import cuisine from "../../cuisine.json";
 import CuisineMap from "../components/cuisine map";
 import Header from "../components/Header";
 import Footer from "../components/footer";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 function Cuisine() {
+  const [CAT_NAME] = useParams();
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const res = await fetch(
+          `http://localhost:3000/menu/cuisine/${cat_name}`
+        );
+        const data = await res.json();
+        setItems(data);
+        console.log("Fetched Items:", data);
+      } catch (error) {
+        console.error("Error fetching cuisine items:", error);
+      }
+    };
+
+    fetchItems();
+  }, [cat_name]);
   return (
     <>
       <Header />

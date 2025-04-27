@@ -5,6 +5,7 @@ import {
   fetchCategories,
   Get_menu,
   getALLmenu,
+  getCat,
   getMenuItem,
   getRestaurantCategory,
   getRestaurantItems,
@@ -23,4 +24,8 @@ Menu_Route.delete("/deleteItem/:Item_ID", delete_Item);
 Menu_Route.get("/getAllMenu", getALLmenu);
 Menu_Route.get("/Dis_cat", fetchCategories);
 Menu_Route.get("/Dis_cat/:Restaurant_ID", getRestaurantCategory);
+
+// Route to get categories Name from
+Menu_Route.get("/categories", getCat);
+
 export default Menu_Route;

@@ -30,57 +30,65 @@ import ItemDescription from "./assets/pages/item description";
 import RestaurantSignup from "./assets/pages/ResturantSignup page";
 import UpdateItem from "./assets/pages/updateitem";
 import RestaurantProfile from "./assets/pages/resuturantprofile";
+import { CartProvider } from "./context/CartContext";
 
 function App() {
   return (
     <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/menu_page" element={<MenuPage />} />
-          <Route path="/subscription" element={<Subscription />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
+      <CartProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/menu_page" element={<MenuPage />} />
+            <Route path="/subscription" element={<Subscription />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
 
-          <Route path="/Sign" element={<Sign />} />
-          <Route path="/Sign_IN" element={<SignIn />} />
-          <Route path="/Sign_UP" element={<SignUp />} />
-          <Route path="/user_profile" element={<UserProfile />} />
+            <Route path="/Sign" element={<Sign />} />
+            <Route path="/Sign_IN" element={<SignIn />} />
+            <Route path="/Sign_UP" element={<SignUp />} />
+            <Route path="/user_profile" element={<UserProfile />} />
 
-          <Route path="/Rider_Sign_up" element={<RiderSignup />} />
-          <Route path="/riderdashbaord" element={<RiderDashboard />} />
-          <Route path="/riderprofile" element={<RiderProfile />} />
+            <Route path="/Rider_Sign_up" element={<RiderSignup />} />
+            <Route path="/riderdashbaord" element={<RiderDashboard />} />
+            <Route path="/riderprofile" element={<RiderProfile />} />
 
-          <Route path="/restaurantsignup" element={<RestaurantSignup />} />
-          <Route path="/restaurantprofile" element={<RestaurantProfile />} />
-          <Route
-            path="/restaurantDashboard"
-            element={<FoodDeliveryDashboard />}
-          />
-          <Route path="/add_item" element={<AddItem />} />
-          <Route path="/updateitem/:Item_ID" element={<UpdateItem />} />
-          <Route
-            path="/subscription_managment"
-            element={<SubscriptionManagement />}
-          />
-          <Route path="/menu_management" element={<MenuManagement />} />
-          <Route path="/ordersManagement" element={<OrdersManagement />} />
-          <Route path="/customer_managment" element={<CustomersManagement />} />
+            <Route path="/restaurantsignup" element={<RestaurantSignup />} />
+            <Route path="/restaurantprofile" element={<RestaurantProfile />} />
+            <Route
+              path="/restaurantDashboard"
+              element={<FoodDeliveryDashboard />}
+            />
+            <Route path="/add_item" element={<AddItem />} />
+            <Route path="/updateitem/:Item_ID" element={<UpdateItem />} />
+            <Route
+              path="/subscription_managment"
+              element={<SubscriptionManagement />}
+            />
+            <Route path="/menu_management" element={<MenuManagement />} />
+            <Route path="/ordersManagement" element={<OrdersManagement />} />
+            <Route
+              path="/customer_managment"
+              element={<CustomersManagement />}
+            />
 
-          <Route path="/brandpage/:Restaurant_ID" element={<BrandPage />} />
-          <Route path="/cuisine" element={<Cuisine />} />
-          {/* <Route path="/itemdesc" element={<ItemDescription />} />
-           */}
-          <Route path="/itemdesc/:Item_ID" element={<ItemDescription />} />
+            <Route path="/brandpage/:Restaurant_ID" element={<BrandPage />} />
+            {/* <Route path="/cuisine" element={<Cuisine />} /> */}
+            <Route path="/cuisine/:cat_name" element={<Cuisine />} />
 
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkoutpage" element={<Checkout />} />
-          <Route
-            path="/subscription_signup"
-            element={<Subscription_Signup />}
-          />
-        </Routes>
-      </Router>
+            {/* <Route path="/itemdesc" element={<ItemDescription />} />
+             */}
+            <Route path="/itemdesc/:Item_ID" element={<ItemDescription />} />
+
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/checkoutpage" element={<Checkout />} />
+            <Route
+              path="/subscription_signup"
+              element={<Subscription_Signup />}
+            />
+          </Routes>
+        </Router>
+      </CartProvider>
     </>
   );
 }

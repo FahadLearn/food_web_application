@@ -155,3 +155,16 @@ export const Distinct_Restaurant_Category = async ({ Restaurant_ID }) => {
     throw new Error(error);
   }
 };
+
+// Model for fetching the Categories form Categories table
+
+export const GetCategoriesFromCat = async () => {
+  try {
+    const sql = `SELECT * FROM CATEGORIES;`;
+    const [rows] = await db.execute(sql);
+    return rows;
+  } catch (error) {
+    console.error(error);
+    throw new Error(error);
+  }
+};

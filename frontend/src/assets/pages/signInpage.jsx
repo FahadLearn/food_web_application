@@ -10,13 +10,17 @@ function SignIn() {
   });
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  // const [message, setmessage] = useState(null);
   const handleState = (event) => {
     SetformData({ ...formData, [event.target.name]: event.target.value });
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!formData.Email || !formData.Password) {
-      setError("Email and Password are required");
+    if (!formData.Email) {
+      setError("Enter Your Email");
+    }
+    if (!formData.Password) {
+      setError("Enter your password");
     }
     try {
       const result = await universalLogin(formData);
@@ -92,7 +96,9 @@ function SignIn() {
                 />
               </div>
               {error && (
-                <p className="text-red-500 text-sm text-center">{error}</p>
+                <p className="text-red-600 font-medium mt-3 text-center">
+                  {error}
+                </p>
               )}
             </form>
           </div>
