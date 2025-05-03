@@ -268,36 +268,37 @@ function MenuPage() {
                   </div>
                 </div>
               </Link> */}
-
-              {restaurant.map((rest) => (
-                <div
-                  key={rest.Restaurant_ID}
-                  onClick={() => {
-                    if (isloggedIn) {
-                      Navigate(`/brandpage/${rest.Restaurant_ID}`);
-                    } else {
-                      setShowModal(true);
-                    }
-                  }}
-                  className="cursor-pointer"
-                >
-                  <div className="flex flex-col gap-[5px] ">
-                    <div className=" h-[120px] w-[170px] sm:h-[140px] sm:w-[190px] md:h-[160px] md:w-[200px] lg:h-[170px] lg:w-[220px] shadow-sm drop-shadow-md">
-                      <img
-                        src={`http://localhost:3000${rest.Img}`}
-                        className="size-full object-cover"
-                        alt={rest.Business_Name}
-                      />
-                    </div>
-                    <div className=" text-center">
-                      <h2 className="text-[18px] font-semibold">
-                        {rest.Business_Name}
-                      </h2>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-[20px]">
+                {restaurant.map((rest) => (
+                  <div
+                    key={rest.Restaurant_ID}
+                    onClick={() => {
+                      if (isloggedIn) {
+                        Navigate(`/brandpage/${rest.Restaurant_ID}`);
+                      } else {
+                        setShowModal(true);
+                      }
+                    }}
+                    className="cursor-pointer "
+                  >
+                    <div className="flex flex-col gap-[5px] ">
+                      <div className=" h-[120px] w-[170px] sm:h-[140px] sm:w-[190px] md:h-[160px] md:w-[200px] lg:h-[170px] lg:w-[220px] shadow-sm drop-shadow-md">
+                        <img
+                          src={`http://localhost:3000${rest.Img}`}
+                          className="size-full object-cover"
+                          alt={rest.Business_Name}
+                        />
+                      </div>
+                      <div className=" text-center">
+                        <h2 className="text-[18px] font-semibold">
+                          {rest.Business_Name}
+                        </h2>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-
+                ))}
+              </div>
+              {/* is ka container hi tu banana hai aapko is map method ka */}
               {/* <div className=" flex flex-col gap-[5px]">
                 <div className=" border-red-700 h-[120px] w-[170px] sm:h-[140px] sm:w-[190px] md:h-[160px]  md:w-[200px] lg:h-[170px]  lg:w-[220px] shadow-sm drop-shadow-md">
                   <img

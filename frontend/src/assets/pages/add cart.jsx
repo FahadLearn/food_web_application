@@ -18,9 +18,9 @@ function AddCart({ data }) {
           />
         </li>
 
-        <li className="w-[25%]">
+        <li className="w-[30%]">
           <li className="text-[18px] font-semibold">{Name}</li>
-          <li className="text-[18px]">{Description}</li>
+          <li className="text-[18px] w-[220px] sm:w-[300px] ">{Description}</li>
           <li className="text-[18px] font-semibold">Rs.{Price}</li>
 
           <div className="flex justify-center gap-[10px] w-[130px] pt-[5px] pb-[5px] rounded-[20px] bg-[#212121]">
@@ -38,10 +38,10 @@ function AddCart({ data }) {
               +
             </button>
           </div>
-          <div className="flex justify-center gap-[10px] w-[130px] pt-[5px] pb-[5px] rounded-[20px] bg-[#212121]">
+          <div className="mt-[2px] flex justify-center gap-[10px] w-[130px] pt-[5px] pb-[5px] rounded-[20px] bg-amber-500">
             <button
               onClick={() => removeFromCart(Item_ID)}
-              className="border-2 font-bold text-[18px] text-[red]"
+              className=" border-red-600 font-semibold text-[14px] sm:text-[16px] md:text-[16px] lg:text-[18px] text-white"
             >
               Remove
             </button>

@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AddCart from "./add cart";
 // import cart from "../../cart.json";
 import { useCart } from "../../context/CartContext";
 // import { useEffect, useState } from "react";
 
 function Cart() {
+  const Navigate = useNavigate();
   const { cart } = useCart();
   const totalPrice = cart.reduce((acc, item) => {
     return acc + item.Price * item.quantity;
@@ -37,12 +38,18 @@ function Cart() {
           </div>
         </div>
         <div className="bg-[#ECECEC]  flex justify-center pt-[20px] pb-[20px] ">
-          <Link
-            to="/checkoutpage"
-            className="border-2 text-[16px] sm:text-[16px] md:text-[18px] lg:text-[18px] pt-[10px] pb-[10px] pl-[8px] pr-[8px] hover:bg-amber-500 rounded-[10px] text-white hover:border-amber-500 bg-[#808080] duration-200 "
+          <div
+            className="border-2 text-[16px] sm:text-[16px]
+            md:text-[18px] lg:text-[18px] pt-[10px] pb-[10px] pl-[8px] pr-[8px]
+            hover:bg-amber-500 rounded-[10px] text-white hover:border-amber-500
+            bg-[#808080] duration-200 "
+            onClick={() => {
+              Navigate("/checkoutpage");
+            }}
           >
+            {" "}
             Review your payment and address
-          </Link>
+          </div>
         </div>
       </div>
     </>

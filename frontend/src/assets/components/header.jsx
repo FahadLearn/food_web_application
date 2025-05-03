@@ -1,12 +1,16 @@
 import Sidebar from "./sidebar";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Links from "./links";
 import { IoLocationSharp } from "react-icons/io5";
+import { useCart } from "../../context/CartContext";
 
 function Header() {
+  const Navigate = useNavigate();
+  const { cart } = useCart();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState(null); // ✅ Store user details
+  const [user, setUser] = useState(null);
+  const cartCount = cart.length;
 
   useEffect(() => {
     const fetchAuthStatus = async () => {
@@ -124,12 +128,12 @@ function Header() {
             </Link>
           )}
 
-          <Link
-            to="/cart"
-            className="sm:text-[12px] md:text-[14px] lg:text-[16px]"
+          <div
+            onClick={() => Navigate("/cart")}
+            className="sm:text-[12px] md:text-[14px] lg:text-[16px] cursor-pointer"
           >
-            Cart(0)
-          </Link>
+            Cart({cartCount})
+          </div>
         </div>
       </div>
     </>

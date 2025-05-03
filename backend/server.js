@@ -11,6 +11,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import Route from "./src/Routes/universalLogin.routes.js";
 import Menu_Route from "./src/Routes/Menu.Routes.js";
+import OrderRoute from "./src/Routes/Order.Routes.js";
 // ✅ Load environment variables
 dotenv.config();
 
@@ -35,6 +36,7 @@ app.use("/API", Route);
 app.use("/Rider", RiderRoute);
 app.use("/restaurant", Rest_Route);
 app.use("/menu", Menu_Route);
+app.use("/order", OrderRoute);
 // ✅ Root route
 app.get("/", (req, res) => res.send("Food web application APIs are running"));
 

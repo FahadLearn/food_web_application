@@ -12,9 +12,7 @@ function Orders({ data }) {
         <td className="border-2 border-gray-500 ">{total}</td>
         <td className="border-2 border-gray-500">
           <select className="outline-none">
-            <option value="" disabled selected>
-              Status
-            </option>
+            <option value="">Status</option>
             <option value="Pending">Pending</option>
             <option value="Complete">Complete</option>
             <option value="Canceled">Canceled</option>

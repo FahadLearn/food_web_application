@@ -10,9 +10,13 @@ function ItemDescription() {
   const [count, setCount] = useState(1);
   const increment = () => setCount(count + 1);
   const decrement = () => setCount(count > 0 ? count - 1 : 0);
-
+  const [message, setMessage] = useState(null);
   const [item, setItem] = useState(null);
-
+  const handleAdd = (event) => {
+    event.preventDefault();
+    addToCart({ ...item, quantity: count });
+    setMessage("Item added to cart");
+  };
   useEffect(() => {
     fetch(`http://localhost:3000/menu/getItem/${Item_ID}`)
       .then((res) => res.json())
@@ -57,12 +61,15 @@ function ItemDescription() {
                 Add to Cart
               </Link> */}
               <button
-                onClick={() => addToCart({ ...item, quantity: count })}
+                onClick={handleAdd}
                 className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[18px] font-semibold bg-amber-500 text-white  pt-[10px] pb-[10px] pl-[50px] pr-[50px] rounded-full"
               >
                 Add to Cart
               </button>
             </div>
+          </div>
+          <div>
+            {message && <p className="my-[30px] text-red-500">{message}</p>}
           </div>
         </div>
       </div>
