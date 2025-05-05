@@ -31,6 +31,7 @@ import RestaurantSignup from "./assets/pages/ResturantSignup page";
 import UpdateItem from "./assets/pages/updateitem";
 import RestaurantProfile from "./assets/pages/resuturantprofile";
 import { CartProvider } from "./context/CartContext";
+import PaymentManagement from "./assets/pages/paymentresurant";
 
 function App() {
   return (
@@ -71,6 +72,7 @@ function App() {
               path="/customer_managment"
               element={<CustomersManagement />}
             />
+            <Route path="/payment_managment" element={<PaymentManagement />} />
 
             <Route path="/brandpage/:Restaurant_ID" element={<BrandPage />} />
             {/* <Route path="/cuisine" element={<Cuisine />} /> */}

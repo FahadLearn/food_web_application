@@ -1,0 +1,48 @@
+[
+    {
+      "paymentId": "PMT1001",
+      "orderId": "ORD2001",
+      "customerName": "Ali Khan",
+      "paymentMethod": "Credit Card",
+      "amount": 1200,
+      "status": "Completed",
+      "dateTime": "2025-04-28T14:15:00"
+    },
+    {
+      "paymentId": "PMT1002",
+      "orderId": "ORD2002",
+      "customerName": "Sana Raza",
+      "paymentMethod": "Cash on Delivery",
+      "amount": 950,
+      "status": "Pending",
+      "dateTime": "2025-04-28T15:05:00"
+    },
+    {
+      "paymentId": "PMT1003",
+      "orderId": "ORD2003",
+      "customerName": "Usman Tariq",
+      "paymentMethod": "JazzCash",
+      "amount": 1500,
+      "status": "Completed",
+      "dateTime": "2025-04-29T12:45:00"
+    },
+    {
+      "paymentId": "PMT1004",
+      "orderId": "ORD2004",
+      "customerName": "Ayesha Butt",
+      "paymentMethod": "Easypaisa",
+      "amount": 800,
+      "status": "Failed",
+      "dateTime": "2025-04-29T13:10:00"
+    },
+    {
+      "paymentId": "PMT1005",
+      "orderId": "ORD2005",
+      "customerName": "Bilal Ahmed",
+      "paymentMethod": "Credit Card",
+      "amount": 2200,
+      "status": "Refunded",
+      "dateTime": "2025-04-29T15:30:00"
+    }
+  ]
+  
