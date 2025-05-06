@@ -132,7 +132,7 @@ function Header() {
             onClick={() => Navigate("/cart")}
             className="sm:text-[12px] md:text-[14px] lg:text-[16px] cursor-pointer"
           >
-            Cart({cartCount})
+            {isLoggedIn ? `Cart(${cartCount})` : "Cart"}
           </div>
         </div>
       </div>

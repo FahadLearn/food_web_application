@@ -10,6 +10,11 @@ function Cart() {
   const totalPrice = cart.reduce((acc, item) => {
     return acc + item.Price * item.quantity;
   }, 0);
+
+  const handleCheckout = () => {
+    sessionStorage.setItem("totalAmount", totalPrice.toFixed(2)); // ✅ Save total
+    Navigate("/checkoutpage");
+  };
   return (
     <>
       <div className=" w-[100%] ">
@@ -43,9 +48,7 @@ function Cart() {
             md:text-[18px] lg:text-[18px] pt-[10px] pb-[10px] pl-[8px] pr-[8px]
             hover:bg-amber-500 rounded-[10px] text-white hover:border-amber-500
             bg-[#808080] duration-200 "
-            onClick={() => {
-              Navigate("/checkoutpage");
-            }}
+            onClick={handleCheckout}
           >
             {" "}
             Review your payment and address

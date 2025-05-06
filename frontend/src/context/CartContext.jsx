@@ -47,7 +47,10 @@ export const CartProvider = ({ children }) => {
     );
   };
 
-  const clearCart = () => setCart([]);
+  const clearCart = () => {
+    setCart([]);
+    sessionStorage.removeItem("totalAmount");
+  };
 
   return (
     <CartContext.Provider
